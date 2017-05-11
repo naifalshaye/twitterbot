@@ -9,6 +9,7 @@
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
+        "sentry/sentry-laravel": "^0.7.0",
         "thujohn/twitter": "^2.2"
     },
     "require-dev": {
