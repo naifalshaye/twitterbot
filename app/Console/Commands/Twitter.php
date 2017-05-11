@@ -40,19 +40,20 @@ class Twitter extends Command
      */
     public function handle()
     {
-        $conf = Conf::where('user_id', Auth::user()->id)->first();
+        $conf = Conf::findOrFail(1);
+
         $faqs = FAQ::all();
 
         $mentions = \Twitter::getMentionsTimeline();
         $collection = collect($mentions);
 
-        foreach ($collection as $mention) {
-            foreach ($faqs as $faq) {
+        foreach ($collection as $mention){
+            foreach ($faqs as $faq){
                 if (mb_strpos($mention->text, $faq->keyword) != false || strpos($mention->text, $faq->keyword) > 0) {
                     try {
                         $reply = \Twitter::postTweet([
                             'in_reply_to_status_id' => $mention->id,
-                            'status' => '@' . $mention->user->screen_name . ' ' . $faq->reply . ' ' . $mention->user->name
+                            'status' => '@' . $mention->user->screen_name . ' ' . $faq->reply. ' '.$mention->user->name
                         ]);
 
                         if (isset($collection->first()->id) && $collection->first()->id > 0) {
@@ -62,12 +63,13 @@ class Twitter extends Command
                             }
                         }
 
-                    } catch (\Exception $e) {
-                        //  dd($e->getMessage());
+                    } catch (\Exception $e){
+                         dd($e->getMessage());
                     }
 
-                } else {
-                    //   dd('No Tweets Found!');
+                }
+                else{
+                     dd('No Tweets Found!');
                 }
             }
         }
