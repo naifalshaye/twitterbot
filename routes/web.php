@@ -20,13 +20,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/conf', 'ConfController@index');
+Route::post('/conf', 'ConfController@update');
 
-Route::get('twitter', function () {
-    return view('twitterAuth');
-});
+//Route::get('twitter', function () {
+//    return view('twitterAuth');
+//});
+//
+//Route::get('/twitter', 'AccountController@redirectToProvider');
+//Route::get('/callback', 'AccountController@handleProviderCallback');
 
-Route::get('/twitter', 'AccountController@redirectToProvider');
-Route::get('/callback', 'AccountController@handleProviderCallback');
 
 Route::resource('faq', 'FAQController');
 Route::resource('keyword', 'KeywordController');
@@ -34,7 +36,6 @@ Route::resource('keyword', 'KeywordController');
 Route::get('/faq/status/{id}',  'FAQController@status');
 Route::get('/keyword/status/{id}',  'KeywordController@status');
 
-Route::get('/test',  'HomeController@test');
 Route::get('/register', function(){
     return redirect('/');
 });
@@ -45,4 +46,4 @@ Route::post('/register', function(){
 Route::post('/kill', 'HomeController@kill');
 Route::post('/killall', 'HomeController@killAll');
 
-
+Route::get('/test',  'HomeController@test');

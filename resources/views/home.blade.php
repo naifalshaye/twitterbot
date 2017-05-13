@@ -8,11 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    @if (!$conf_exist)
-                        <a href="/twitter" class="btn btn-primary">Login via Twitter</a>
-                    @else
-                        welcome {{$conf->name}}
-                    @endif
+
                 </div>
             </div>
 

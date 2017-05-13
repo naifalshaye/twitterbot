@@ -18,6 +18,7 @@ class FAQ extends Migration
             $table->integer('user_id');
             $table->string('keyword');
             $table->string('reply');
+            $table->boolean('disable')->default(false);
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+         $this->middleware('auth');
     }
 
     /**
@@ -29,20 +29,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-         exec("ps aux | grep 'artisan'",$ps);
-
-        $conf_exist = Conf::where('user_id',Auth::user()->id)->exists();
-
-        if ($conf_exist){
-            $conf = Conf::where('user_id',Auth::user()->id)->first();
-            if (isset($conf->screen_name) && $conf->screen_name != ''){
-                return view('home',compact('conf','conf_exist','ps'));
-            }
-        }
-        else {
-            return view('home',compact('conf_exist','ps'));
-        }
-
+        exec("ps aux | grep 'artisan'",$ps);
+        return view('home',compact('ps'));
     }
 
     public function test()

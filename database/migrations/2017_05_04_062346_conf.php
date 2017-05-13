@@ -13,16 +13,16 @@ class Conf extends Migration
      */
     public function up()
     {
-        Schema::create('conf', function (Blueprint $table) {
+        Schema::create('config', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('twitter_id');
-            $table->string('screen_name');
-            $table->string('name')->nullable();
-            $table->string('mobile')->unique()->nullable();
-            $table->string('expire')->nullable();
+            $table->text('TWITTER_CONSUMER_KEY');
+            $table->text('TWITTER_CONSUMER_SECRET');
             $table->text('TWITTER_ACCESS_TOKEN');
             $table->text('TWITTER_ACCESS_TOKEN_SECRET');
+            $table->text('STREAM_TWITTER_CONSUMER_KEY');
+            $table->text('STREAM_TWITTER_CONSUMER_SECRET');
+            $table->text('STREAM_TWITTER_ACCESS_TOKEN');
+            $table->text('STREAM_TWITTER_ACCESS_TOKEN_SECRET');
             $table->bigInteger('since_id')->nullable();
             $table->timestamps();
         });
@@ -35,6 +35,6 @@ class Conf extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conf');
+        Schema::dropIfExists('config');
     }
 }
