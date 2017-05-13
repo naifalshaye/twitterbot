@@ -43,38 +43,13 @@ class HomeController extends Controller
 
     public function test()
     {
-        $conf = Conf::where('user_id',Auth::user()->id)->first();
+        $conf = Conf::findOrFail(1);
         $faqs = FAQ::all();
 
-        $mentions = \Twitter::getMentionsTimeline();
+        $mentions = \Twitter::getMentionsTimeline(['since_id'=>$conf->since_id]);
         $collection = collect($mentions);
-
-        foreach ($collection as $mention){
-            foreach ($faqs as $faq){
-                if (mb_strpos($mention->text, $faq->keyword) != false || strpos($mention->text, $faq->keyword) > 0) {
-                    try {
-                        $reply = \Twitter::postTweet([
-                            'in_reply_to_status_id' => $mention->id,
-                            'status' => '@' . $mention->user->screen_name . ' ' . $faq->reply. ' '.$mention->user->name
-                        ]);
-
-                        if (isset($collection->first()->id) && $collection->first()->id > 0) {
-                            if ($conf->since_id != $collection->first()->id) {
-                                $conf->since_id = $collection->first()->id;
-                                $conf->save();
-                            }
-                        }
-
-                    } catch (\Exception $e){
-                       //  dd($e->getMessage());
-                    }
-
-                }
-                else{
-                 //   dd('No Tweets Found!');
-                }
-            }
-        }
+        dd($collection);
+//
 
 
     }

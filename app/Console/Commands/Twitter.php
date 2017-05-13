@@ -41,10 +41,9 @@ class Twitter extends Command
     public function handle()
     {
         $conf = Conf::findOrFail(1);
-
         $faqs = FAQ::all();
 
-        $mentions = \Twitter::getMentionsTimeline();
+        $mentions = \Twitter::getMentionsTimeline(['since_id'=>$conf->since_id]);
         $collection = collect($mentions);
 
         foreach ($collection as $mention){
@@ -64,12 +63,12 @@ class Twitter extends Command
                         }
 
                     } catch (\Exception $e){
-                         dd($e->getMessage());
+                         //dd($e->getMessage());
                     }
 
                 }
                 else{
-                     dd('No Tweets Found!');
+                     //dd('No Tweets Found!');
                 }
             }
         }
