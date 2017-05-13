@@ -3,7 +3,7 @@
     <div class='row'>
         <div class="col-lg-4 col-lg-offset-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Add FAQ</div>
+                <div class="panel-heading">Add Keyword</div>
                 <div class="panel-body">
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -19,20 +19,13 @@
                             {{session('success')}}
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/faq') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/keyword') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="keyword" class="col-md-4 control-label">Keyword</label>
+                            <label for="str" class="col-md-4 control-label">Keyword</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="keyword" value="{{ old('keyword') }}" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="reply" class="col-md-4 control-label">Reply</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="reply" value="{{ old('reply') }}" required>
+                                <input type="text" class="form-control" name="str" value="{{ old('str') }}">
                             </div>
                         </div>
 

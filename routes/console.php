@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('twitter', function () {
     $this->comment(\App\Console\Commands\Twitter::class);
 })->describe('run twitter');
+
+//Artisan::command('connect_to_streaming_api', function () {
+//    $this->comment(\App\Console\Commands\ConnectToStreamingAPI::class);
+//})->describe('run connect_to_streaming_api');

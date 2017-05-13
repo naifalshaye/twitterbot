@@ -93,4 +93,19 @@ class FAQController extends Controller
         $faq->delete();
         return redirect()->to('/faq')->with('success','FAQ Deleted.');
     }
+
+
+    public function status($id)
+    {
+        $faq = FAQ::findOrFail($id);
+        if ($faq->disable){
+            $faq->disable = false;
+        }
+        else {
+            $faq->disable = true;
+        }
+        $faq->save();
+        return redirect()->to('/faq');
+
+    }
 }

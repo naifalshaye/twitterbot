@@ -53,6 +53,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                         @else
                             <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/keyword">Keywords</a></li>
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

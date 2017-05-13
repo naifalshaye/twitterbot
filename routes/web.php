@@ -29,6 +29,10 @@ Route::get('/twitter', 'AccountController@redirectToProvider');
 Route::get('/callback', 'AccountController@handleProviderCallback');
 
 Route::resource('faq', 'FAQController');
+Route::resource('keyword', 'KeywordController');
+
+Route::get('/faq/status/{id}',  'FAQController@status');
+Route::get('/keyword/status/{id}',  'KeywordController@status');
 
 Route::get('/test',  'HomeController@test');
 Route::get('/register', function(){

@@ -19,29 +19,22 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="post" role="form" action="/faq/{{$faq->id}}">
+                        <form class="form-horizontal" method="post" role="form" action="/keyword/{{$keyword->id}}">
                             <input type="hidden" name="_method" value="PUT">
                             <fieldset>
                             {!! csrf_field() !!}
 
                                 <div class="form-group">
-                                    <label for="keyword" class="col-md-4 control-label">Keyword</label>
+                                    <label for="str" class="col-md-4 control-label">Keyword</label>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="keyword" value="{{ $faq->keyword }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="reply" class="col-md-4 control-label">Reply</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="reply" value="{{ $faq->reply }}">
+                                        <input type="text" class="form-control" name="str" value="{{ $keyword->str }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="disable" class="col-md-4 control-label">Disable</label>
                                     <div class="col-md-6">
-                                        <input type="checkbox" class="form-control" name="disable" @if ($faq->disable) checked @endif>
+                                        <input type="checkbox" class="form-control" name="disable" @if ($keyword->disable) checked @endif>
                                     </div>
                                 </div>
 

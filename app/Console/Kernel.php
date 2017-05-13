@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ConnectToStreamingAPI;
 use App\Console\Commands\Twitter;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Twitter::class
+        Twitter::class,
+        ConnectToStreamingAPI::class
     ];
 
     /**
@@ -29,6 +31,9 @@ class Kernel extends ConsoleKernel
 //                  ->everyMinute();
         $schedule->command('twitter')
             ->everyMinute();
+
+//        $schedule->command('connect_to_streaming_api')
+//            ->daily();
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Conf;
 use App\FAQ;
+use App\Keyword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use whoisServerList\WhoisApi;
@@ -43,12 +44,12 @@ class HomeController extends Controller
 
     public function test()
     {
-        $conf = Conf::findOrFail(1);
-        $faqs = FAQ::all();
-
-        $mentions = \Twitter::getMentionsTimeline(['since_id'=>$conf->since_id]);
-        $collection = collect($mentions);
-        dd($collection);
+//        $conf = Conf::findOrFail(1);
+//        $faqs = FAQ::all();
+//
+//        $mentions = \Twitter::getMentionsTimeline(['since_id'=>$conf->since_id]);
+//        $collection = collect($mentions);
+//        dd($collection);
 //
 
 
