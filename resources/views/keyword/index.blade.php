@@ -39,7 +39,7 @@
                                         <td>{{ $keyword->id }}</td>
                                         <td>{{ $keyword->str }}</td>
                                         <td>
-                                            @if ($keyword->disable == true)
+                                            @if ($keyword->disable == false)
                                                 <a href="/keyword/status/{{$keyword->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
                                             @else
                                                 <a href="/keyword/status/{{$keyword->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>

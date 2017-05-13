@@ -42,7 +42,7 @@
                                         <td>{{ $faq->keyword }}</td>
                                         <td>{{ $faq->reply }}</td>
                                         <td>
-                                            @if ($faq->disable == true)
+                                            @if ($faq->disable == false)
                                                 <a href="/faq/status/{{$faq->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
                                             @else
                                                 <a href="/faq/status/{{$faq->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
