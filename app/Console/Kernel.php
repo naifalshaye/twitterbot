@@ -27,13 +27,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//         $schedule->command('inspire')
-//                  ->everyMinute();
         $schedule->command('twitter')
             ->everyMinute();
 
 //        $schedule->command('connect_to_streaming_api')
 //            ->daily();
+
+      //  $schedule->command('queue:restart')->hourly()
     }
 
     /**
