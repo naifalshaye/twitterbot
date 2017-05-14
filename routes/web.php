@@ -19,8 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/conf', 'ConfController@index');
-Route::post('/conf', 'ConfController@update');
+//Route::get('/conf', 'ConfController@index');
+//Route::post('/conf', 'ConfController@update');
 
 //Route::get('twitter', function () {
 //    return view('twitterAuth');

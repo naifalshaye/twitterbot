@@ -15,14 +15,6 @@ class Conf extends Migration
     {
         Schema::create('config', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('TWITTER_CONSUMER_KEY');
-            $table->text('TWITTER_CONSUMER_SECRET');
-            $table->text('TWITTER_ACCESS_TOKEN');
-            $table->text('TWITTER_ACCESS_TOKEN_SECRET');
-            $table->text('STREAM_TWITTER_CONSUMER_KEY');
-            $table->text('STREAM_TWITTER_CONSUMER_SECRET');
-            $table->text('STREAM_TWITTER_ACCESS_TOKEN');
-            $table->text('STREAM_TWITTER_ACCESS_TOKEN_SECRET');
             $table->bigInteger('since_id')->nullable();
             $table->timestamps();
         });
