@@ -2,20 +2,17 @@
 
 namespace App\Console\Commands;
 
-use App\Conf;
 use App\Keyword;
-use App\TwitterStream;
 use Illuminate\Console\Command;
 
-class ConnectToStreamingAPI extends Command
+class TwitterStream extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'connect_to_streaming_api';
-
+    protected $signature = 'TwitterStream';
     /**
      * The console command description.
      *
@@ -28,7 +25,7 @@ class ConnectToStreamingAPI extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param \App\Console\Commands\TwitterStream $twitterStream
      */
     public function __construct(TwitterStream $twitterStream)
     {

@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\ConnectToStreamingAPI;
+use App\Console\Commands\TwitterStream;
 use App\Console\Commands\Twitter;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Twitter::class,
-        ConnectToStreamingAPI::class
+        TwitterStream::class
     ];
 
     /**
@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('twitter')
             ->everyMinute();
 
-//        $schedule->command('connect_to_streaming_api')
+//        $schedule->command('TwitterStream')
 //            ->daily();
 
       //  $schedule->command('queue:restart')->hourly()

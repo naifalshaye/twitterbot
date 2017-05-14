@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Artisan;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+//
 //Route::get('/conf', 'ConfController@index');
 //Route::post('/conf', 'ConfController@update');
 
@@ -47,3 +49,15 @@ Route::post('/kill', 'HomeController@kill');
 Route::post('/killall', 'HomeController@killAll');
 
 Route::get('/test',  'HomeController@test');
+
+
+Route::get('/run_stream', function () {
+    try {
+       dd(Artisan::call('TwitterStream'));
+    }
+    catch (Exception $e){
+        dd($e->getMessage());
+    }
+
+    dd(33);
+});

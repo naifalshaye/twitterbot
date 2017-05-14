@@ -29,8 +29,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $trends = \Twitter::getTrendsPlace(['id'=>23424938]);
+        $trends = $trends[0]->trends;
+
         exec("ps aux | grep 'artisan'",$ps);
-        return view('home',compact('ps'));
+        return view('home',compact('ps','trends'));
     }
 
     public function test()

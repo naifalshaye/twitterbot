@@ -3,42 +3,60 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+        <div class="col-lg-12">
+            <div class="col-lg-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-weight: bold;">Trending</div>
 
-                <div class="panel-body">
-
+                    <div class="panel-body">
+                        <ol>
+                            @foreach ($trends as $trend)
+                                <li>{{$trend->name}}</li>
+                            @endforeach
+                        </ol>
+                    </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading" style="font-size:16px; font-weight: bold;">Running Processes
-                    <form class="form-inline" role="form" method="POST" action="{{ url('/kill') }}">
-                        {{ csrf_field() }}
+            <div class="col-lg-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stream</div>
+                    <div class="panel-body">
+                        <a href="/run_stream" class="btn btn-success">Run Stream</a>
+                        <a href="/run_stream" class="btn btn-danger">Stop Stream</a>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="form-inline">
-                            <input type="number" class="form-control" name="pid" style="width:100px;" placeholder="PID">
-                            <button type="submit" class="btn btn-warning">
-                                Kill
-                            </button>
-
-                            <form class="form-inline" role="form" method="POST" action="{{ url('/killall') }}">
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Running Processes</div>
+                    <div class="panel-body">
+                        <div align="right">
+                            <form class="form-inline" role="form" method="POST" action="{{ url('/kill') }}">
                                 {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger">
-                                    Kill All
-                                </button>
+
+                                <div class="form-inline">
+                                    <input type="number" class="form-control" name="pid" style="width:100px;" placeholder="PID">
+                                    <button type="submit" class="btn btn-warning">
+                                        Kill
+                                    </button>
+
+                                    <form class="form-inline" role="form" method="POST" action="{{ url('/killall') }}">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger">
+                                            Kill All
+                                        </button>
+                                    </form>
+                                </div>
                             </form>
                         </div>
-                    </form>
-                </div>
-
-                <div class="panel-body">
-                    @if (isset($ps))
-                        @foreach($ps as $p)
-                            {{$p}}.'<br>'
-                        @endforeach
-                    @endif
+                        @if (isset($ps))
+                            @foreach($ps as $p)
+                                {{$p}}.'<br>'
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
 
