@@ -48,7 +48,7 @@ class Twitter extends Command
 
         foreach ($collection as $mention){
             foreach ($faqs as $faq){
-                if (mb_strpos($mention->text, $faq->keyword) != false || strpos($mention->text, $faq->keyword) > 0) {
+                if (mb_strpos($mention->text, $faq->keyword) != false || mb_strpos($mention->text, $faq->keyword) > 0  || strpos($mention->text, $faq->keyword) > 0) {
                     try {
                         $reply = \Twitter::postTweet([
                             'in_reply_to_status_id' => $mention->id,

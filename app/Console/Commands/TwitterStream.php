@@ -12,7 +12,7 @@ class TwitterStream extends Command
      *
      * @var string
      */
-    protected $signature = 'TwitterStream';
+    protected $signature = 'TwitterStream:start';
     /**
      * The console command description.
      *
@@ -41,6 +41,7 @@ class TwitterStream extends Command
      */
     public function handle()
     {
+        dd(1);
         $keywords = Keyword::where('disable',false)->pluck('str')->toArray();
 
         $this->twitterStream->consumerKey = env('STREAM_TWITTER_CONSUMER_KEY', '');

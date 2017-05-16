@@ -6,6 +6,7 @@ use App\Conf;
 use App\FAQ;
 use App\Keyword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use whoisServerList\WhoisApi;
@@ -29,6 +30,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        $faqs = FAQ::all();
+//
+//        $mentions = \Twitter::getMentionsTimeline();
+//        $collection = collect($mentions);
+//        foreach ($collection as $mention) {
+//            foreach ($faqs as $faq) {
+//                if (mb_strpos($mention->text, $faq->keyword) != false || mb_strpos($mention->text,
+//                        $faq->keyword) > 0 || strpos($mention->text, $faq->keyword) > 0
+//                ) {
+//                    dd(true);
+//                } else {
+//                    dd(false);
+//                }
+//            }
+//        }
+
         $trends = \Twitter::getTrendsPlace(['id'=>23424938]);
         $trends = $trends[0]->trends;
 
@@ -38,7 +55,7 @@ class HomeController extends Controller
 
     public function test()
     {
-
+        Artisan::call('twitter');
 //        echo '<pre>';
 //        print_r($output);
 //        echo '</pre>';
@@ -77,5 +94,10 @@ class HomeController extends Controller
             dd($e->getMessage());
         }
         return redirect()->back();
+    }
+
+    public function runTwitterCommand()
+    {
+        Artisan::call("TwitterStream:start");
     }
 }

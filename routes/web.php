@@ -51,13 +51,4 @@ Route::post('/killall', 'HomeController@killAll');
 Route::get('/test',  'HomeController@test');
 
 
-Route::get('/run_stream', function () {
-    try {
-       dd(Artisan::call('TwitterStream'));
-    }
-    catch (Exception $e){
-        dd($e->getMessage());
-    }
-
-    dd(33);
-});
+Route::get('/run_stream', "HomeController@runTwitterCommand");
