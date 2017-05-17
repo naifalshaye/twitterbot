@@ -30,22 +30,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $faqs = FAQ::all();
-//
-//        $mentions = \Twitter::getMentionsTimeline();
-//        $collection = collect($mentions);
-//        foreach ($collection as $mention) {
-//            foreach ($faqs as $faq) {
-//                if (mb_strpos($mention->text, $faq->keyword) != false || mb_strpos($mention->text,
-//                        $faq->keyword) > 0 || strpos($mention->text, $faq->keyword) > 0
-//                ) {
-//                    dd(true);
-//                } else {
-//                    dd(false);
-//                }
-//            }
-//        }
-
         $trends = \Twitter::getTrendsPlace(['id'=>23424938]);
         $trends = $trends[0]->trends;
 
@@ -55,7 +39,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        Artisan::call('twitter');
+       // Artisan::call('twitter');
 //        echo '<pre>';
 //        print_r($output);
 //        echo '</pre>';
@@ -98,6 +82,6 @@ class HomeController extends Controller
 
     public function runTwitterCommand()
     {
-        Artisan::call("TwitterStream:start");
+        //Artisan::call("TwitterStream:start");
     }
 }

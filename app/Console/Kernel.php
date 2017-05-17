@@ -15,8 +15,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Twitter::class,
-        TwitterStream::class
+        //TwitterStream::class,
+        Twitter::class
+
     ];
 
     /**
@@ -30,7 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('twitter')
             ->everyMinute();
 
-//        $schedule->command('TwitterStream')
+//        $schedule->command('TwitterStream:start')
 //            ->daily();
 
       //  $schedule->command('queue:restart')->hourly()

@@ -78,7 +78,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                   SocialBot <span style="font-size:22px;">Beta</span>
+                   SocialBot <span style="font-size:22px;">Alpha</span>
                 </div>
 
             </div>
