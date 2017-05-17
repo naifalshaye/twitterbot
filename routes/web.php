@@ -52,3 +52,5 @@ Route::get('/test',  'HomeController@test');
 
 
 Route::get('/run_stream', "HomeController@runTwitterCommand");
+
+Route::get('/faq_tweets', "FAQTweetController@index");

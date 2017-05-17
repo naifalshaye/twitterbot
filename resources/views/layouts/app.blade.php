@@ -55,6 +55,7 @@
                         @else
                             <li><a href="/home">Home</a></li>
                             <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/faq_tweets">FAQ Tweets</a></li>
                             <li><a href="/keyword">Keywords</a></li>
                             {{--<li><a href="/conf">Settings</a></li>--}}
                             <li><a href="{{ route('logout') }}"

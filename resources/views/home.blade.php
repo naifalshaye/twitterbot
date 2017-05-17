@@ -22,8 +22,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stream</div>
                     <div class="panel-body">
-                        <a href="/run_stream" class="btn btn-success">Run Stream</a>
-                        <a href="/run_stream" class="btn btn-danger">Stop Stream</a>
+                        <a href="#" class="btn btn-success" disabled="">Run Stream</a>
+                        <a href="#" class="btn btn-danger" disabled="disabled" readonly="">Stop Stream</a>
                     </div>
                 </div>
             </div>

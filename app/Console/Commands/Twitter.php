@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Conf;
 use App\FAQ;
+use App\FAQTweet;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,9 +44,9 @@ class Twitter extends Command
         $conf = Conf::findOrFail(1);
         $faqs = FAQ::all();
 
-        $mentions = \Twitter::getMentionsTimeline(['since_id'=>$conf->since_id]);
+        $mentions = \Twitter::getMentionsTimeline();
         $collection = collect($mentions);
-
+dd($collection->first());
         foreach ($collection as $mention){
             foreach ($faqs as $faq){
                 if (mb_strpos($mention->text, $faq->keyword) != false || mb_strpos($mention->text, $faq->keyword) > 0  || strpos($mention->text, $faq->keyword) > 0) {
@@ -61,14 +62,25 @@ class Twitter extends Command
                                 $conf->save();
                             }
                         }
+                        $faq_tweet = new FAQTweet();
+                        $faq_tweet->keyword = $faq->keyword;
+                        $faq_tweet->tweet_id = $collection->first()->id;
+                        $faq_tweet->user_id = $collection->first()->user->id;
+                        $faq_tweet->user_screen_name = $collection->first()->user->screen_name;
+                        $faq_tweet->user_name = $collection->first()->user->name;
+                        $faq_tweet->tweet_text = $collection->first()->text;
+                        $faq_tweet->reply = $faq->reply;
+                        $faq_tweet->json = $collection->first();
+                        $faq_tweet->save();
+                        dd($faq_tweet->id);
 
                     } catch (\Exception $e){
-                         //dd($e->getMessage());
+                          dd($e->getMessage());
                     }
 
                 }
                 else{
-                     //dd('No Tweets Found!');
+                      dd('No Tweets Found!');
                 }
             }
         }
