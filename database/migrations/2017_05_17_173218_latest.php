@@ -22,7 +22,7 @@ class Latest extends Migration
             $table->string('user_name')->nullable();
             $table->string('tweet_text')->nullable();
             $table->string('reply')->nullable();
-            $table->text('json');
+            $table->text('json')->nullable();
             $table->timestamps();
         });
     }

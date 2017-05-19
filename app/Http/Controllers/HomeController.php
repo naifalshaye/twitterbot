@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Conf;
 use App\FAQ;
+use App\FAQTweet;
 use App\Keyword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -34,7 +35,9 @@ class HomeController extends Controller
         $trends = $trends[0]->trends;
 
         exec("ps aux | grep 'artisan'",$ps);
-        return view('home',compact('ps','trends'));
+        $faq_tweet = FAQTweet::get()->last();
+
+        return view('home',compact('ps','trends','faq_tweet'));
     }
 
     public function test()
