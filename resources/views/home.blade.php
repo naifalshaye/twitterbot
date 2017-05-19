@@ -28,30 +28,32 @@
                 </div>
             </div>
 
-            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">RESTful Latest Tweet</div>
-                    <div class="panel-body">
-                        keyword: {{$faq_tweet->keyword}}<br>
-                        Tweet: {{$faq_tweet->tweet_text}}<br>
-                        From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
-                        Reply: {{$faq_tweet->reply}}
+            @if (isset($faq_tweet))
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">RESTful Latest Tweet</div>
+                        <div class="panel-body">
+                            keyword: {{$faq_tweet->keyword}}<br>
+                            Tweet: {{$faq_tweet->tweet_text}}<br>
+                            From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
+                            Reply: {{$faq_tweet->reply}}
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Streaming Latest Tweet</div>
-                    <div class="panel-body">
-                        keyword: {{$faq_tweet->keyword}}<br>
-                        Tweet: {{$faq_tweet->tweet_text}}<br>
-                        From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
-                        Reply: {{$faq_tweet->reply}}
+            @endif
+            @if (isset($faq_tweet))
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">Streaming Latest Tweet</div>
+                        <div class="panel-body">
+                            keyword: {{$faq_tweet->keyword}}<br>
+                            Tweet: {{$faq_tweet->tweet_text}}<br>
+                            From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
+                            Reply: {{$faq_tweet->reply}}
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            @endif
             <div class="col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Running Processes</div>
