@@ -5,7 +5,7 @@
         <div class="col-lg-8 col-lg-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light">
-                    <div><strong>FAQ Tweets</strong></div>
+                    <div style="font-size:16px; font-weight: bold; color:#565656;">FAQ Tweets</div>
                 </div>
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">

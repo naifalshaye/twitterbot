@@ -4,9 +4,11 @@
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading bg-light">
-                    <h2>FAQ</h2>
-                    <a href="/faq/create" class="btn btn-success"><span class="fa fa-plus"> Add New FAQ</span></a>
+                <div class="panel-heading" style="height: 45px; padding-top:1px;">
+                    <div class="row">
+                        <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">FAQ</div>
+                        <div class="btn btn-sm pull-right"><a href="/faq/create" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add FAQ</span></a></div>
+                    </div>
                 </div>
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">

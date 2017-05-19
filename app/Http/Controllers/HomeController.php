@@ -6,10 +6,12 @@ use App\Conf;
 use App\FAQ;
 use App\FAQTweet;
 use App\Keyword;
+use App\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use whoisServerList\WhoisApi;
 
 class HomeController extends Controller
@@ -36,8 +38,21 @@ class HomeController extends Controller
 
         exec("ps aux | grep 'artisan'",$ps);
         $faq_tweet = FAQTweet::get()->last();
+        $stream_tweet = Tweet::get()->last();
 
-        return view('home',compact('ps','trends','faq_tweet'));
+        $top_faq = DB::table('faq_tweets')
+            ->select(DB::raw('keyword'), DB::raw('count(*) as count'))
+            ->groupBy('keyword')
+            ->orderBy('count', 'desc')
+            ->take(10)
+            ->get();
+
+        $top_faq_chart = [];
+        foreach ($top_faq as $faq){
+            array_push($top_faq_chart,[$faq->keyword,$faq->count]);
+        }
+
+        return view('home',compact('ps','trends','faq_tweet','stream_tweet','top_faq_chart'));
     }
 
     public function test()

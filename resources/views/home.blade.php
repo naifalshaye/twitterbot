@@ -41,15 +41,13 @@
                     </div>
                 </div>
             @endif
-            @if (isset($faq_tweet))
+            @if (isset($stream_tweet))
                 <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading" style="font-size:16px; font-weight: bold;">Streaming Latest Tweet</div>
                         <div class="panel-body">
-                            keyword: {{$faq_tweet->keyword}}<br>
-                            Tweet: {{$faq_tweet->tweet_text}}<br>
-                            From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
-                            Reply: {{$faq_tweet->reply}}
+                            Tweet: {{$stream_tweet->tweet_text}}<br>
+                            From: <a href="http://twitter.com/{{ $stream_tweet->user_screen_name }}" target="_blank">{{ $stream_tweet->user_screen_name }}</a><br>
                         </div>
                     </div>
                 </div>
@@ -86,7 +84,72 @@
                 </div>
             </div>
 
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stats</div>
+                    <div class="panel-body" align="center">
+                        <div id="total_tweets" style="width: 600px; height: 400px;"></div>
+                        <div id="top_faq" style="width: 600px; height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChart2);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Type', 'Tweets'],
+                ['FAQ',     11],
+                ['Stream',   2]
+            ]);
+
+            var options = {
+                title: 'Total Tweets',
+                is3D: true,
+                width:600,
+                colors:['#436CA0','#A1B4D4']
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('total_tweets'));
+
+            chart.draw(data, options);
+        }
+
+
+        function drawChart2() {
+            var top_faq = <?php echo json_encode($top_faq_chart); ?>;
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Keyword');
+            data.addColumn('number', 'Tweets');
+            data.addRows(top_faq);
+
+            var options = {
+                title: 'Top 10 keywords',
+                hAxis: {
+                    title: 'Keywords',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Tweets'
+                },
+
+                colors:['#478EC7']
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('top_faq'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
 @endsection
