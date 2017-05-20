@@ -3,16 +3,17 @@
 namespace App\Console\Commands;
 
 use App\Keyword;
+use App\TwitterStream;
 use Illuminate\Console\Command;
 
-class TwitterStream extends Command
+class    TwitterStreaminAPI extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'TwitterStream:start';
+    protected $signature = 'TwitterStreamAPI';
     /**
      * The console command description.
      *
@@ -25,7 +26,7 @@ class TwitterStream extends Command
     /**
      * Create a new command instance.
      *
-     * @param \App\Console\Commands\TwitterStream $twitterStream
+     * @param \App\Console\Commands\TwitterStreaminAPI $twitterStream
      */
     public function __construct(TwitterStream $twitterStream)
     {
@@ -43,8 +44,8 @@ class TwitterStream extends Command
     {
         $keywords = Keyword::where('disable',false)->pluck('str')->toArray();
 
-        $this->twitterStream->consumerKey = env('STREAM_TWITTER_CONSUMER_KEY', '');
-        $this->twitterStream->consumerSecret = env('STREAM_TWITTER_CONSUMER_SECRET', '');
+        $this->twitterStream->consumerKey = '5WRsOr7xwHdiSs0701HDoVLo7';
+        $this->twitterStream->consumerSecret = 'DVJx9wCPGYr2jULSzV8Zf2SfiZY69chHTbLHQdkY2K4F4yohK9';
         $this->twitterStream->setTrack($keywords);
         $this->twitterStream->consume();
     }

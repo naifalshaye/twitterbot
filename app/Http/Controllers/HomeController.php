@@ -52,7 +52,13 @@ class HomeController extends Controller
             array_push($top_faq_chart,[$faq->keyword,$faq->count]);
         }
 
-        return view('home',compact('ps','trends','faq_tweet','stream_tweet','top_faq_chart'));
+        $numbers = new \stdClass();
+        $numbers->faq = FAQ::count();
+        $numbers->stream = Keyword::count();
+        $numbers->faq_tweets = FAQTweet::count();
+        $numbers->stream_tweets = Tweet::count();
+
+        return view('home',compact('ps','trends','faq_tweet','stream_tweet','top_faq_chart','numbers'));
     }
 
     public function test()
@@ -100,6 +106,7 @@ class HomeController extends Controller
 
     public function runTwitterCommand()
     {
-        //Artisan::call("TwitterStream:start");
+         Artisan::call("TwitterStreamAPI");
+         return redirect()->back();
     }
 }

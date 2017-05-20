@@ -18,6 +18,6 @@ Artisan::command('twitter', function () {
     $this->comment(\App\Console\Commands\Twitter::class);
 })->describe('run twitter');
 
-//Artisan::command('TwitterStream', function () {
-//    $this->comment(\App\Console\Commands\TwitterStream::class);
-//})->describe('run TwitterStream');
+Artisan::command('TwitterStreamAPI', function () {
+    $this->comment(\App\Console\Commands\TwitterStreaminAPI::class);
+})->describe('run TwitterStream');

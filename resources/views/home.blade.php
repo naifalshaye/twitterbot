@@ -22,8 +22,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stream</div>
                     <div class="panel-body">
-                        <a href="#" class="btn btn-success" disabled="">Run Stream</a>
-                        <a href="#" class="btn btn-danger" disabled="disabled" readonly="">Stop Stream</a>
+                        <div>FAQ Keywords: {{$numbers->faq}}</div>
+                        <div>Stream Keywords: {{$numbers->faq}}</div>
+                        <div>FAQ Tweets: {{$numbers->faq_tweets}}</div>
+                        <div>Stream Tweets: {{$numbers->stream_tweets}}</div>
                     </div>
                 </div>
             </div>
@@ -31,8 +33,9 @@
             @if (isset($faq_tweet))
                 <div class="col-lg-8">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">RESTful Latest Tweet</div>
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">FAQ Latest Tweet</div>
                         <div class="panel-body">
+                            Time: {{$faq_tweet->created_at}}<br>
                             keyword: {{$faq_tweet->keyword}}<br>
                             Tweet: {{$faq_tweet->tweet_text}}<br>
                             From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
@@ -44,8 +47,9 @@
             @if (isset($stream_tweet))
                 <div class="col-lg-8">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">Streaming Latest Tweet</div>
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stream Latest Tweet</div>
                         <div class="panel-body">
+                            Time: {{$stream_tweet->created_at}}<br>
                             Tweet: {{$stream_tweet->tweet_text}}<br>
                             From: <a href="http://twitter.com/{{ $stream_tweet->user_screen_name }}" target="_blank">{{ $stream_tweet->user_screen_name }}</a><br>
                         </div>
@@ -54,7 +58,13 @@
             @endif
             <div class="col-lg-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Running Processes</div>
+                    <div class="panel-heading" style="height: 45px;">
+                        <div class="row">
+                            <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold;  margin-top:-6px;">Running Processes</div>
+                            <div class="btn btn-sm pull-right" style="margin-top:-12px;"><a href="/run_stream" class="btn btn-success btn-md">Run Stream</a></div>
+                        </div>
+                    </div>
+
                     <div class="panel-body">
                         <div align="right">
                             <form class="form-inline" role="form" method="POST" action="{{ url('/kill') }}">
@@ -62,16 +72,9 @@
 
                                 <div class="form-inline">
                                     <input type="number" class="form-control" name="pid" style="width:100px;" placeholder="PID">
-                                    <button type="submit" class="btn btn-warning">
+                                    <button type="submit" class="btn btn-danger">
                                         Kill
                                     </button>
-
-                                    <form class="form-inline" role="form" method="POST" action="{{ url('/killall') }}">
-                                        {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-danger">
-                                            Kill All
-                                        </button>
-                                    </form>
                                 </div>
                             </form>
                         </div>
@@ -84,12 +87,15 @@
                 </div>
             </div>
 
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stats</div>
                     <div class="panel-body" align="center">
-                        <div id="total_tweets" style="width: 600px; height: 400px;"></div>
-                        <div id="top_faq" style="width: 600px; height: 400px;"></div>
+                        <div class="row">
+                            <div class="col-lg-12" align="center">
+                                <div id="top_faq" style="width: 600px; height: 400px;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,29 +107,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
         google.charts.setOnLoadCallback(drawChart2);
-
-        function drawChart() {
-
-            var data = google.visualization.arrayToDataTable([
-                ['Type', 'Tweets'],
-                ['FAQ',     11],
-                ['Stream',   2]
-            ]);
-
-            var options = {
-                title: 'Total Tweets',
-                is3D: true,
-                width:600,
-                colors:['#436CA0','#A1B4D4']
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('total_tweets'));
-
-            chart.draw(data, options);
-        }
-
 
         function drawChart2() {
             var top_faq = <?php echo json_encode($top_faq_chart); ?>;
@@ -134,7 +118,7 @@
             data.addRows(top_faq);
 
             var options = {
-                title: 'Top 10 keywords',
+                title: 'Top 10 FAQ keywords',
                 hAxis: {
                     title: 'Keywords',
                     minValue: 0
@@ -143,7 +127,7 @@
                     title: 'Tweets'
                 },
 
-                colors:['#478EC7']
+                colors:['#66BBBB']
             };
 
             var chart = new google.visualization.ColumnChart(document.getElementById('top_faq'));
@@ -151,5 +135,4 @@
             chart.draw(data, options);
         }
     </script>
-
 @endsection
