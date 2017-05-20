@@ -25,7 +25,7 @@
                         <div>FAQ Keywords: {{$numbers->faq}}</div>
                         <div>Stream Keywords: {{$numbers->faq}}</div>
                         <div>FAQ Tweets: {{$numbers->faq_tweets}}</div>
-                        <div>Stream Tweets: {{$numbers->stream_tweets}}</div>
+                        <div>Stream Tweets: {{$stream_tweet->count()}}</div>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" style="font-size:16px; font-weight: bold;">FAQ Latest Tweet</div>
                         <div class="panel-body">
-                            Time: {{$faq_tweet->created_at}}<br>
+                             Time: {{$faq_tweet->created_at}}<br>
                             keyword: {{$faq_tweet->keyword}}<br>
                             Tweet: {{$faq_tweet->tweet_text}}<br>
                             From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
@@ -91,11 +91,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stats</div>
                     <div class="panel-body" align="center">
-                        <div class="row">
-                            <div class="col-lg-12" align="center">
-                                <div id="top_faq" style="width: 600px; height: 400px;"></div>
-                            </div>
-                        </div>
+                        <div id="top_faq" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -109,6 +105,7 @@
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart2);
 
+
         function drawChart2() {
             var top_faq = <?php echo json_encode($top_faq_chart); ?>;
 
@@ -118,7 +115,7 @@
             data.addRows(top_faq);
 
             var options = {
-                title: 'Top 10 FAQ keywords',
+                title: 'Top 10 keywords',
                 hAxis: {
                     title: 'Keywords',
                     minValue: 0
@@ -127,7 +124,7 @@
                     title: 'Tweets'
                 },
 
-                colors:['#66BBBB']
+                colors:['#478EC7']
             };
 
             var chart = new google.visualization.ColumnChart(document.getElementById('top_faq'));

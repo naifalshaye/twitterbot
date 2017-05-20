@@ -45,7 +45,7 @@ Route::post('/register', function(){
     return redirect('/');
 });
 
-Route::post('/kill', 'HomeController@kill');
+Route::get('/kill/{pid}', 'HomeController@kill');
 Route::post('/killall', 'HomeController@killAll');
 
 Route::get('/test',  'HomeController@test');

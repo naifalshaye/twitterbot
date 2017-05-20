@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         exec("ps aux | grep 'artisan'",$ps);
         $faq_tweet = FAQTweet::get()->last();
-        $stream_tweet = Tweet::get()->last();
+        $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
 
         $top_faq = DB::table('faq_tweets')
             ->select(DB::raw('keyword'), DB::raw('count(*) as count'))
@@ -56,7 +56,6 @@ class HomeController extends Controller
         $numbers->faq = FAQ::count();
         $numbers->stream = Keyword::count();
         $numbers->faq_tweets = FAQTweet::count();
-        $numbers->stream_tweets = Tweet::count();
 
         return view('home',compact('ps','trends','faq_tweet','stream_tweet','top_faq_chart','numbers'));
     }
