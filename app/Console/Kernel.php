@@ -31,10 +31,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('twitter')
             ->everyMinute();
 
-//        $schedule->command('TwitterStream:start')
-//            ->daily();
+        $schedule->command('TwitterStreamAPI')
+            ->hourly();
 
-      //  $schedule->command('queue:restart')->hourly()
     }
 
     /**
