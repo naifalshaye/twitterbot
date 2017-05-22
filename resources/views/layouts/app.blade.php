@@ -20,7 +20,12 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+<style>
+    th,td{
+        text-align: center !important;
+    }
 
+</style>
 </head>
 <body>
 
@@ -59,6 +64,7 @@
                             <li><a href="/faq">FAQ</a></li>
                             <li><a href="/faq_tweets">FAQ Tweets</a></li>
                             <li><a href="/keyword">Keywords</a></li>
+                            <li><a href="/schedule">Schedule</a></li>
                             {{--<li><a href="/conf">Settings</a></li>--}}
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

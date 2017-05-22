@@ -20,7 +20,7 @@ class FAQController extends Controller
      */
     public function index()
     {
-        $faqs = FAQ::paginate(15);
+        $faqs = FAQ::OrderBy('id','desc')->paginate(15);
         return view('faq.index',compact('faqs'));
     }
 

@@ -14,7 +14,7 @@ class KeywordController extends Controller
 
     public function index()
     {
-        $keywords = Keyword::paginate(15);
+        $keywords = Keyword::OrderBy('id','desc')->paginate(15);
         return view('keyword.index', compact('keywords'));
     }
 

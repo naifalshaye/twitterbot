@@ -34,6 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('faq', 'FAQController');
 Route::resource('keyword', 'KeywordController');
+Route::resource('schedule', 'ScheduleController');
 
 Route::get('/faq/status/{id}',  'FAQController@status');
 Route::get('/keyword/status/{id}',  'KeywordController@status');
