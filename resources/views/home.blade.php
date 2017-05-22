@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stats</div>
                     <div class="panel-body" align="center">
