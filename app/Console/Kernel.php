@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        TwitterStreaminAPI::class,
+        //TwitterStreaminAPI::class,
         Twitter::class
 
     ];
