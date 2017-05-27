@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //TwitterStreaminAPI::class,
+
         Twitter::class
 
     ];
