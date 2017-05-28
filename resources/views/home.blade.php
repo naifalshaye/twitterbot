@@ -20,12 +20,19 @@
             <div class="row">
             <div class="col-lg-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stream</div>
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
                     <div class="panel-body">
                         <div>FAQ Keywords: {{$numbers->faq}}</div>
                         <div>Stream Keywords: {{$numbers->faq}}</div>
                         <div>FAQ Tweets: {{$numbers->faq_tweets}}</div>
-                        <div>Stream Tweets: {{$stream_tweet->count()}}</div>
+                        <div>
+                            Stream Tweets:
+                            @if ($stream_tweet)
+                                {{$stream_tweet->count()}}
+                            @else
+                                0
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

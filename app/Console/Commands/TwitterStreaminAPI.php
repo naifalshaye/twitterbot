@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Conf;
 use App\Keyword;
 use App\TwitterStream;
 use Illuminate\Console\Command;
@@ -43,9 +44,10 @@ class    TwitterStreaminAPI extends Command
     public function handle()
     {
         $keywords = Keyword::where('disable',false)->pluck('str')->toArray();
+        $conf = Conf::findOrFail(1);
 
-        $this->twitterStream->consumerKey = '5WRsOr7xwHdiSs0701HDoVLo7';
-        $this->twitterStream->consumerSecret = 'DVJx9wCPGYr2jULSzV8Zf2SfiZY69chHTbLHQdkY2K4F4yohK9';
+        $this->twitterStream->consumerKey = $conf->STREAM_TWITTER_CONSUMER_KEY;
+        $this->twitterStream->consumerSecret = $conf->STREAM_TWITTER_CONSUMER_SECRET;
         $this->twitterStream->setTrack($keywords);
         $this->twitterStream->consume();
     }
