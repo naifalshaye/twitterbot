@@ -23,7 +23,7 @@
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
                     <div class="panel-body">
                         <div>FAQ Keywords: {{$numbers->faq}}</div>
-                        <div>Stream Keywords: {{$numbers->faq}}</div>
+                        <div>Stream Keywords: {{$numbers->stream}}</div>
                         <div>FAQ Tweets: {{$numbers->faq_tweets}}</div>
                         <div>
                             Stream Tweets:
