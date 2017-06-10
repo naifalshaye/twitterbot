@@ -42,36 +42,34 @@ class DMFollower extends Command
      */
     public function handle()
     {
-        if (App::environment('production')) {
-            $dm_conf = DMConfig::findOrFail(1);
-            if (!$dm_conf->disable) {
-                $user_id = Conf::findOrFail(1)->pluck('user_id')->first();
+        $dm_conf = DMConfig::findOrFail(1);
+        if (!$dm_conf->disable) {
+            $user_id = Conf::findOrFail(1)->pluck('user_id')->first();
 
-                $response = \Twitter::getFollowers([
-                    'user_id' => $user_id,
-                    'cursor' => '-1',
-                    'count' => 500,
-                ]);
-                foreach ($response->users as $user) {
-                    $exist = DM::where('follower_id', $user->id)->exists();
-                    if (!$exist) {
-                        try {
-                            $msg = 'أهلاً ' . $user->name . ' ' . $dm_conf->text;
-                            $send = \Twitter::postDm([
-                                'user_id' => $user->id,
-                                'text' => $msg
-                            ]);
+            $response = \Twitter::getFollowers([
+                'user_id' => $user_id,
+                'cursor' => '-1',
+                'count' => 500,
+            ]);
+            foreach ($response->users as $user) {
+                $exist = DM::where('follower_id', $user->id)->exists();
+                if (!$exist) {
+                    try {
+                        $msg = 'أهلاً ' . $user->name . ' ' . $dm_conf->text;
+                        $send = \Twitter::postDm([
+                            'user_id' => $user->id,
+                            'text' => $msg
+                        ]);
 
-                            $dm = new DM();
-                            $dm->follower_id = $user->id;
-                            $dm->screen_name = $user->screen_name;
-                            $dm->name = $user->name;
-                            $dm->msg = $dm_conf->text;
-                            $dm->sent = true;
-                            $dm->save();
-                        } catch (Exception $e) {
-                            dd($e->getMessage());
-                        }
+                        $dm = new DM();
+                        $dm->follower_id = $user->id;
+                        $dm->screen_name = $user->screen_name;
+                        $dm->name = $user->name;
+                        $dm->msg = $dm_conf->text;
+                        $dm->sent = true;
+                        $dm->save();
+                    } catch (Exception $e) {
+                        dd($e->getMessage());
                     }
                 }
             }

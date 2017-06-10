@@ -14,14 +14,14 @@ class Scheduled extends Command
      *
      * @var string
      */
-    protected $signature = 'scheduled';
+    protected $signature = 'Scheduled';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'this command to handle scheduled tweets';
+    protected $description = 'Post scheduled tweets';
 
     /**
      * Scheduled constructor.
@@ -38,24 +38,22 @@ class Scheduled extends Command
      */
     public function handle()
     {
-        if (App::environment('production')) {
-            $date = Carbon::now()->format('Y-m-d');
-            $time = Carbon::now();
-            $time->setTimezone('Asia/Riyadh');
-            $time = $time->format('H:i');
+        $date = Carbon::now()->format('Y-m-d');
+        $time = Carbon::now();
+        $time->setTimezone('Asia/Riyadh');
+        $time = $time->format('H:i');
 
-            $schedules = Schedule::where('date', $date)->where('time', $time)->get();
-            foreach ($schedules as $schedule) {
-                if (!$schedule->disable) {
-                    try {
-                        $reply = \Twitter::postTweet([
-                            'status' => $schedule->text
-                        ]);
-                        $schedule->sent = true;
-                        $schedule->save();
-                    } catch (\Exception $e) {
-                        dd($e->getMessage());
-                    }
+        $schedules = Schedule::where('date', $date)->where('time', $time)->get();
+        foreach ($schedules as $schedule) {
+            if (!$schedule->disable) {
+                try {
+                    $reply = \Twitter::postTweet([
+                        'status' => $schedule->text
+                    ]);
+                    $schedule->sent = true;
+                    $schedule->save();
+                } catch (\Exception $e) {
+                    dd($e->getMessage());
                 }
             }
         }

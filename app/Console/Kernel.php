@@ -4,10 +4,12 @@ namespace App\Console;
 
 use App\Console\Commands\DMFollower;
 use App\Console\Commands\Scheduled;
-use App\Console\Commands\TwitterStreaminAPI;
-use App\Console\Commands\Twitter;
+use App\Console\Commands\StreamTwitter;
+use App\Console\Commands\TwitterStream;
+use App\Console\Commands\MentionFAQ;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\App;
 
 class Kernel extends ConsoleKernel
 {
@@ -17,12 +19,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //TwitterStreaminAPI::class,
-        Twitter::class,
+        StreamTwitter::class,
+        MentionFAQ::class,
         Scheduled::class,
         DMFollower::class,
-
-
     ];
 
     /**
@@ -33,17 +33,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('twitter')
-            ->everyMinute();
+        if (App::environment('production')) {
 
-        $schedule->command('TwitterStreamAPI')
-            ->hourly();
+            $schedule->command('MentionFAQ')
+                ->everyMinute();
 
-        $schedule->command('scheduled')
-            ->everyMinute();
+            $schedule->command('StreamTwitter')
+                ->everyMinute();
 
-        $schedule->command('DMFollower')
-            ->everyFiveMinutes();
+            $schedule->command('Scheduled')
+                ->everyMinute();
+
+            $schedule->command('DMFollower')
+                ->everyFiveMinutes();
+        }
 
     }
 
