@@ -27,14 +27,14 @@
                                 <div class="form-group">
                                     <label for="date" class="col-md-4 control-label">Date</label>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="date" value="{{ $schedule->date }}">
+                                        <input type="date" class="form-control" name="date" value="{{ $schedule->date }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="time" class="col-md-4 control-label">Time</label>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="time" value="{{ $schedule->time }}">
+                                        <input type="time" class="form-control" name="time" value="{{ $schedule->time }}">
                                     </div>
                                 </div>
 

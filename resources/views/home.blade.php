@@ -17,7 +17,6 @@
                     </div>
                 </div>
             </div>
-            {{$ps[0]}}
             <div class="row">
             <div class="col-lg-3">
                 <div class="panel panel-default">
