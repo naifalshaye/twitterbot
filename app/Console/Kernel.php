@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\Scheduled;
 use App\Console\Commands\TwitterStreaminAPI;
 use App\Console\Commands\Twitter;
 use Illuminate\Console\Scheduling\Schedule;
@@ -16,7 +17,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //TwitterStreaminAPI::class,
-        Twitter::class
+        Twitter::class,
+        Scheduled::class,
+
 
     ];
 
@@ -33,6 +36,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('TwitterStreamAPI')
             ->hourly();
+
+        $schedule->command('scheduled')
+            ->everyMinute();
 
     }
 

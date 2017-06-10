@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Artisan;
 
 Artisan::command('twitter', function () {
     $this->comment(\App\Console\Commands\Twitter::class);
-})->describe('run twitter');
+})->describe('Check timeline and reply');
 
 Artisan::command('TwitterStreamAPI', function () {
     $this->comment(\App\Console\Commands\TwitterStreaminAPI::class);
-})->describe('run TwitterStream');
+})->describe('Stream and archive');
+
+Artisan::command('scheduled', function () {
+    $this->comment(\App\Console\Commands\Scheduled::class);
+})->describe('Post scheduled tweets');

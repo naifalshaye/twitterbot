@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class='row'>
-        <div class="col-lg-4 col-lg-offset-4">
+        <div class="col-lg-6 col-lg-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">Add Keyword</div>
                 <div class="panel-body">
@@ -25,14 +25,14 @@
                         <div class="form-group">
                             <label for="date" class="col-md-4 control-label">Date</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="date" value="{{ old('date') }}" required>
+                                <input type="date" class="form-control" name="date" value="{{ old('date') }}" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="time" class="col-md-4 control-label">Time</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="time" value="{{ old('time') }}" required>
+                                <input type="time" class="form-control" name="time" value="{{ old('time') }}" required>
                             </div>
                         </div>
 
@@ -42,6 +42,13 @@
                             <div class="col-md-6">
                                 <textarea class="form-control" name="text" oninput="countChar(this.value);" required rows="5">{{ old('text') }}</textarea>
                                 <div style="color:darkred;" id="tweet_length"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disable" class="col-md-4 control-label">Disable</label>
+                            <div class="col-md-6">
+                                <input type="checkbox" class="form-control" name="disable">
                             </div>
                         </div>
 

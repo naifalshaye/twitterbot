@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-lg-6  col-lg-offset-3">
+        <div class="col-lg-8  col-lg-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light" style="height: 45px; padding-top:0px;">
                     <div class="row">
@@ -33,6 +33,7 @@
                                     <th width="100">Date</th>
                                     <th width="100">Time</th>
                                     <th >Tweet</th>
+                                    <th width="150">Status</th>
                                     <th width="200"></th>
                                 </tr>
                                 </thead>
@@ -43,16 +44,23 @@
                                         <td>{{ $row->date }}</td>
                                         <td>{{ $row->time }}</td>
                                         <td>{{ $row->text }}</td>
+                                        <td>
+                                            @if ($row->disable == false)
+                                                <a href="/schedule/status/{{$row->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
+                                            @else
+                                                <a href="/schedule/status/{{$row->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
+                                            @endif
+                                        </td>
                                         <th>
                                             <div class="row">
                                                 <div class="col-xs-4">
-                                                    <a href="/schedule/{{ $row->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="/schedule/{{ $row->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
                                                 <div class="col-xs-2">
                                                     <form id="form1" class="form-horizontal" method="post" role="form" action="/schedule/{{$row->id}}">
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Delete Schedule are you sure?');">
+                                                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete Schedule are you sure?');">
                                                     </form>
                                                 </div>
                                             </div>

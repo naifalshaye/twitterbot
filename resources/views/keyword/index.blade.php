@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
+        <div class="col-lg-6 col-lg-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light" style="height: 45px; padding-top:0px;">
                     <div class="row">
@@ -29,10 +29,10 @@
                             <table id="example" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th width="60">ID</th>
                                     <th>Keyword</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th width="150">Status</th>
+                                    <th width="200"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -49,14 +49,14 @@
                                         </td>
                                         <th>
                                             <div class="row">
-                                                <div class="col-xs-2">
-                                                    <a href="/keyword/{{ $keyword->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                                                <div class="col-lg-2">
+                                                    <a href="/keyword/{{ $keyword->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
-                                                <div class="col-xs-2">
+                                                <div class="col-lg-2">
                                                     <form id="form1" class="form-horizontal" method="post" role="form" action="/keyword/{{$keyword->id}}">
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Delete Keyword are you sure?');">
+                                                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete Keyword are you sure?');">
                                                     </form>
                                                 </div>
                                             </div>

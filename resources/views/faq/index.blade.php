@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
+        <div class="col-lg-8 col-lg-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading" style="height: 45px; padding-top:1px;">
                     <div class="row">
@@ -30,11 +30,11 @@
                             <table id="example" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th width="60">ID</th>
                                     <th>Keyword</th>
                                     <th>Reply</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th width="150">Status</th>
+                                    <th width="200"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,14 +52,14 @@
                                         </td>
                                         <td>
                                             <div class="row">
-                                                <div class="col-xs-2">
-                                                    <a href="/faq/{{ $faq->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                                                <div class="col-lg-2">
+                                                    <a href="/faq/{{ $faq->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
-                                                <div class="col-xs-2">
+                                                <div class="col-lg-2">
                                                     <form id="form1" class="form-horizontal" method="post" role="form" action="/faq/{{$faq->id}}">
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Delete FAG are you sure?');">
+                                                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete FAG are you sure?');">
                                                     </form>
                                                 </div>
                                             </div>

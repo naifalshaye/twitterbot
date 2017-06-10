@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class='row'>
-        <div class="col-lg-4 col-lg-offset-4">
+        <div class="col-lg-6 col-lg-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">Edit Category</div>
                     <div class="panel-body">
@@ -46,6 +46,12 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="disable" class="col-md-4 control-label">Disable</label>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" class="form-control" name="disable" @if ($schedule->disable) checked @endif>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="add_role_btn"></label>

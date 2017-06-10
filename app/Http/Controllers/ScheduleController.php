@@ -46,4 +46,18 @@ class ScheduleController extends Controller
         $schedule->save();
         return redirect()->back()->with('success', 'Schedule tweet is updated.');
     }
+
+    public function status($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        if ($schedule->disable){
+            $schedule->disable = false;
+        }
+        else {
+            $schedule->disable = true;
+        }
+        $schedule->save();
+        return redirect()->to('/schedule');
+
+    }
 }

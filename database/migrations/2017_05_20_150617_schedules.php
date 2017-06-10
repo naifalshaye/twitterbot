@@ -18,6 +18,8 @@ class Schedules extends Migration
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->string('text')->nullable();
+            $table->boolean('sent')->default(false);
+            $table->boolean('disable')->default(false);
             $table->timestamps();
         });
     }
