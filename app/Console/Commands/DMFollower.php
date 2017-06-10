@@ -54,9 +54,10 @@ class DMFollower extends Command
                 $exist = DM::where('follower_id', $user->id)->exists();
                 if (!$exist) {
                     try {
+                        $msg = 'أهلاً '.$user->name.' '.$dm_conf->text;
                         $send = \Twitter::postDm([
                             'user_id' => $user->id,
-                            'text' => $dm_conf->text
+                            'text' => $msg
                         ]);
 
                         $dm = new DM();
