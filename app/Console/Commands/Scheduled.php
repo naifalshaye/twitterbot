@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Schedule;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\App;
 
 class Scheduled extends Command
 {
@@ -37,22 +38,24 @@ class Scheduled extends Command
      */
     public function handle()
     {
-        $date = Carbon::now()->format('Y-m-d');
-        $time = Carbon::now();
-        $time->setTimezone('Asia/Riyadh');
-        $time = $time->format('H:i');
+        if (App::environment('production')) {
+            $date = Carbon::now()->format('Y-m-d');
+            $time = Carbon::now();
+            $time->setTimezone('Asia/Riyadh');
+            $time = $time->format('H:i');
 
-        $schedules = Schedule::where('date', $date)->where('time', $time)->get();
-        foreach ($schedules as $schedule) {
-            if ($schedule) {
-                try {
-                    $reply = \Twitter::postTweet([
-                        'status' => $schedule->text
-                    ]);
-                    $schedule->sent = true;
-                    $schedule->save();
-                } catch (\Exception $e) {
-                    dd($e->getMessage());
+            $schedules = Schedule::where('date', $date)->where('time', $time)->get();
+            foreach ($schedules as $schedule) {
+                if ($schedule) {
+                    try {
+                        $reply = \Twitter::postTweet([
+                            'status' => $schedule->text
+                        ]);
+                        $schedule->sent = true;
+                        $schedule->save();
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                    }
                 }
             }
         }
