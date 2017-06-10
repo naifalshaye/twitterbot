@@ -54,9 +54,10 @@ class Twitter extends Command
                             $faq->keyword) > 0 || strpos($mention->text, $faq->keyword) > 0
                     ) {
                         try {
+                            $reply_text = '@' . $mention->user->screen_name . ' ' . $faq->reply . ' ' . $mention->user->name;
                             $reply = \Twitter::postTweet([
                                 'in_reply_to_status_id' => $mention->id,
-                                'status' => '@' . $mention->user->screen_name . ' ' . $faq->reply . ' ' . $mention->user->name
+                                'status' => $reply_text
                             ]);
 
                             if (isset($collection->first()->id) && $collection->first()->id > 0) {
@@ -73,7 +74,7 @@ class Twitter extends Command
                             $faq_tweet->user_screen_name = $collection->first()->user->screen_name;
                             $faq_tweet->user_name = $collection->first()->user->name;
                             $faq_tweet->tweet_text = $collection->first()->text;
-                            $faq_tweet->reply = $faq->reply;
+                            $faq_tweet->reply = $reply_text;
                             $faq_tweet->save();
 
                         } catch (\Exception $e) {
