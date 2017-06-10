@@ -65,6 +65,8 @@
                             <li><a href="/faq_tweets">FAQ Tweets</a></li>
                             <li><a href="/keyword">Keywords</a></li>
                             <li><a href="/schedule">Schedule</a></li>
+                            <li><a href="/dm">DM on Follow</a></li>
+                            <li><a href="/dm">DM Log</a></li>
                             <li><a href="/conf">Settings</a></li>
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

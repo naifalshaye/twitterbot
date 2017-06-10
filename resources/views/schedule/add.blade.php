@@ -68,13 +68,6 @@
     function countChar(val) {
         var left = 140 - val.length;
         document.getElementById('tweet_length').innerHTML = left;
-
     }
-    $(document).ready(function(){
-        $('#time').timepicker({
-            showInputs: false
-        });
-    });
-
 </script>
 @endsection

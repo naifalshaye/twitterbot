@@ -10,6 +10,9 @@ class Conf extends Model
 
     protected $fillable = [
         'since_id',
+        'user_id',
+        'screen_name',
+        'name',
         'TWITTER_CONSUMER_KEY',
         'TWITTER_CONSUMER_SECRET',
         'TWITTER_ACCESS_TOKEN',

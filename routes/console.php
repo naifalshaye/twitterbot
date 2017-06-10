@@ -25,3 +25,7 @@ Artisan::command('TwitterStreamAPI', function () {
 Artisan::command('scheduled', function () {
     $this->comment(\App\Console\Commands\Scheduled::class);
 })->describe('Post scheduled tweets');
+
+Artisan::command('DMFollower', function () {
+    $this->comment(\App\Console\Commands\Scheduled::class);
+})->describe('Send Direct Message to new follower');

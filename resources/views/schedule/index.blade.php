@@ -34,6 +34,7 @@
                                     <th width="100">Time</th>
                                     <th >Tweet</th>
                                     <th width="150">Status</th>
+                                    <th width="150">Sent</th>
                                     <th width="200"></th>
                                 </tr>
                                 </thead>
@@ -49,6 +50,13 @@
                                                 <a href="/schedule/status/{{$row->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
                                             @else
                                                 <a href="/schedule/status/{{$row->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($row->sent == true)
+                                                <span class="label label-success" style="font-size:12px;">Sent</span>
+                                            @else
+                                                <span class="label label-info" style="font-size:12px;">Pending</span>
                                             @endif
                                         </td>
                                         <th>

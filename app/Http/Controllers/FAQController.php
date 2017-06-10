@@ -42,6 +42,11 @@ class FAQController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->disable == 'on'){
+            $request['disable'] = true;
+        } else {
+            $request['disable']  = false;
+        }
         $request['user_id'] = Auth::user()->id;
         $faq = FAQ::create($request->all());
         return redirect()->back()->with('success','FAQ Added.');
@@ -79,9 +84,16 @@ class FAQController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->disable == 'on'){
+            $request->disable = true;
+        } else {
+            $request->disable = false;
+        }
+
         $faq = FAQ::findOrFail($id);
         $faq->keyword = $request->keyword;
         $faq->reply = $request->reply;
+        $faq->disable = $request->disable;
         $faq->save();
         return redirect()->back()->with('success','FAQ Updated.');
     }

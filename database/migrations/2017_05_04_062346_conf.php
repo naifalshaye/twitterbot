@@ -16,6 +16,9 @@ class Conf extends Migration
         Schema::create('config', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('since_id')->nullable();
+            $table->bigInteger('user_id')->nullable();
+            $table->string('screen_name')->nullable();
+            $table->string('name')->nullable();
             $table->text('TWITTER_CONSUMER_KEY');
             $table->text('TWITTER_CONSUMER_SECRET');
             $table->text('TWITTER_ACCESS_TOKEN');

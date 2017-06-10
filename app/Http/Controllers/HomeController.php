@@ -36,7 +36,6 @@ class HomeController extends Controller
         $trends = \Twitter::getTrendsPlace(['id'=>23424938]);
         $trends = $trends[0]->trends;
 
-        exec("ps aux | grep 'artisan'",$ps);
         $faq_tweet = FAQTweet::get()->last();
         $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
 
@@ -57,7 +56,7 @@ class HomeController extends Controller
         $numbers->stream = Keyword::count();
         $numbers->faq_tweets = FAQTweet::count();
 
-        return view('home',compact('ps','trends','faq_tweet','stream_tweet','top_faq_chart','numbers'));
+        return view('home',compact('trends','faq_tweet','stream_tweet','top_faq_chart','numbers'));
     }
 
     public function test()

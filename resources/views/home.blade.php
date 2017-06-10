@@ -63,36 +63,7 @@
                     </div>
                 </div>
             @endif
-            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="height: 45px;">
-                        <div class="row">
-                            <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold;  margin-top:-6px;">Running Processes</div>
-                            <div class="btn btn-sm pull-right" style="margin-top:-12px;"><a href="/run_stream" class="btn btn-success btn-md">Run Stream</a></div>
-                        </div>
-                    </div>
 
-                    <div class="panel-body">
-                        <div align="right">
-                            <form class="form-inline" role="form" method="POST" action="{{ url('/kill') }}">
-                                {{ csrf_field() }}
-
-                                <div class="form-inline">
-                                    <input type="number" class="form-control" name="pid" style="width:100px;" placeholder="PID">
-                                    <button type="submit" class="btn btn-danger">
-                                        Kill
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                        @if (isset($ps))
-                            @foreach($ps as $p)
-                                {{$p}}.'<br>'
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
 
             <div class="col-lg-8">
                 <div class="panel panel-default">

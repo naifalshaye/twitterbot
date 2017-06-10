@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\DMFollower;
 use App\Console\Commands\Scheduled;
 use App\Console\Commands\TwitterStreaminAPI;
 use App\Console\Commands\Twitter;
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
         //TwitterStreaminAPI::class,
         Twitter::class,
         Scheduled::class,
+        DMFollower::class,
 
 
     ];
@@ -38,6 +40,9 @@ class Kernel extends ConsoleKernel
             ->hourly();
 
         $schedule->command('scheduled')
+            ->everyMinute();
+
+        $schedule->command('DMFollower')
             ->everyMinute();
 
     }

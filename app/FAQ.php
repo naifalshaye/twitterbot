@@ -11,6 +11,7 @@ class FAQ extends Model
     protected $fillable = [
         'user_id',
         'keyword',
-        'reply'
+        'reply',
+        'disable'
     ];
 }

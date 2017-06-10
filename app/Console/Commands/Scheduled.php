@@ -44,14 +44,16 @@ class Scheduled extends Command
 
         $schedules = Schedule::where('date', $date)->where('time', $time)->get();
         foreach ($schedules as $schedule) {
-            try {
-                $reply = \Twitter::postTweet([
-                    'status' => $schedule->text
-                ]);
-                $schedule->sent = true;
-                $schedule->save();
-            } catch (\Exception $e) {
-                dd($e->getMessage());
+            if ($schedule) {
+                try {
+                    $reply = \Twitter::postTweet([
+                        'status' => $schedule->text
+                    ]);
+                    $schedule->sent = true;
+                    $schedule->save();
+                } catch (\Exception $e) {
+                    dd($e->getMessage());
+                }
             }
         }
     }
