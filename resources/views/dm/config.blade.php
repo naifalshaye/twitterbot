@@ -7,7 +7,7 @@
                     <div class="panel-heading">Direct Message On Follow</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/dm') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/dm_config') }}">
                             {{ csrf_field() }}
 
                             <h5 align="left">Send Direct Message when someone follows you</h5>
