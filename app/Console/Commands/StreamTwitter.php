@@ -45,10 +45,11 @@ class StreamTwitter extends Command
     {
         $keywords = Keyword::where('disable', false)->pluck('str')->toArray();
         $conf = Conf::findOrFail(1);
-
-        $this->twitterStream->consumerKey = $conf->STREAM_TWITTER_CONSUMER_KEY;
-        $this->twitterStream->consumerSecret = $conf->STREAM_TWITTER_CONSUMER_SECRET;
-        $this->twitterStream->setTrack($keywords);
-        $this->twitterStream->consume();
+        if (sizeof($keywords) > 0) {
+            $this->twitterStream->consumerKey = $conf->STREAM_TWITTER_CONSUMER_KEY;
+            $this->twitterStream->consumerSecret = $conf->STREAM_TWITTER_CONSUMER_SECRET;
+            $this->twitterStream->setTrack($keywords);
+            $this->twitterStream->consume();
+        }
     }
 }
