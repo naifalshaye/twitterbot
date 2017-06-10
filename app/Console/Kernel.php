@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
             ->everyMinute();
 
         $schedule->command('DMFollower')
-            ->everyMinute();
+            ->everyFiveMinutes();
 
     }
 
