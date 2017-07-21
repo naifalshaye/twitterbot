@@ -30,7 +30,7 @@ class StreamTwitter extends Command
      * StreamTwitter constructor.
      * @param TwitterStream $twitterStream
      */
-    public function __construct(//TwitterStream $twitterStream)
+    public function __construct()//TwitterStream $twitterStream)
     {
         parent::__construct();
         //$this->twitterStream = $twitterStream;
