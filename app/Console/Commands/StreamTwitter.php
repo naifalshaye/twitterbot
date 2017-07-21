@@ -30,10 +30,10 @@ class StreamTwitter extends Command
      * StreamTwitter constructor.
      * @param TwitterStream $twitterStream
      */
-    public function __construct()//TwitterStream $twitterStream)
+    public function __construct(TwitterStream $twitterStream)
     {
         parent::__construct();
-        //$this->twitterStream = $twitterStream;
+        $this->twitterStream = $twitterStream;
     }
 
     /**
@@ -44,12 +44,12 @@ class StreamTwitter extends Command
     public function handle()
     {
         $keywords = Keyword::where('disable', false)->pluck('str')->toArray();
-//        $conf = Conf::findOrFail(1);
-//        if (sizeof($keywords) > 0) {
-//            $this->twitterStream->consumerKey = $conf->STREAM_TWITTER_CONSUMER_KEY;
-//            $this->twitterStream->consumerSecret = $conf->STREAM_TWITTER_CONSUMER_SECRET;
-//            $this->twitterStream->setTrack($keywords);
-//            $this->twitterStream->consume();
-//        }
+        $conf = Conf::findOrFail(1);
+        if (sizeof($keywords) > 0) {
+            $this->twitterStream->consumerKey = $conf->STREAM_TWITTER_CONSUMER_KEY;
+            $this->twitterStream->consumerSecret = $conf->STREAM_TWITTER_CONSUMER_SECRET;
+            $this->twitterStream->setTrack($keywords);
+            $this->twitterStream->consume();
+        }
     }
 }
