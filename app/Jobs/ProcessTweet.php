@@ -20,7 +20,7 @@ class ProcessTweet implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($tweet)
+    public function     __construct($tweet)
     {
         $this->tweet = $tweet;
     }
