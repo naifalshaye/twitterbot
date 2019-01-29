@@ -162,7 +162,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -177,7 +176,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Thujohn\Twitter\TwitterServiceProvider::class,
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
     ],
 
@@ -228,7 +226,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialize' => Laravel\Socialite\SocialiteServiceProvider::class,
-        'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
         'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
     ],
 

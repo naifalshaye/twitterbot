@@ -15,7 +15,7 @@
                                 <label for="text" class="col-md-4 control-label">DM Text</label>
 
                                 <div class="col-md-6">
-                                    <textarea class="form-control" name="text" rows="7" required>{{ $dm->text }}</textarea>
+                                    <textarea class="form-control" name="text" rows="7" required>@if (isset($dm->text)) {{$dm->text }} @endif</textarea>
 
                                     @if ($errors->has('text'))
                                         <span class="help-block">
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label for="disable" class="col-md-4 control-label">Disable</label>
                                 <div class="col-md-6">
-                                    <input type="checkbox" class="form-control" name="disable" @if ($dm->disable) checked @endif>
+                                    <input type="checkbox" class="form-control" name="disable" @if (isset($dm->text) && $dm->disable) checked @endif>
                                 </div>
                             </div>
 

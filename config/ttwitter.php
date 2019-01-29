@@ -14,8 +14,13 @@ return [
 	'REQUEST_TOKEN_URL'   => 'https://api.twitter.com/oauth/request_token',
 	'USE_SSL'             => true,
 
-    'CONSUMER_KEY'        => function_exists('env') ? env('TWITTER_CONSUMER_KEY', '') : \App\Conf::findOrFail(1)->TWITTER_CONSUMER_KEY,
-    'CONSUMER_SECRET'     => function_exists('env') ? env('TWITTER_CONSUMER_SECRET', '') : \App\Conf::findOrFail(1)->TWITTER_CONSUMER_SECRET,
-    'ACCESS_TOKEN'        => function_exists('env') ? env('TWITTER_ACCESS_TOKEN', '') : \App\Conf::findOrFail(1)->TWITTER_ACCESS_TOKEN,
-    'ACCESS_TOKEN_SECRET' => function_exists('env') ? env('TWITTER_ACCESS_TOKEN_SECRET', '') : \App\Conf::findOrFail(1)->TWITTER_ACCESS_TOKEN_SECRET,
+    'CONSUMER_KEY'        => env('TWITTER_CONSUMER_KEY'),
+    'CONSUMER_SECRET'     => env('TWITTER_CONSUMER_SECRET'),
+    'ACCESS_TOKEN'        => env('TWITTER_ACCESS_TOKEN'),
+    'ACCESS_TOKEN_SECRET' => env('TWITTER_ACCESS_TOKEN_SECRET'),
+
+    'STREAM_CONSUMER_KEY'        => env('STREAM_TWITTER_CONSUMER_KEY'),
+    'STREAM_CONSUMER_SECRET'     => env('STREAM_TWITTER_CONSUMER_SECRET'),
+    'STREAM_ACCESS_TOKEN'        => env('STREAM_TWITTER_ACCESS_TOKEN'),
+    'STREAM_ACCESS_TOKEN_SECRET' => env('STREAM_TWITTER_ACCESS_TOKEN_SECRET')
 ];

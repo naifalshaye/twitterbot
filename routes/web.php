@@ -40,12 +40,12 @@ Route::get('/faq/status/{id}',  'FAQController@status');
 Route::get('/keyword/status/{id}',  'KeywordController@status');
 Route::get('/schedule/status/{id}',  'ScheduleController@status');
 
-Route::get('/register', function(){
-    return redirect('/');
-});
-Route::post('/register', function(){
-    return redirect('/');
-});
+//Route::get('/register', function(){
+//    return redirect('/');
+//});
+//Route::post('/register', function(){
+//    return redirect('/');
+//});
 
 Route::get('/kill/{pid}', 'HomeController@kill');
 Route::post('/killall', 'HomeController@killAll');

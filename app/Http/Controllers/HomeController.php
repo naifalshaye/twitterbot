@@ -34,8 +34,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $trends = \Twitter::getTrendsPlace(['id'=>23424938]);
-        $trends = $trends[0]->trends;
+//        $trends = \Twitter::getTrendsPlace(['id'=>23424938]);
+//        $trends = $trends[0]->trends;
+        $trends = [];
         exec("ps aux | grep 'TwitterStream'",$ps);
         $faq_tweet = FAQTweet::get()->last();
         $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();

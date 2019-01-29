@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DM;
 use App\DMConfig;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class DMController extends Controller
@@ -16,18 +17,27 @@ class DMController extends Controller
 
     public function dmConfig()
     {
-        $dm = DMConfig::findOrFail(1);
+        try {
+            $dm = DMConfig::findOrFail(1);
+        } catch(ModelNotFoundException $e) {
+        }
         return view('dm.config',compact('dm'));
     }
 
     public function updateConfig(Request $request)
     {
+        try {
+            $conf = DMConfig::findOrFail(1);
+        } catch(ModelNotFoundException $e) {
+            $conf = new DMConfig();
+        }
+
         if ($request->disable == 'on'){
             $request['disable'] = true;
         } else {
             $request['disable']  = false;
         }
-        $conf = DMConfig::findOrFail(1);
+
         $conf->text = $request->text;
         $conf->disable = $request->disable;
         $conf->save();

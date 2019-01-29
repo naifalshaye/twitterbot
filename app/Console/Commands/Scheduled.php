@@ -6,6 +6,7 @@ use App\Schedule;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
+use Twitter;
 
 class Scheduled extends Command
 {
@@ -38,6 +39,8 @@ class Scheduled extends Command
      */
     public function handle()
     {
+        $twitter_dg = new Twitter(config('ttwitter.CONSUMER_KEY'), config('ttwitter.CONSUMER_SECRET'), config('ttwitter.ACCESS_TOKEN'), config('ttwitter.ACCESS_TOKEN_SECRET'));
+
         $date = Carbon::now()->format('Y-m-d');
         $time = Carbon::now();
         $time->setTimezone('Asia/Riyadh');
@@ -47,9 +50,8 @@ class Scheduled extends Command
         foreach ($schedules as $schedule) {
             if (!$schedule->disable) {
                 try {
-                    $reply = \Twitter::postTweet([
-                        'status' => $schedule->text
-                    ]);
+                    $twitter_dg->send($schedule->text);
+
                     $schedule->sent = true;
                     $schedule->save();
                 } catch (\Exception $e) {

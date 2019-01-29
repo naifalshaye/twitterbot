@@ -5,9 +5,9 @@ namespace App\Console\Commands;
 use App\Conf;
 use App\DM;
 use App\DMConfig;
+use App\Library\TwitterBot;
 use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\App;
 
 class DMFollower extends Command
 {
@@ -36,40 +36,55 @@ class DMFollower extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return mixed
+     * @throws Exception
      */
     public function handle()
     {
+        $twitter = new TwitterBot();
+
         $dm_conf = DMConfig::findOrFail(1);
-        if (!$dm_conf->disable) {
-            $user_id = Conf::findOrFail(1)->pluck('user_id')->first();
+        if (isset($dm_conf)) {
+            if (!$dm_conf->disable) {
+                $user_id = Conf::findOrFail(1)->pluck('user_id')->first();
+                if (isset($user_id)) {
+                    $response = json_decode($twitter->buildOauth('https://api.twitter.com/1.1/followers/list.json', 'GET')->performRequest());
 
-            $response = \Twitter::getFollowers([
-                'user_id' => $user_id,
-                'cursor' => '-1',
-                'count' => 500,
-            ]);
-            foreach ($response->users as $user) {
-                $exist = DM::where('follower_id', $user->id)->exists();
-                if (!$exist) {
-                    try {
-                        $msg = 'أهلاً ' . $user->name . ' ' . $dm_conf->text;
-                        $send = \Twitter::postDm([
-                            'user_id' => $user->id,
-                            'text' => $msg
-                        ]);
+                    foreach ($response->users as $user) {
+                        $exist = DM::where('follower_id', $user->id)->exists();
+                        if (!$exist) {
+                            try {
+                                $postfields = array (
+                                    'event' =>
+                                        array(
+                                            'type' => 'message_create',
+                                            'message_create' =>
+                                                array(
+                                                    'target' => array('recipient_id' => $user->id),
+                                                    'message_data' => array('text' => $dm_conf->text)
+                                                )
+                                        )
+                                );
+                                $url = 'https://api.twitter.com/1.1/direct_messages/events/new.json';
+                                $requestMethod = 'POST';
 
-                        $dm = new DM();
-                        $dm->follower_id = $user->id;
-                        $dm->screen_name = $user->screen_name;
-                        $dm->name = $user->name;
-                        $dm->msg = $dm_conf->text;
-                        $dm->sent = true;
-                        $dm->save();
-                    } catch (Exception $e) {
-                        dd($e->getMessage());
+                                $twitter->appjson = true;
+                                $twitter->buildOauth($url, $requestMethod)->performRequest(true,
+                                    [
+                                        CURLOPT_POSTFIELDS => json_encode($postfields)
+                                    ]
+                                );
+
+                                $dm = new DM();
+                                $dm->follower_id = $user->id;
+                                $dm->screen_name = $user->screen_name;
+                                $dm->name = $user->name;
+                                $dm->msg = $dm_conf->text;
+                                $dm->sent = true;
+                                $dm->save();
+                            } catch (Exception $e) {
+                                dd($e->getMessage());
+                            }
+                        }
                     }
                 }
             }

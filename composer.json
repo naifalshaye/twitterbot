@@ -6,12 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "fennb/phirehose": "^1.0",
+        "dg/twitter-php": "^3.7",
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "sentry/sentry-laravel": "^0.7.0",
-        "thujohn/twitter": "^2.2"
+        "spatie/twitter-streaming-api": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -21,7 +21,7 @@
     "autoload": {
         "classmap": [
             "database",
-            "vendor/fennb/phirehose/lib"
+            "app/Libraries"
         ],
         "psr-4": {
             "App\\": "app/"
