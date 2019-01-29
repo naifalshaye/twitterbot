@@ -10,8 +10,14 @@
 
                     <div class="panel-body">
                         <ol>
-                            @foreach ($trends as $trend)
-                                <li>{{$trend->name}}</li>
+                            @foreach ($trends[0]->trends as $trend)
+                                <li>
+                                    @if (str_contains($trend->name,'#'))
+                                        <a href="https://twitter.com/hashtag/{{str_replace('#','',$trend->name)}}" target="_blank">{{$trend->name}}</a>
+                                    @else
+                                        <a href="https://twitter.com/search?q={{$trend->name}}" target="_blank">{{$trend->name}}</a>
+                                    @endif
+                                </li>
                             @endforeach
                         </ol>
                     </div>

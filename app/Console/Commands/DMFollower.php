@@ -46,7 +46,7 @@ class DMFollower extends Command
         if (isset($dm_conf)) {
             if (!$dm_conf->disable) {
                 $user_id = Conf::findOrFail(1)->pluck('user_id')->first();
-                if (isset($user_id)) {
+
                     $response = json_decode($twitter->buildOauth('https://api.twitter.com/1.1/followers/list.json', 'GET')->performRequest());
 
                     foreach ($response->users as $user) {
@@ -86,7 +86,7 @@ class DMFollower extends Command
                             }
                         }
                     }
-                }
+
             }
         }
     }

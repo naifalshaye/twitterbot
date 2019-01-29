@@ -64,6 +64,7 @@
                             <li><a href="/faq">FAQ</a></li>
                             <li><a href="/faq_tweets">FAQ Tweets</a></li>
                             <li><a href="/keyword">Keywords</a></li>
+                            <li><a href="/tweets">Tweets</a></li>
                             <li><a href="/schedule">Schedule</a></li>
                             <li><a href="/dm_config">DM on Follow</a></li>
                             <li><a href="/dm">DM Log</a></li>

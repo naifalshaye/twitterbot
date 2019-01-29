@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Conf;
 use App\FAQ;
 use App\FAQTweet;
 use App\Keyword;
+use App\Library\TwitterBot;
 use App\Tweet;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use whoisServerList\WhoisApi;
 
 class HomeController extends Controller
 {
@@ -34,9 +30,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $trends = \Twitter::getTrendsPlace(['id'=>23424938]);
-//        $trends = $trends[0]->trends;
-        $trends = [];
+        $twitter = new TwitterBot();
+
+        $requestMethod = 'GET';
+        $url = 'https://api.twitter.com/1.1/trends/place.json';
+        $getfield = '?id=' . 23424938;
+
+        $trends = json_decode($twitter->setGetfield($getfield)
+            ->buildOauth($url, $requestMethod)
+            ->performRequest());
+
         exec("ps aux | grep 'TwitterStream'",$ps);
         $faq_tweet = FAQTweet::get()->last();
         $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();

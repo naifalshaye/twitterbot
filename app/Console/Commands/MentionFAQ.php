@@ -44,19 +44,28 @@ class MentionFAQ extends Command
      */
     public function handle()
     {
-        $conf = Conf::findOrFail(1);
+        try {
+            $conf = Conf::findOrFail(1);
+        } catch (\Exception $e){
+            $conf = new Conf();
+        }
+
         $faqs = FAQ::all();
         if (isset($conf)) {
             $twitter = new TwitterBot();
             $twitter_dg = new Twitter(config('ttwitter.CONSUMER_KEY'), config('ttwitter.CONSUMER_SECRET'), config('ttwitter.ACCESS_TOKEN'), config('ttwitter.ACCESS_TOKEN_SECRET'));
-
-            $url = 'https://api.twitter.com/1.1/statuses/mentions_timeline.json';
-            $getfield = '?since_id='.$conf->since_id;
             $requestMethod = 'GET';
 
-            $mentions = json_decode($twitter->setGetfield($getfield)
-                ->buildOauth($url, $requestMethod)
-                ->performRequest());
+            $url = 'https://api.twitter.com/1.1/statuses/mentions_timeline.json';
+            if ($conf->since_id) {
+                $getfield = '?since_id=' . $conf->since_id;
+                $mentions = json_decode($twitter->setGetfield($getfield)
+                    ->buildOauth($url, $requestMethod)
+                    ->performRequest());
+            } else{
+                $mentions = json_decode($twitter->buildOauth($url, $requestMethod)->performRequest());
+            }
+
 
             $collection = collect($mentions);
 

@@ -56,7 +56,7 @@ class StreamTwitter extends Command
                 if (isset($tweet['id'])) {
                     Tweet::create([
                         'id' => $tweet['id_str'],
-                        'json' => $tweet,
+                        'json' => json_encode($tweet),
                         'tweet_text' => $tweet_text,
                         'user_id' => $user_id,
                         'user_screen_name' => $user_screen_name,

@@ -40,6 +40,8 @@ Route::get('/faq/status/{id}',  'FAQController@status');
 Route::get('/keyword/status/{id}',  'KeywordController@status');
 Route::get('/schedule/status/{id}',  'ScheduleController@status');
 
+Route::get('/tweets',  'StreamingTweetsController@index');
+
 //Route::get('/register', function(){
 //    return redirect('/');
 //});
