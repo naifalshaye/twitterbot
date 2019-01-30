@@ -18,6 +18,7 @@ class Conf extends Migration
             $table->bigInteger('since_id')->nullable();
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('stop_register')->nullable();
+            $table->bigInteger('turn_off')->nullable();
 
             $table->timestamps();
         });

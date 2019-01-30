@@ -42,6 +42,15 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Bot Status</div>
+                    <div class="panel-body">
+                        <div align="center" style="color:red;">@if ($conf->turn_off) Off @endif</div>
+                        <div align="center" style="color:green;">@if (!$conf->turn_off) On @endif</div>
+                    </div>
+                </div>
+            </div>
 
             @if (isset($chat_tweet))
                 <div class="col-lg-8">

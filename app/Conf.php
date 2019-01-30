@@ -11,15 +11,7 @@ class Conf extends Model
     protected $fillable = [
         'since_id',
         'user_id',
-        'screen_name',
-        'name',
-        'TWITTER_CONSUMER_KEY',
-        'TWITTER_CONSUMER_SECRET',
-        'TWITTER_ACCESS_TOKEN',
-        'TWITTER_ACCESS_TOKEN_SECRET',
-        'STREAM_TWITTER_CONSUMER_KEY',
-        'STREAM_TWITTER_CONSUMER_SECRET',
-        'STREAM_TWITTER_ACCESS_TOKEN',
-        'STREAM_TWITTER_ACCESS_TOKEN_SECRET',
+        'stop_register',
+        'turn_off',
     ];
 }

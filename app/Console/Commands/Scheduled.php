@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Conf;
 use App\Schedule;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -37,11 +38,16 @@ class Scheduled extends Command
      */
     public function handle()
     {
+        $conf = Conf::findOrNew(1);
+        if ($conf->turn_off){
+            return;
+        }
+
         $twitter_dg = new Twitter(config('ttwitter.CONSUMER_KEY'), config('ttwitter.CONSUMER_SECRET'), config('ttwitter.ACCESS_TOKEN'), config('ttwitter.ACCESS_TOKEN_SECRET'));
 
         $date = Carbon::now()->format('Y-m-d');
         $time = Carbon::now();
-        $time->setTimezone('Asia/Riyadh');
+        $time->setTimezone(config('bot.timezone'));
         $time = $time->format('H:i');
 
         $schedules = Schedule::where('date', $date)->where('time', $time)->get();

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('ChatCommand', function () {
+Artisan::command('Chat', function () {
     $this->comment(\App\Console\Commands\ChatCommand::class);
 })->describe('Check mentions for chat keywords and reply');
 

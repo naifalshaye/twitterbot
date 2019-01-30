@@ -23,6 +23,10 @@
         ]) !!};
     </script>
 <style>
+    *{
+        font-family: Trebuchet MS;
+        font-size:16px;
+    }
     th,td{
         text-align: center !important;
     }

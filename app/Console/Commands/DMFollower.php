@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Conf;
 use App\DM;
 use App\DMConfig;
 use App\Library\TwitterBot;
@@ -42,11 +43,12 @@ class DMFollower extends Command
      */
     public function handle()
     {
-        try {
-            $dm_conf = DMConfig::findOrFail(1);
-        } catch (\Exception $e) {
-            $dm_conf = new DMConfig();
+        $conf = Conf::findOrNew(1);
+        if ($conf->turn_off){
+            return;
         }
+
+        $dm_conf = DMConfig::findOrNew(1);
 
         if (!$dm_conf->disable && !empty($dm_conf->text)) {
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use App\ChatTweet;
+use App\Conf;
 use App\Keyword;
 use App\Library\TwitterBot;
 use App\Tweet;
@@ -37,7 +38,6 @@ class HomeController extends Controller
             ->buildOauth($url, $requestMethod)
             ->performRequest());
 
-        exec("ps aux | grep 'TwitterStream'",$ps);
         $chat_tweet = ChatTweet::get()->last();
         $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
 
@@ -58,6 +58,8 @@ class HomeController extends Controller
         $numbers->stream = Keyword::count();
         $numbers->chat_tweets = ChatTweet::count();
 
-        return view('home',compact('ps','trends','chat_tweet','stream_tweet','top_chat_chart','numbers'));
+        $conf = Conf::findOrNew(1);
+
+        return view('home',compact('trends','chat_tweet','stream_tweet','top_chat_chart','numbers','conf'));
     }
 }

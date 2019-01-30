@@ -33,14 +33,14 @@ class ChatCommand extends Command
     public function __construct()
     {
         parent::__construct();
+
     }
 
     public function handle()
     {
-        try {
-            $conf = Conf::findOrFail(1);
-        } catch (\Exception $e){
-            $conf = new Conf();
+        $conf = Conf::findOrNew(1);
+        if ($conf->turn_off){
+            return;
         }
 
         $chat = Chat::get();
