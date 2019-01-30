@@ -22,6 +22,28 @@
                     </div>
                 @endif
                 <div class="panel-body">
+                    <div class="row" align="center">
+                        <div class="col-lg-12">
+                            <form class="form-inline" enctype="multipart/form-data" role="form" method="GET" action="{{'/tweets'}}">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="date" placeholder="Date">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="user_screen_name" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="user_name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="tweet_text" placeholder="Tweet Text">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="bio" placeholder="Bio">
+                                </div>
+                                <button type="submit" class="btn btn-default">Search</button>
+                            </form>
+                        </div>
+                    </div><br>
                     <div class="row">
                         <div class="col-lg-12 table-responsive">
                             <table id="example" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered hover">

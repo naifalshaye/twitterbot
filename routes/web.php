@@ -58,6 +58,7 @@ Route::get('/test',  'HomeController@test');
 Route::get('/run_stream', "HomeController@runTwitterCommand");
 
 Route::get('/chat_tweets', "ChatTweetController@index");
+Route::get('/tweets', "StreamingTweetsController@index");
 
 Route::get('/dm', "DMController@index");
 Route::get('/dm_config', "DMController@dmConfig");

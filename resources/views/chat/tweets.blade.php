@@ -23,7 +23,7 @@
                 @endif
 
                 <div class="panel-body">
-                    <div class="row">
+                    <div class="row" align="center">
                         <div class="col-lg-12">
                             <form class="form-inline" enctype="multipart/form-data" role="form" method="GET" action="{{'/chat_tweets'}}">
                                 <div class="form-group">
