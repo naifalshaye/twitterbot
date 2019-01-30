@@ -41,18 +41,6 @@ class HomeController extends Controller
         $chat_tweet = ChatTweet::get()->last();
         $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
 
-        $top_chat = DB::table('chat_tweets')
-            ->select(DB::raw('keyword'), DB::raw('count(*) as count'))
-            ->groupBy('keyword')
-            ->orderBy('count', 'desc')
-            ->take(10)
-            ->get();
-
-        $top_chat_chart = [];
-        foreach ($top_chat as $chat){
-            array_push($top_chat_chart,[$chat->keyword,$chat->count]);
-        }
-
         $numbers = new \stdClass();
         $numbers->chat = Chat::count();
         $numbers->stream = Keyword::count();

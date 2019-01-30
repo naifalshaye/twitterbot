@@ -78,7 +78,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                   TwitterBot <span style="font-size:22px;">version 1.0</span>
+                    <div style="margin-top: -15px;">
+                        <img src="/images/logo.png" style="width:150px;">
+                    </div>
+                   <span style="font-size:42px;">TwitterBot</span> <span style="font-size:32px;">{{config('app.version')}}</span>
                 </div>
 
             </div>

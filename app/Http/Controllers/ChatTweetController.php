@@ -37,7 +37,7 @@ class ChatTweetController extends Controller
             $chat->where('created_at','like','%'.Input::get('date').'%');
         }
 
-        $tweets = $chat->OrderBy('id','desc')->paginate(50);
+        $tweets = $chat->OrderBy('created_at','desc')->paginate(50);
         $keywords = Chat::get();
 
         return view('chat.tweets',compact('tweets','keywords'));

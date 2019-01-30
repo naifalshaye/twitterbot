@@ -43,7 +43,7 @@ class StreamingTweetsController extends Controller
             $tweets->where('created_at','like','%'.Input::get('date').'%');
         }
 
-        $tweets = $tweets->OrderBy('id','desc')->paginate(50);
+        $tweets = $tweets->OrderBy('created_at','desc')->paginate(50);
 
         return view('tweets.index',compact('tweets'));
     }

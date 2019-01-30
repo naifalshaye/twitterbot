@@ -63,3 +63,5 @@ Route::get('/tweets', "StreamingTweetsController@index");
 Route::get('/dm', "DMController@index");
 Route::get('/dm_config', "DMController@dmConfig");
 Route::post('/dm_config', "DMController@updateConfig");
+
+Route::get('/analytics', "AnalyticsController@index");

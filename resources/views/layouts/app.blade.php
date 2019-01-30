@@ -30,12 +30,8 @@
     th,td{
         text-align: center !important;
     }
-    .nav-item{
-        font-size:18px;
-    }
-    .navbar{
-        font-size:16px;
-    }
+
+
 </style>
 </head>
 <body>
@@ -55,7 +51,10 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('app.name', 'Laravel') }} 1.0
+                        {{--{{ config('app.name', 'Laravel') }} {{config('app.version')}}--}}
+                        <div style="margin-top: -15px;">
+                            <img src="/images/logo.png" style="width:50px;">
+                        </div>
                     </a>
                 </div>
 
@@ -66,7 +65,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -75,32 +74,21 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/chat">Settings</a></li>
                                     <li><a href="/chat_tweets">Tweets</a></li>
-
+                                    <li><a href="/chat">Settings</a></li>
                                 </ul>
                             </li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/keyword">Settings</a></li>
                                     <li><a href="/tweets">Tweets</a></li>
-
+                                    <li><a href="/keyword">Settings</a></li>
                                 </ul>
                             </li>
-
 
                             <li><a href="/schedule">Schedule</a></li>
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DM On Follow <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/dm_config">Settings</a></li>
-                                    <li><a href="/dm">Archive</a></li>
-                                </ul>
-                            </li>
-
+                            <li><a href="/analytics">Analytics</a></li>
                             <li><a href="/conf">Config</a></li>
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

@@ -5,6 +5,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="col-lg-4">
+                @if (isset($twitter_user) && !empty($twitter_user))
+                    <span>Welcome {{$twitter_user->name}}</span>
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-weight: bold;">Trending</div>
 
@@ -23,7 +26,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div><br>
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
@@ -79,50 +82,7 @@
                 </div>
             @endif
 
-
-            <div class="col-lg-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stats</div>
-                    <div class="panel-body" align="center">
-                        <div id="top_chat" style="width: 600px; height: 400px;"></div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart2);
-
-
-        function drawChart2() {
-            var top_chat = <?php echo json_encode($top_chat_chart); ?>;
-
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Keyword');
-            data.addColumn('number', 'Tweets');
-            data.addRows(top_chat);
-
-            var options = {
-                title: 'Top 10 keywords',
-                hAxis: {
-                    title: 'Keywords',
-                    minValue: 0
-                },
-                vAxis: {
-                    title: 'Tweets'
-                },
-
-                colors:['#478EC7']
-            };
-
-            var chart = new google.visualization.ColumnChart(document.getElementById('top_chat'));
-
-            chart.draw(data, options);
-        }
-    </script>
 @endsection

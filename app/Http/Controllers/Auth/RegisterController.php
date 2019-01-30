@@ -38,7 +38,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         try {
-            $conf = Conf::findOrFail(1);
+            $conf = Conf::findOrNew(1);
             if ($conf->stop_register) {
                 $this->middleware('auth');
             }
