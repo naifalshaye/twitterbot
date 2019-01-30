@@ -58,6 +58,23 @@ class StreamTwitter extends Command
                 $user_screen_name = isset($tweet['user']['screen_name']) ? $tweet['user']['screen_name'] : null;
 
                 if (isset($tweet['id'])) {
+                    $city = null;
+                    $geo = null;
+                    $coordinates = null;
+                    $place = null;
+                    if (isset($tweet['user']['city'])){
+                        $city = $tweet['user']['city'];
+                    }
+                    if (isset($tweet['user']['geo'])){
+                        $geo = $tweet['user']['geo'];
+                    }
+                    if (isset($tweet['user']['coordinates'])){
+                        $geo = $tweet['user']['coordinates'];
+                    }
+                    if (isset($tweet['user']['place'])){
+                        $geo = $tweet['user']['place'];
+                    }
+
                     Tweet::create([
                         'tweet_id' => $tweet['id_str'],
                         'tweet_created_at' => $tweet['created_at'],
@@ -68,7 +85,7 @@ class StreamTwitter extends Command
                         'user_screen_name' => $tweet['user']['screen_name'],
                         'user_name' => $tweet['user']['name'],
                         'profile_image_url' => $tweet['user']['profile_image_url'],
-                        'city' => $tweet['user']['city'],
+                        'city' => $city,
                         'location' => $tweet['user']['location'],
                         'url' => $tweet['user']['url'],
                         'description' => $tweet['user']['description'],
@@ -77,9 +94,9 @@ class StreamTwitter extends Command
                         'friends_count' => $tweet['user']['friends_count'],
                         'statuses_count' => $tweet['user']['statuses_count'],
                         'lang' => $tweet['user']['lang'],
-                        'geo' => $tweet['user']['geo'],
-                        'coordinates' => $tweet['user']['coordinates'],
-                        'place' => $tweet['user']['place'],
+                        'geo' => $geo,
+                        'coordinates' => $coordinates,
+                        'place' => $place,
                    ]);
                 }
             })->startListening();

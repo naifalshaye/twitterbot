@@ -25,14 +25,15 @@
                             <div class="form-group">
                                 <label for="user_id" class="col-md-4 control-label">Stop Registration</label>
                                 <div class="col-md-6">
-                                    <input type="checkbox" name="stop_register" id="stop_register" @if ($conf->stop_register) checked @endif>
+                                    <input type="checkbox" name="stop_register" data-group-cls="btn-group-sm" @if ($conf->stop_register) checked @endif>
+
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="user_id" class="col-md-4 control-label">Turn Bot Off</label>
                                 <div class="col-md-6">
-                                    <input type="checkbox" name="turn_off" id="turn_off" @if ($conf->turn_off) checked @endif>
+                                    <input type="checkbox" class="green" name="turn_off" id="turn_off" @if ($conf->turn_off) checked @endif>
                                 </div>
                             </div>
 
@@ -48,4 +49,5 @@
             </div>
         </div>
     </div>
+
 @endsection

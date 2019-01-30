@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-weight: bold;">Trending</div>
 
@@ -22,8 +22,8 @@
                         </ol>
                     </div>
                 </div>
+
             </div>
-            <div class="row">
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
@@ -46,8 +46,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Bot Status</div>
                     <div class="panel-body">
-                        <div align="center" style="color:red;">@if ($conf->turn_off) Off @endif</div>
-                        <div align="center" style="color:green;">@if (!$conf->turn_off) On @endif</div>
+                        <div align="center" style="color:red;">@if ($conf->turn_off) <span class="fa fa-power-off" style="font-size:24px;"></span> Off @endif</div>
+                        <div align="center" style="color:green;">@if (!$conf->turn_off) <span class="fa fa-power-off" style="font-size:24px;"></span> On @endif</div>
                     </div>
                 </div>
             </div>

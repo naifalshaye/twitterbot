@@ -123,5 +123,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('js')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(':checkbox').checkboxpicker();
+        });
+    </script>
 </body>
 </html>
