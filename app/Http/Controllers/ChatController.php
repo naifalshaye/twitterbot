@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\FAQ;
+use App\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FAQController extends Controller
+class ChatController extends Controller
 {
     public function __construct()
     {
@@ -20,8 +20,8 @@ class FAQController extends Controller
      */
     public function index()
     {
-        $faqs = FAQ::OrderBy('id','desc')->paginate(15);
-        return view('faq.index',compact('faqs'));
+        $chat = Chat::OrderBy('id','desc')->paginate(15);
+        return view('chat.index',compact('chat'));
     }
 
     /**
@@ -31,7 +31,7 @@ class FAQController extends Controller
      */
     public function create()
     {
-        return view('faq.add');
+        return view('chat.add');
     }
 
     /**
@@ -48,8 +48,8 @@ class FAQController extends Controller
             $request['disable']  = false;
         }
         $request['user_id'] = Auth::user()->id;
-        $faq = FAQ::create($request->all());
-        return redirect()->back()->with('success','FAQ Added.');
+        $chat = Chat::create($request->all());
+        return redirect()->back()->with('success','Chat keyword has been added');
     }
 
     /**
@@ -71,8 +71,8 @@ class FAQController extends Controller
      */
     public function edit($id)
     {
-        $faq = FAQ::findOrFail($id);
-        return view('faq.edit',compact('faq'));
+        $chat = Chat::findOrFail($id);
+        return view('chat.edit',compact('chat'));
     }
 
     /**
@@ -90,12 +90,12 @@ class FAQController extends Controller
             $request->disable = false;
         }
 
-        $faq = FAQ::findOrFail($id);
-        $faq->keyword = $request->keyword;
-        $faq->reply = $request->reply;
-        $faq->disable = $request->disable;
-        $faq->save();
-        return redirect()->back()->with('success','FAQ Updated.');
+        $chat = Chat::findOrFail($id);
+        $chat->keyword = $request->keyword;
+        $chat->reply = $request->reply;
+        $chat->disable = $request->disable;
+        $chat->save();
+        return redirect()->back()->with('success','Chat keyword has been updated');
     }
 
     /**
@@ -106,23 +106,23 @@ class FAQController extends Controller
      */
     public function destroy($id)
     {
-        $faq = FAQ::findOrFail($id);
-        $faq->delete();
-        return redirect()->to('/faq')->with('success','FAQ Deleted.');
+        $chat = Chat::findOrFail($id);
+        $chat->delete();
+        return redirect()->to('/chat')->with('success','Chat keyword has been deleted');
     }
 
 
     public function status($id)
     {
-        $faq = FAQ::findOrFail($id);
-        if ($faq->disable){
-            $faq->disable = false;
+        $chat = Chat::findOrFail($id);
+        if ($chat->disable){
+            $chat->disable = false;
         }
         else {
-            $faq->disable = true;
+            $chat->disable = true;
         }
-        $faq->save();
-        return redirect()->to('/faq');
+        $chat->save();
+        return redirect()->to('/chat');
 
     }
 }

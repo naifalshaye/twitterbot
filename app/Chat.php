@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FAQ extends Model
+class Chat extends Model
 {
-    protected $table = 'faq';
+    protected $table = 'chat';
 
     protected $fillable = [
         'user_id',

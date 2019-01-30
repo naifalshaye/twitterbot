@@ -19,7 +19,7 @@ class StreamingTweetsController extends Controller
      */
     public function index()
     {
-        $tweets = Tweet::OrderBy('id','desc')->paginate(15);
+        $tweets = Tweet::orderBy('created_at', 'desc')->paginate(35);
         return view('tweets.index',compact('tweets'));
     }
 

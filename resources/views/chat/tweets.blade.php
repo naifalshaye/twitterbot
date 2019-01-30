@@ -5,7 +5,7 @@
         <div class="col-lg-8 col-lg-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light">
-                    <div style="font-size:16px; font-weight: bold; color:#565656;">FAQ Tweets</div>
+                    <div style="font-size:16px; font-weight: bold; color:#565656;">Chat Tweets</div>
                 </div>
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -40,8 +40,8 @@
                                         <td style="text-align: center;">{{ $tweet->keyword }}</td>
                                         <td style="text-align: center;"><a href="http://twitter.com/{{ $tweet->user_screen_name }}" target="_blank">{{ $tweet->user_screen_name }}</a></td>
                                         <td style="text-align: center;">{{ $tweet->user_name }}</td>
-                                        <td style="text-align: center;">{{ $tweet->tweet_text }}</td>
-                                        <td style="text-align: center;">{{ $tweet->reply }}</td>
+                                        <td style="text-align: center;">{{ preg_replace('/(^|\b)@\S*($|\b)/', '', $tweet->tweet_text) }}</td>
+                                        <td style="text-align: center;">{{ preg_replace('/(^|\b)@\S*($|\b)/', '', $tweet->reply) }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

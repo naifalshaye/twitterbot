@@ -49,18 +49,31 @@ class StreamTwitter extends Command
                 config('ttwitter.STREAM_CONSUMER_KEY'),
                 config('ttwitter.STREAM_CONSUMER_SECRET')
             )->whenHears($keywords, function (array $tweet) {
-                $tweet_text = isset($tweet['text']) ? $tweet['text'] : null;
-                $user_id = isset($tweet['user']['id_str']) ? $tweet['user']['id_str'] : null;
                 $user_screen_name = isset($tweet['user']['screen_name']) ? $tweet['user']['screen_name'] : null;
 
                 if (isset($tweet['id'])) {
                     Tweet::create([
-                        'id' => $tweet['id_str'],
+                        'tweet_id' => $tweet['id_str'],
+                        'tweet_created_at' => $tweet['created_at'],
+                        'tweet_text' => $tweet['text'],
                         'json' => json_encode($tweet),
-                        'tweet_text' => $tweet_text,
-                        'user_id' => $user_id,
-                        'user_screen_name' => $user_screen_name,
-                        'approved' => 0
+                        'user_id' => $tweet['user']['id_str'],
+                        'user_created_at' => $tweet['user']['created_at'],
+                        'user_screen_name' => $tweet['user']['screen_name'],
+                        'user_name' => $tweet['user']['name'],
+                        'profile_image_url' => $tweet['user']['profile_image_url'],
+                        'city' => $tweet['user']['city'],
+                        'location' => $tweet['user']['location'],
+                        'url' => $tweet['user']['url'],
+                        'description' => $tweet['user']['description'],
+                        'verified' => $tweet['user']['verified'],
+                        'followers_count' => $tweet['user']['followers_count'],
+                        'friends_count' => $tweet['user']['friends_count'],
+                        'statuses_count' => $tweet['user']['statuses_count'],
+                        'lang' => $tweet['user']['lang'],
+                        'geo' => $tweet['user']['geo'],
+                        'coordinates' => $tweet['user']['coordinates'],
+                        'place' => $tweet['user']['place'],
                    ]);
                 }
             })->startListening();

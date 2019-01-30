@@ -13,7 +13,7 @@ class Latest extends Migration
      */
     public function up()
     {
-        Schema::create('faq_tweets', function (Blueprint $table) {
+        Schema::create('chat_tweets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('keyword')->nullable();
             $table->string('tweet_id')->nullable();
@@ -34,6 +34,6 @@ class Latest extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faq_tweets');
+        Schema::dropIfExists('chat_tweets');
     }
 }

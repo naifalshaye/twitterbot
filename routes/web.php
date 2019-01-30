@@ -32,11 +32,11 @@ Route::post('/conf', 'ConfController@update');
 //Route::get('/callback', 'AccountController@handleProviderCallback');
 
 
-Route::resource('faq', 'FAQController');
+Route::resource('chat', 'ChatController');
 Route::resource('keyword', 'KeywordController');
 Route::resource('schedule', 'ScheduleController');
 
-Route::get('/faq/status/{id}',  'FAQController@status');
+Route::get('/chat/status/{id}',  'ChatController@status');
 Route::get('/keyword/status/{id}',  'KeywordController@status');
 Route::get('/schedule/status/{id}',  'ScheduleController@status');
 
@@ -57,7 +57,7 @@ Route::get('/test',  'HomeController@test');
 
 Route::get('/run_stream', "HomeController@runTwitterCommand");
 
-Route::get('/faq_tweets', "FAQTweetController@index");
+Route::get('/chat_tweets', "ChatTweetController@index");
 
 Route::get('/dm', "DMController@index");
 Route::get('/dm_config', "DMController@dmConfig");

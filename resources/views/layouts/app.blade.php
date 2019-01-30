@@ -14,6 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -24,7 +26,12 @@
     th,td{
         text-align: center !important;
     }
-
+    .nav-item{
+        font-size:18px;
+    }
+    .navbar{
+        font-size:16px;
+    }
 </style>
 </head>
 <body>
@@ -44,7 +51,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Laravel') }} 1.0
                     </a>
                 </div>
 
@@ -61,14 +68,36 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                         @else
                             <li><a href="/home">Home</a></li>
-                            <li><a href="/faq">FAQ</a></li>
-                            <li><a href="/faq_tweets">FAQ Tweets</a></li>
-                            <li><a href="/keyword">Keywords</a></li>
-                            <li><a href="/tweets">Tweets</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/chat">Settings</a></li>
+                                    <li><a href="/chat_tweets">Tweets</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/keyword">Settings</a></li>
+                                    <li><a href="/tweets">Tweets</a></li>
+
+                                </ul>
+                            </li>
+
+
                             <li><a href="/schedule">Schedule</a></li>
-                            <li><a href="/dm_config">DM on Follow</a></li>
-                            <li><a href="/dm">DM Log</a></li>
-                            <li><a href="/conf">Settings</a></li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DM On Follow <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/dm_config">Settings</a></li>
+                                    <li><a href="/dm">Archive</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="/conf">Config</a></li>
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

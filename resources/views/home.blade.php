@@ -28,9 +28,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
                     <div class="panel-body">
-                        <div>FAQ Keywords: {{$numbers->faq}}</div>
+                        <div>Chat Keywords: {{$numbers->chat}}</div>
                         <div>Stream Keywords: {{$numbers->stream}}</div>
-                        <div>FAQ Tweets: {{$numbers->faq_tweets}}</div>
+                        <div>Chat Tweets: {{$numbers->chat_tweets}}</div>
                         <div>
                             Stream Tweets:
                             @if ($stream_tweet)
@@ -43,16 +43,16 @@
                 </div>
             </div>
 
-            @if (isset($faq_tweet))
+            @if (isset($chat_tweet))
                 <div class="col-lg-8">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">FAQ Latest Tweet</div>
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">Chat Latest Tweet</div>
                         <div class="panel-body">
-                             Time: {{$faq_tweet->created_at}}<br>
-                            keyword: {{$faq_tweet->keyword}}<br>
-                            Tweet: {{$faq_tweet->tweet_text}}<br>
-                            From: <a href="http://twitter.com/{{ $faq_tweet->user_screen_name }}" target="_blank">{{ $faq_tweet->user_name }}</a><br>
-                            Reply: {{$faq_tweet->reply}}
+                             Time: {{$chat_tweet->created_at}}<br>
+                            keyword: {{$chat_tweet->keyword}}<br>
+                            Tweet: {{$chat_tweet->tweet_text}}<br>
+                            From: <a href="http://twitter.com/{{ $chat_tweet->user_screen_name }}" target="_blank">{{ $chat_tweet->user_name }}</a><br>
+                            Reply: {{$chat_tweet->reply}}
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stats</div>
                     <div class="panel-body" align="center">
-                        <div id="top_faq" style="width: 600px; height: 400px;"></div>
+                        <div id="top_chat" style="width: 600px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -91,12 +91,12 @@
 
 
         function drawChart2() {
-            var top_faq = <?php echo json_encode($top_faq_chart); ?>;
+            var top_chat = <?php echo json_encode($top_chat_chart); ?>;
 
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Keyword');
             data.addColumn('number', 'Tweets');
-            data.addRows(top_faq);
+            data.addRows(top_chat);
 
             var options = {
                 title: 'Top 10 keywords',
@@ -111,7 +111,7 @@
                 colors:['#478EC7']
             };
 
-            var chart = new google.visualization.ColumnChart(document.getElementById('top_faq'));
+            var chart = new google.visualization.ColumnChart(document.getElementById('top_chat'));
 
             chart.draw(data, options);
         }

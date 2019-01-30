@@ -2,12 +2,12 @@
 @section('content')
 
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
+        <div class="col-lg-6 col-lg-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading" style="height: 45px; padding-top:1px;">
                     <div class="row">
-                        <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">FAQ</div>
-                        <div class="btn btn-sm pull-right"><a href="/faq/create" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add FAQ</span></a></div>
+                        <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">Chat</div>
+                        <div class="btn btn-sm pull-right"><a href="/chat/create" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add Chat keyword</span></a></div>
                     </div>
                 </div>
                 @if (count($errors) > 0)
@@ -31,35 +31,35 @@
                                 <thead>
                                 <tr>
                                     <th width="60">ID</th>
-                                    <th>Keyword</th>
+                                    <th width="190">Keyword</th>
                                     <th>Reply</th>
                                     <th width="150">Status</th>
-                                    <th width="200"></th>
+                                    <th width="140">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($faqs as $faq)
+                                @foreach($chat as $row)
                                     <tr>
-                                        <td>{{ $faq->id }}</td>
-                                        <td>{{ $faq->keyword }}</td>
-                                        <td>{{ $faq->reply }}</td>
+                                        <td>{{ $row->id }}</td>
+                                        <td>{{ $row->keyword }}</td>
+                                        <td>{{ $row->reply }}</td>
                                         <td>
-                                            @if ($faq->disable == false)
-                                                <a href="/faq/status/{{$faq->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
+                                            @if ($row->disable == false)
+                                                <a href="/chat/status/{{$row->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
                                             @else
-                                                <a href="/faq/status/{{$faq->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
+                                                <a href="/chat/status/{{$row->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
                                             @endif
                                         </td>
                                         <td>
                                             <div class="row">
-                                                <div class="col-lg-2">
-                                                    <a href="/faq/{{ $faq->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
+                                                <div class="col-lg-5">
+                                                    <a href="/chat/{{ $row->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
-                                                <div class="col-lg-2">
-                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="/faq/{{$faq->id}}">
+                                                <div class="col-lg-3">
+                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="/chat/{{$row->id}}">
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete FAG are you sure?');">
+                                                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete chat keyword are you sure?');">
                                                     </form>
                                                 </div>
                                             </div>
@@ -68,7 +68,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div align="center">{{$faqs->render()}}</div>
+                            <div align="center">{{$chat->render()}}</div>
                         </div>
                     </div>
                 </div>

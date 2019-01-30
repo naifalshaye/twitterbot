@@ -6,7 +6,7 @@ use App\Console\Commands\DMFollower;
 use App\Console\Commands\Scheduled;
 use App\Console\Commands\StreamTwitter;
 use App\Console\Commands\TwitterStream;
-use App\Console\Commands\MentionFAQ;
+use App\Console\Commands\ChatCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\App;
@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         StreamTwitter::class,
-        MentionFAQ::class,
+        ChatCommand::class,
         Scheduled::class,
         DMFollower::class,
     ];
@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
     {
         if (App::environment('production')) {
 
-            $schedule->command('MentionFAQ')
+            $schedule->command('ChatCommand')
                 ->everyMinute();
 
             $schedule->command('StreamTwitter')

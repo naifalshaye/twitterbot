@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('MentionFAQ', function () {
-    $this->comment(\App\Console\Commands\MentionFAQ::class);
-})->describe('Check mentions for FAQ and reply');
+Artisan::command('ChatCommand', function () {
+    $this->comment(\App\Console\Commands\ChatCommand::class);
+})->describe('Check mentions for chat keywords and reply');
 
 Artisan::command('StreamTwitter', function () {
     $this->comment(\App\Console\Commands\StreamTwitter::class);

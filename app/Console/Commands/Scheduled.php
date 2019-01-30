@@ -33,9 +33,7 @@ class Scheduled extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return mixed
+     * @throws \TwitterException
      */
     public function handle()
     {
@@ -48,7 +46,7 @@ class Scheduled extends Command
 
         $schedules = Schedule::where('date', $date)->where('time', $time)->get();
         foreach ($schedules as $schedule) {
-            if (!$schedule->disable) {
+            if (!$schedule->sent && !$schedule->disable && !empty($schedule->text)) {
                 try {
                     $twitter_dg->send($schedule->text);
 

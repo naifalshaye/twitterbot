@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FAQTweet extends Model
+class ChatTweet extends Model
 {
-    protected $table = 'faq_tweets';
+    protected $table = 'chat_tweets';
 
     protected $fillable = [
         'keyword',

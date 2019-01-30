@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
+        <div class="col-lg-4 col-lg-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light" style="height: 45px; padding-top:0px;">
                     <div class="row">
@@ -30,9 +30,9 @@
                                 <thead>
                                 <tr>
                                     <th width="60">ID</th>
-                                    <th>Keyword</th>
+                                    <th width="200">Keyword</th>
                                     <th width="150">Status</th>
-                                    <th width="200"></th>
+                                    <th width="130">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +49,7 @@
                                         </td>
                                         <th>
                                             <div class="row">
-                                                <div class="col-lg-2">
+                                                <div class="col-lg-5">
                                                     <a href="/keyword/{{ $keyword->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
                                                 <div class="col-lg-2">
