@@ -30,7 +30,12 @@
     th,td{
         text-align: center !important;
     }
-
+    .btn-sm{
+        font-size:14px;
+    }
+    .desc{
+        color:#EB3B39;
+    }
 
 </style>
 </head>
@@ -88,6 +93,15 @@
                             </li>
 
                             <li><a href="/schedule">Schedule</a></li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DM On Follow <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/dm">DM Log</a></li>
+                                    <li><a href="/dm_config">Settings</a></li>
+                                </ul>
+                            </li>
+
                             <li><a href="/analytics">Analytics</a></li>
                             <li><a href="/conf">Config</a></li>
                             <li><a href="{{ route('logout') }}"

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-lg-8  col-lg-offset-2">
+        <div class="col-lg-6  col-lg-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light" style="height: 45px; padding-top:0px;">
                     <div class="row">
@@ -24,6 +24,8 @@
                     </div>
                 @endif
                 <div class="panel-body">
+                    <div align="left" class="desc">Schedule tweets to be send at specific date and time.</div>
+
                     <div class="row">
                         <div class="col-lg-12 table-responsive">
                             <table id="example" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered hover">
@@ -35,7 +37,7 @@
                                     <th >Tweet</th>
                                     <th width="150">Status</th>
                                     <th width="150">Sent</th>
-                                    <th width="200"></th>
+                                    <th width="100">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>

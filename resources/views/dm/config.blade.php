@@ -10,7 +10,7 @@
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/dm_config') }}">
                             {{ csrf_field() }}
 
-                            <h5 align="left">Send Direct Message when someone follows you</h5>
+                            <div align="left" class="desc">Send Direct Message when someone follows you</div>
                             <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
                                 <label for="text" class="col-md-4 control-label">DM Text</label>
 

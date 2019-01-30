@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label for="user_id" class="col-md-4 control-label">Turn Bot Off</label>
                                 <div class="col-md-6">
-                                    <input type="checkbox" class="green" name="turn_off" id="turn_off" @if ($conf->turn_off) checked @endif>
+                                    <input type="checkbox" class="green" name="turn_off" id="turn_off" data-group-cls="btn-group-sm" @if ($conf->turn_off) checked @endif>
                                 </div>
                             </div>
 

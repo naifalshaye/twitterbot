@@ -24,7 +24,10 @@
                     </div>
                 @endif
                 <div class="panel-body">
+                    <div align="left" class="desc">Add keywords and replies that you want the bot to listen to. e.g Your company FAQs</div>
+
                     <div class="row">
+
                         <div class="col-lg-12 table-responsive">
                             <table id="example" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered hover">
                                 <thead>
