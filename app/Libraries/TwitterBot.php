@@ -89,7 +89,7 @@ class TwitterBot
             || !isset($settings['consumer_key'])
             || !isset($settings['consumer_secret']))
         {
-            throw new \InvalidArgumentException('Incomplete settings passed to TwitterAPIExchange');
+//            throw new \InvalidArgumentException('Incomplete settings passed to TwitterAPIExchange');
         }
         $this->oauth_access_token = $settings['oauth_access_token'];
         $this->oauth_access_token_secret = $settings['oauth_access_token_secret'];
