@@ -80,7 +80,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/chat_tweets">Tweets</a></li>
+                                    <li><a href="{!! url('chat_tweets') !!}">Tweets</a></li>
                                     <li><a href="/chat">Settings</a></li>
                                 </ul>
                             </li>
