@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-            </div><br>
+            </div>
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
@@ -39,6 +39,9 @@
                                 0
                             @endif
                         </div>
+                        <div>Schedules: {{$numbers->schedules}}</div>
+                        <div>DM: {{$numbers->dm}}</div>
+
                     </div>
                 </div>
             </div>

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Chat;
 use App\ChatTweet;
 use App\Conf;
+use App\DM;
 use App\Keyword;
 use App\Library\TwitterBot;
+use App\Schedule;
 use App\Tweet;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +34,7 @@ class HomeController extends Controller
 
         $requestMethod = 'GET';
         $url = 'https://api.twitter.com/1.1/trends/place.json';
-        $getfield = '?id=' . 23424938;
+        $getfield = '?id=' . 1;
 
         $trends = json_decode($twitter->setGetfield($getfield)
             ->buildOauth($url, $requestMethod)
@@ -43,6 +45,8 @@ class HomeController extends Controller
 
         $numbers = new \stdClass();
         $numbers->chat = Chat::count();
+        $numbers->dm = DM::count();
+        $numbers->schedules = Schedule::count();
         $numbers->stream = Keyword::count();
         $numbers->chat_tweets = ChatTweet::count();
 

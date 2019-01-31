@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ChatTweet;
+use App\DM;
+use App\Schedule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -50,7 +52,7 @@ class AnalyticsController extends Controller
         $daily_chat_tweets_data = ChatTweet::select([
             DB::raw('DATE(created_at) AS date'),
             DB::raw('COUNT(id) AS count'),
-        ])
+            ])
             ->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()])
             ->groupBy('date')
             ->orderBy('date', 'ASC')
@@ -62,18 +64,36 @@ class AnalyticsController extends Controller
             array_push($daily_chat_tweets,[substr($tweet['date'],8),$tweet['count']]);
         }
 
-        $top_dm_users_data = DB::table('dm')
-            ->select(DB::raw('screen_name'), DB::raw('count(*) as count'))
-            ->groupBy('screen_name')
-            ->orderBy('count', 'desc')
-            ->take(10)
-            ->get();
+        $daily_dm_data = DM::select([
+            DB::raw('DATE(created_at) AS date'),
+            DB::raw('COUNT(id) AS count'),
+            ])
+            ->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()])
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get()
+            ->toArray();
 
-        $top_dm_users = [];
-        foreach ($top_dm_users_data as $user){
-            array_push($top_dm_users,[$user->screen_name,$user->count]);
+
+        $daily_dm = [];
+        foreach ($daily_dm_data as $dm){
+            array_push($daily_dm,[$dm['date'],$dm['count']]);
+        }
+        $current_year_schedule_data = Schedule::select([
+            DB::raw('MONTH(created_at) AS month'),
+            DB::raw('COUNT(id) AS count'),
+        ])
+            ->whereBetween('created_at', [Carbon::now()->subYear(1), Carbon::now()])
+            ->groupBy('month')
+            ->orderBy('month', 'ASC')
+            ->get()
+            ->toArray();
+
+        $current_year_schedules = [];
+        foreach ($current_year_schedule_data as $dm){
+            array_push($current_year_schedules,[$dm['month'],$dm['count']]);
         }
 
-        return view('analytics.index',compact('top_chat_keywords','top_chat_users','top_stream_users','daily_chat_tweets','top_dm_users'));
+        return view('analytics.index',compact('top_chat_keywords','top_chat_users','top_stream_users','daily_chat_tweets','daily_dm','current_year_schedules'));
     }
 }

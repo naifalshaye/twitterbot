@@ -10,6 +10,14 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Daily Direct Messages On Follow</div>
+                    <div class="panel-body">
+                        <div id="daily_dm" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-6">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Top 10 Chat Keywords</div>
@@ -36,9 +44,9 @@
             </div>
             <div class="col-sm-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Top 10 Direct Messages Users</div>
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Current Year Schedules</div>
                     <div class="panel-body">
-                        <div id="top_dm_users" style="width: 500px; height: 400px;"></div>
+                        <div id="current_year_schedules" style="width: 500px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -50,10 +58,11 @@
 <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawDailyChatTweetsChart);
+    google.charts.setOnLoadCallback(drawDailyDMChart);
     google.charts.setOnLoadCallback(drawTopChatKeywordsChart);
     google.charts.setOnLoadCallback(drawTopChatUsersChart);
     google.charts.setOnLoadCallback(drawTopSteamUsersChart);
-    google.charts.setOnLoadCallback(drawTopDMUsersChart);
+    google.charts.setOnLoadCallback(drawCurrentYearSchedulesChart);
 
     function drawDailyChatTweetsChart() {
         var daily_chat_tweets = <?php echo json_encode($daily_chat_tweets); ?>;
@@ -76,6 +85,30 @@
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('daily_chat_tweets'));
+        chart.draw(data, options);
+    }
+
+    function drawDailyDMChart() {
+        var daily_dm = <?php echo json_encode($daily_dm); ?>;
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Day');
+        data.addColumn('number', 'Direct Messages');
+
+        data.addRows(daily_dm);
+
+        var options = {
+            title: '',
+            hAxis: {
+                title: 'Day',
+                minValue: 0
+            },
+            vAxis: {
+                title: 'Direct Messages'
+            },
+            colors:['#00BABE']
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('daily_dm'));
         chart.draw(data, options);
     }
 
@@ -151,36 +184,37 @@
             vAxis: {
                 title: 'Tweets'
             },
-            colors:['#F3BB8C']
+            colors:['#A54341']
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('top_stream_users'));
         chart.draw(data, options);
     }
 
-    function drawTopDMUsersChart() {
-        var top_dm_users = <?php echo json_encode($top_dm_users); ?>;
+    function drawCurrentYearSchedulesChart() {
+        var current_year_schedules = <?php echo json_encode($current_year_schedules); ?>;
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'User');
-        data.addColumn('number', 'Total');
-        data.addRows(top_dm_users);
+        data.addColumn('number', 'Month');
+        data.addColumn('number', 'Schedules');
+        data.addRows(current_year_schedules);
 
         var options = {
             title: '',
             hAxis: {
-                title: 'Users',
+                title: 'Months',
                 minValue: 0,
-                direction:-1,
-                slantedText:true,
-                slantedTextAngle:40
+                direction: -1,
+                slantedText: true,
+                slantedTextAngle: 40
             },
             vAxis: {
-                title: 'Direct MessagesT '
+                title: 'Schedules'
             },
-            colors:['#D39290']
+            colors: ['#DC6743']
         };
 
-        var chart = new google.visualization.ColumnChart(document.getElementById('top_dm_users'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('current_year_schedules'));
         chart.draw(data, options);
     }
+
 </script>

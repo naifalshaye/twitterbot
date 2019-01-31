@@ -41,7 +41,7 @@
 </style>
 </head>
 <body>
-
+@if (Auth::check())
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -120,7 +120,7 @@
                 </div>
             </div>
         </nav>
-
+        @endif
         @yield('content')
     </div>
 
