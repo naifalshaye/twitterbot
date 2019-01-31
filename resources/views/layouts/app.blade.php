@@ -76,35 +76,35 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                         @else
-                            <li><a href="/home">Home</a></li>
+                            <li><a href="{{ url('/home') }}">Home</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{!! url('chat_tweets') !!}">Tweets</a></li>
-                                    <li><a href="/chat">Settings</a></li>
+                                    <li><a href="{!! url('chat') !!}">Settings</a></li>
                                 </ul>
                             </li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/tweets">Tweets</a></li>
-                                    <li><a href="/keyword">Settings</a></li>
+                                    <li><a href="{!! url('tweets') !!}">Tweets</a></li>
+                                    <li><a href="{!! url('keyword') !!}">Settings</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="/schedule">Schedule</a></li>
+                            <li><a href="{!! url('schedule') !!}">Schedule</a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DM On Follow <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/dm">DM Log</a></li>
-                                    <li><a href="/dm_config">Settings</a></li>
+                                    <li><a href="{!! url('dm') !!}">DM Log</a></li>
+                                    <li><a href="{!! url('dm_config') !!}">Settings</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="/analytics">Analytics</a></li>
-                            <li><a href="/conf">Config</a></li>
+                            <li><a href="{!! url('analytics') !!}">Analytics</a></li>
+                            <li><a href="{!! url('conf') !!}">Config</a></li>
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
