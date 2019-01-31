@@ -35,6 +35,7 @@
     }
     .desc{
         color:#EB3B39;
+        margin-bottom: 20px;
     }
 
 </style>
