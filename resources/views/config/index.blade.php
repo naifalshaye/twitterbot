@@ -20,17 +20,6 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                            @if (isset($twitter_user))
-                                <div class="row">
-                                    <div class="col-lg-6 col-lg-offset-1">
-                                        <div>Bot User Details:</div>
-                                        <div>Username: {{$twitter_user->screen_name}}</div>
-                                        <div>Name: {{$twitter_user->name}}</div>
-                                        <div>Tweets: {{$twitter_user->statuses_count}}</div>
-                                    </div>
-                                </div>
-                                <hr>
-                            @endif
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/conf') }}">
                             {{ csrf_field() }}
                             <div class="form-group">

@@ -5,9 +5,6 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="col-lg-4">
-                @if (isset($twitter_user) && !empty($twitter_user))
-                    <span>Welcome {{$twitter_user->name}}</span>
-                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-weight: bold;">Trending</div>
 
