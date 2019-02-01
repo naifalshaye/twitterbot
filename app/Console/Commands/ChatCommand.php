@@ -64,7 +64,7 @@ class ChatCommand extends Command
             if ($collection->count() > 0) {
                 foreach ($collection as $mention) {
                     foreach ($chat as $row) {
-                        if (!$row->disable) {
+                        if (isset($mention->text) && !empty($mention->text) && !$row->disable) {
                             if (mb_strpos($mention->text, $row->keyword) != false || mb_strpos($mention->text,
                                     $row->keyword) > 0 || strpos($mention->text, $row->keyword) > 0) {
                                 try {
