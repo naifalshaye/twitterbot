@@ -104,6 +104,7 @@
                             </li>
 
                             <li><a href="{{ url('analytics') }}">Analytics</a></li>
+                            <li><a href="{{ url('logs') }}">Error Logs</a></li>
                             <li><a href="{{ url('conf') }}">Configuration</a></li>
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

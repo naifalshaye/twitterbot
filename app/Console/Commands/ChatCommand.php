@@ -9,7 +9,7 @@ use App\Library\TwitterBot;
 use Illuminate\Console\Command;
 use Twitter;
 
-class ChatCommand extends Command
+class   ChatCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -81,7 +81,7 @@ class ChatCommand extends Command
 
                                     $tweet = new ChatTweet();
                                     $tweet->keyword = $row->keyword;
-                                    $tweet->tweet_id = $collection->first()->id;
+                                    $tweet->tweet_id = $collection->first()->id_str;
                                     $tweet->user_id = $collection->first()->user->id;
                                     $tweet->user_screen_name = $collection->first()->user->screen_name;
                                     $tweet->user_name = $collection->first()->user->name;
