@@ -33,23 +33,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        if (App::environment('production')) {
-//
-//            $schedule->command('twitterbot:chat')
-//                ->everyMinute();
-//
-//            $schedule->command('twitterbot:streaming')
-//                ->everyThirtyMinutes();
-//
-//            $schedule->command('twitterbot:scheduled')
-//                ->everyMinute();
-//
-//            $schedule->command('twitterbot:dmfollower')
-//                ->everyMinute();
-//        }
+        if (App::environment('production')) {
 
-        $schedule->command('twitterbot:chat')
-            ->everyMinute();
+            $schedule->command('twitterbot:chat')
+                ->everyMinute();
+
+            $schedule->command('twitterbot:streaming')
+                ->everyThirtyMinutes();
+
+            $schedule->command('twitterbot:scheduled')
+                ->everyMinute();
+
+            $schedule->command('twitterbot:dmfollower')
+                ->everyMinute();
+        }
     }
 
     /**
