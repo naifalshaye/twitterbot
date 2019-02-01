@@ -55,13 +55,13 @@ class DMFollower extends Command
             $response = json_decode($this->twitter->buildOauth('https://api.twitter.com/1.1/followers/list.json', 'GET')->performRequest());
 
             foreach ($response->users as $user) {
-                $exist = DM::where('follower_id', $user->id)->exists();
+                $exist = DM::where('follower_id', $user->id_str)->exists();
                 if (!$exist) {
 
-                    $this->sendDM($user->id, $dm_conf->text);
+                    $this->sendDM($user->id_str, $dm_conf->text);
 
                     $dm = new DM();
-                    $dm->follower_id = $user->id;
+                    $dm->follower_id = $user->id_str;
                     $dm->screen_name = $user->screen_name;
                     $dm->name = $user->name;
                     $dm->msg = $dm_conf->text;
