@@ -24,7 +24,7 @@
                 <div class="panel-body">
                     <div class="row" align="center">
                         <div class="col-lg-12">
-                            <form class="form-inline" enctype="multipart/form-data" role="form" method="GET" action="{{'/tweets'}}">
+                            <form class="form-inline" enctype="multipart/form-data" role="form" method="GET" action="{{ url('tweets') }}">
                                 <div class="form-group">
                                     <input type="date" class="form-control" name="date" placeholder="Date">
                                 </div>
