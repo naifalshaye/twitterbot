@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Keyword extends Model
+class Streaming extends Model
 {
     protected $table = 'keywords';
 

@@ -46,18 +46,18 @@
                                         <td>{{ $row->reply }}</td>
                                         <td>
                                             @if ($row->disable == false)
-                                                <a href="/chat/status/{{$row->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
+                                                <a href="{{ url('chat/status/'.$row->id) }}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
                                             @else
-                                                <a href="/chat/status/{{$row->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
+                                                <a href="{{url('chat/status/'.$row->id) }}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
                                             @endif
                                         </td>
                                         <td>
                                             <div class="row">
                                                 <div class="col-lg-5">
-                                                    <a href="/chat/{{ $row->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
+                                                    <a href="{{ url('chat/'. $row->id )}}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
                                                 <div class="col-lg-3">
-                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="/chat/{{$row->id}}">
+                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="{{ url('chat/'.$row->id) }}">
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete chat keyword are you sure?');">

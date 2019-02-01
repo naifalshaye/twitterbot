@@ -19,7 +19,7 @@
                             {{session('success')}}
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/keyword') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/streaming') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">

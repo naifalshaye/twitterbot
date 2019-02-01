@@ -19,7 +19,7 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="post" role="form" action="/chat/{{$chat->id}}">
+                        <form class="form-horizontal" method="post" role="form" action="{{ url('chat/'.$chat->id) }}">
                             <input type="hidden" name="_method" value="PUT">
                             <fieldset>
                             {!! csrf_field() !!}

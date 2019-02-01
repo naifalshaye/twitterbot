@@ -19,7 +19,7 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="post" role="form" action="/schedule/{{$schedule->id}}">
+                        <form class="form-horizontal" method="post" role="form" action="{{ url('schedule/'.$schedule->id) }}">
                             <input type="hidden" name="_method" value="PUT">
                             <fieldset>
                             {!! csrf_field() !!}

@@ -6,7 +6,7 @@ use App\Chat;
 use App\ChatTweet;
 use App\Conf;
 use App\DM;
-use App\Keyword;
+use App\Streaming;
 use App\Library\TwitterBot;
 use App\Schedule;
 use App\Tweet;
@@ -47,7 +47,7 @@ class HomeController extends Controller
         $numbers->chat = Chat::count();
         $numbers->dm = DM::count();
         $numbers->schedules = Schedule::count();
-        $numbers->stream = Keyword::count();
+        $numbers->stream = Streaming::count();
         $numbers->chat_tweets = ChatTweet::count();
 
         $conf = Conf::findOrNew(1);

@@ -6,7 +6,7 @@
                 <div class="panel-heading bg-light" style="height: 45px; padding-top:0px;">
                     <div class="row">
                         <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">Scheduled Tweets</div>
-                        <div class="btn btn-sm pull-right"><a href="/schedule/create" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add Scheduled Tweet</span></a></div>
+                        <div class="btn btn-sm pull-right"><a href="{{ url('schedule/create') }}" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add Scheduled Tweet</span></a></div>
                     </div>
                 </div>
                 @if (count($errors) > 0)
@@ -49,9 +49,9 @@
                                         <td>{{ $row->text }}</td>
                                         <td>
                                             @if ($row->disable == false)
-                                                <a href="/schedule/status/{{$row->id}}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
+                                                <a href="{{ url('schedule/status/'.$row->id) }}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
                                             @else
-                                                <a href="/schedule/status/{{$row->id}}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
+                                                <a href="{{ url('schedule/status/'.$row->id) }}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
                                             @endif
                                         </td>
                                         <td>
@@ -64,10 +64,10 @@
                                         <th>
                                             <div class="row">
                                                 <div class="col-xs-4">
-                                                    <a href="/schedule/{{ $row->id }}/edit" class="btn btn-primary btn-xs">Edit</a>
+                                                    <a href="{{ url('schedule/'.$row->id) }}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
                                                 <div class="col-xs-2">
-                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="/schedule/{{$row->id}}">
+                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="{{ url('schedule/'.$row->id) }}">
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete Schedule are you sure?');">

@@ -33,11 +33,11 @@ Route::post('/conf', 'ConfController@update');
 
 
 Route::resource('chat', 'ChatController');
-Route::resource('keyword', 'KeywordController');
+Route::resource('streaming', 'StreamingController');
 Route::resource('schedule', 'ScheduleController');
 
 Route::get('/chat/status/{id}',  'ChatController@status');
-Route::get('/keyword/status/{id}',  'KeywordController@status');
+Route::get('/streaming/status/{id}',  'StreamingController@status');
 Route::get('/schedule/status/{id}',  'ScheduleController@status');
 
 Route::get('/tweets',  'StreamingTweetsController@index');

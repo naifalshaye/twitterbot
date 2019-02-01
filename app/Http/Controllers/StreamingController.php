@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Keyword;
+use App\Streaming;
 use Illuminate\Http\Request;
 
-class KeywordController extends Controller
+class StreamingController extends Controller
 {
     public function __construct()
     {
@@ -14,8 +14,8 @@ class KeywordController extends Controller
 
     public function index()
     {
-        $keywords = Keyword::OrderBy('id','desc')->paginate(15);
-        return view('keyword.index', compact('keywords'));
+        $streaming = Streaming::OrderBy('id','desc')->paginate(15);
+        return view('streaming.index', compact('streaming'));
     }
 
     /**
@@ -25,7 +25,7 @@ class KeywordController extends Controller
      */
     public function create()
     {
-        return view('keyword.add');
+        return view('streaming.add');
     }
 
     /**
@@ -41,8 +41,8 @@ class KeywordController extends Controller
         } else {
             $request['disable']  = false;
         }
-        $keyword = Keyword::create($request->all());
-        return redirect()->back()->with('success', 'Keyword Added.');
+        $streaming = Streaming::create($request->all());
+        return redirect()->back()->with('success', 'Streaming keyword has been dded.');
     }
 
     /**
@@ -64,8 +64,8 @@ class KeywordController extends Controller
      */
     public function edit($id)
     {
-        $keyword = Keyword::findOrFail($id);
-        return view('keyword.edit', compact('keyword'));
+        $streaming = Streaming::findOrFail($id);
+        return view('streaming.edit', compact('streaming'));
     }
 
     /**
@@ -83,11 +83,11 @@ class KeywordController extends Controller
             $request->disable = false;
         }
 
-        $keyword = Keyword::findOrFail($id);
-        $keyword->str = $request->str;
-        $keyword->disable = $request->disable;
-        $keyword->save();
-        return redirect()->back()->with('success', 'Keyword Updated.');
+        $streaming = Streaming::findOrFail($id);
+        $streaming->str = $request->str;
+        $streaming->disable = $request->disable;
+        $streaming->save();
+        return redirect()->back()->with('success', 'Streaming keyword has been updated.');
     }
 
     /**
@@ -97,22 +97,22 @@ class KeywordController extends Controller
      */
     public function destroy($id)
     {
-        $keyword = Keyword::findOrFail($id);
-        $keyword->delete();
-        return redirect()->to('/keyword')->with('success', 'Keyword Deleted.');
+        $streaming = Streaming::findOrFail($id);
+        $streaming->delete();
+        return redirect()->to('/streaming')->with('success', 'Streaming keyword has been deleted.');
     }
 
     public function status($id)
     {
-        $keyword = Keyword::findOrFail($id);
-        if ($keyword->disable){
-            $keyword->disable = false;
+        $streaming = Streaming::findOrFail($id);
+        if ($streaming->disable){
+            $streaming->disable = false;
         }
         else {
-            $keyword->disable = true;
+            $streaming->disable = true;
         }
-        $keyword->save();
-        return redirect()->to('/keyword');
+        $streaming->save();
+        return redirect()->to('/streaming');
 
     }
 }

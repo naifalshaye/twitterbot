@@ -58,6 +58,12 @@ class ScheduleController extends Controller
         }
         $schedule->save();
         return redirect()->to('/schedule');
+    }
 
+    public function destroy($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        $schedule->delete();
+        return redirect()->to('/schedule')->with('success', 'Scheduled tweed has been deleted.');
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Conf;
-use App\Keyword;
+use App\Streaming;
 use App\Tweet;
 use Illuminate\Console\Command;
 use Spatie\TwitterStreamingApi\PublicStream;
@@ -47,7 +47,7 @@ class StreamTwitter extends Command
             error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         }
 
-        $keywords = Keyword::where('disable', false)->pluck('str')->toArray();
+        $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
             PublicStream::create(
                 config('ttwitter.STREAM_ACCESS_TOKEN'),
