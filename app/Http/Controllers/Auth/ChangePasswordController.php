@@ -12,7 +12,7 @@ class ChangePasswordController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'password' => 'required|min:6',
+            'new_pass' => 'required|min:6',
             'confirm_pass'=>'required|same:password'
         ]);
 
