@@ -16,7 +16,7 @@ class Scheduled extends Command
      *
      * @var string
      */
-    protected $signature = 'Scheduled';
+    protected $signature = 'twitterbot:scheduled';
 
     /**
      * The console command description.

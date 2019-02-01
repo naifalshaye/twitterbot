@@ -16,7 +16,7 @@ class DMFollower extends Command
      *
      * @var string
      */
-    protected $signature = 'DMFollower';
+    protected $signature = 'twitterbot:dmfollower';
 
     /**
      * The console command description.

@@ -15,7 +15,7 @@ class StreamTwitter extends Command
      *
      * @var string
      */
-    protected $signature = 'StreamTwitter';
+    protected $signature = 'twitterbot:streaming';
 
     /**
      * The console command description.

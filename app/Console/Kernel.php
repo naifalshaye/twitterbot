@@ -35,16 +35,16 @@ class Kernel extends ConsoleKernel
     {
         if (App::environment('production')) {
 
-            $schedule->command('Chat')
+            $schedule->command('twitterbot:chat')
                 ->everyMinute();
 
-            $schedule->command('StreamTwitter')
+            $schedule->command('twitterbot:streaming')
                 ->everyThirtyMinutes();
 
-            $schedule->command('Scheduled')
+            $schedule->command('twitterbot:scheduled')
                 ->everyMinute();
 
-            $schedule->command('DMFollower')
+            $schedule->command('twitterbot:dmfollower')
                 ->everyMinute();
         }
 

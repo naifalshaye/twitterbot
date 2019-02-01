@@ -53,3 +53,5 @@ Route::get('/dm_config', "DMController@dmConfig");
 Route::post('/dm_config', "DMController@updateConfig");
 
 Route::get('/analytics', "AnalyticsController@index");
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

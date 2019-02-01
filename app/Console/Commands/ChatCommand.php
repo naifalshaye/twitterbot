@@ -16,7 +16,7 @@ class ChatCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'Chat';
+    protected $signature = 'twitterbot:chat';
 
     /**
      * The console command description.
