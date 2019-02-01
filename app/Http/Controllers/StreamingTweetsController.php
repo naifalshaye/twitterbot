@@ -45,7 +45,7 @@ class StreamingTweetsController extends Controller
 
         $tweets = $tweets->OrderBy('created_at','desc')->paginate(50);
 
-        return view('tweets.index',compact('tweets'));
+        return view('streaming.tweets',compact('tweets'));
     }
 
 }
