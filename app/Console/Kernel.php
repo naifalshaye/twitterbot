@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
     {
         if (App::environment('production')) {
 
-            $schedule->command('ChatCommand')
+            $schedule->command('Chat')
                 ->everyMinute();
 
             $schedule->command('StreamTwitter')

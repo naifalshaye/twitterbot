@@ -45,21 +45,6 @@ Route::get('/schedule/status/{id}',  'ScheduleController@status');
 
 Route::get('/tweets',  'StreamingTweetsController@index');
 
-//Route::get('/register', function(){
-//    return redirect('/');
-//});
-//Route::post('/register', function(){
-//    return redirect('/');
-//});
-
-Route::get('/kill/{pid}', 'HomeController@kill');
-Route::post('/killall', 'HomeController@killAll');
-
-Route::get('/test',  'HomeController@test');
-
-
-Route::get('/run_stream', "HomeController@runTwitterCommand");
-
 Route::get('/chat_tweets', "ChatTweetController@index");
 Route::get('/tweets', "StreamingTweetsController@index");
 
