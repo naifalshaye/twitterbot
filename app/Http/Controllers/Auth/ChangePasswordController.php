@@ -13,7 +13,7 @@ class ChangePasswordController extends Controller
     {
         $this->validate($request, [
             'new_pass' => 'required|min:6',
-            'confirm_pass'=>'required|same:password'
+            'confirm_pass'=>'required|same:new_pass'
         ]);
 
         $user = Auth::user();
