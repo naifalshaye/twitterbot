@@ -47,7 +47,9 @@ class Scheduled extends Command
 
         $date = Carbon::now()->format('Y-m-d');
         $time = Carbon::now();
-        $time->setTimezone(config('bot.timezone'));
+        if (!empty(config('bot.timezone'))) {
+            $time->setTimezone(config('bot.timezone'));
+        }
         $time = $time->format('H:i');
 
         $schedules = Schedule::where('date', $date)->where('time', $time)->get();

@@ -43,10 +43,6 @@ class StreamTwitter extends Command
             return;
         }
 
-        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-        }
-
         $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
             PublicStream::create(
