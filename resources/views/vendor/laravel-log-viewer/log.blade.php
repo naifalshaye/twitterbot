@@ -4,8 +4,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-      <h1><i class="fa fa-calendar" aria-hidden="true"></i> Laravel Log Viewer</h1>
-      <p class="text-muted"><i>by Rap2h</i></p>
       <div class="list-group div-scroll">
         @foreach($folders as $folder)
           <div class="list-group-item">
@@ -108,7 +106,8 @@
         @endif
       </div>
     </div>
-  </div>
+    <div align="center" style="font-size:14px !important; color:#adadad !important;">Laravel Log Viewer | by Rap2h</div>
+    </div>
 </div>
 <!-- jQuery for Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
