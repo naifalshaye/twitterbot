@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Conf;
 use App\Console\Commands\DMFollower;
 use App\Console\Commands\Scheduled;
 use App\Console\Commands\StreamTwitter;
@@ -34,18 +35,21 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         if (App::environment('production')) {
+            $conf = Conf::findOrNew(1);
+            if (!$conf->turn_off) {
 
-            $schedule->command('twitterbot:chat')
-                ->everyMinute();
+                $schedule->command('twitterbot:chat')
+                    ->everyMinute();
 
-            $schedule->command('twitterbot:streaming')
-                ->everyThirtyMinutes();
+                $schedule->command('twitterbot:streaming')
+                    ->everyThirtyMinutes();
 
-            $schedule->command('twitterbot:scheduled')
-                ->everyMinute();
+                $schedule->command('twitterbot:scheduled')
+                    ->everyMinute();
 
-            $schedule->command('twitterbot:dmfollower')
-                ->everyMinute();
+                $schedule->command('twitterbot:dmfollower')
+                    ->everyMinute();
+            }
         }
     }
 

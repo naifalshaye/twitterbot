@@ -43,11 +43,6 @@ class DMFollower extends Command
      */
     public function handle()
     {
-        $conf = Conf::findOrNew(1);
-        if ($conf->turn_off){
-            return;
-        }
-
         $dm_conf = DMConfig::findOrNew(1);
 
         if (!$dm_conf->disable && !empty($dm_conf->text)) {

@@ -42,11 +42,6 @@ class StreamTwitter extends Command
             error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         }
 
-        $conf = Conf::findOrNew(1);
-        if ($conf->turn_off){
-            return;
-        }
-
         $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
             PublicStream::create(
