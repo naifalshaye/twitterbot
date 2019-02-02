@@ -413,8 +413,9 @@ abstract class Phirehose
       
       // (Re)connect
       $this->reconnect();
-    
-      // Init state
+      exec("pkill -f twitterbot:streaming", $psOutput);
+
+        // Init state
       $lastAverage = $lastFilterCheck = $lastFilterUpd = $lastStreamActivity = time();
       $fdw = $fde = NULL; // Placeholder write/error file descriptors for stream_select
       

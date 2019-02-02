@@ -59,7 +59,6 @@ class StreamTwitter extends Command
 
             $sc = new FilterTrackConsumer(OAUTH_TOKEN, OAUTH_SECRET, Phirehose::METHOD_FILTER);
             $sc->setTrack($keywords);
-            exec("pkill -f twitterbot:streaming", $psOutput);
             $sc->consume();
         }
 
