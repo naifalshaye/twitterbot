@@ -44,8 +44,8 @@ class StreamTwitter extends Command
 
         $conf = Conf::findOrNew(1);
 
-        exec("pkill -f twitterbot:streaming", $psOutput);
         if ($conf->turn_off) {
+            exec("pkill -f twitterbot:streaming", $psOutput);
             return;
         }
 
@@ -59,6 +59,7 @@ class StreamTwitter extends Command
 
             $sc = new FilterTrackConsumer(OAUTH_TOKEN, OAUTH_SECRET, Phirehose::METHOD_FILTER);
             $sc->setTrack($keywords);
+            exec("pkill -f twitterbot:streaming", $psOutput);
             $sc->consume();
         }
 
