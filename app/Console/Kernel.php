@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
                     ->everyMinute();
 
                 $schedule->command('twitterbot:streaming')
-                    ->everyFiveMinutes();
+                    ->everyMinute();
 
                 $schedule->command('twitterbot:scheduled')
                     ->everyMinute();
