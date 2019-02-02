@@ -40,7 +40,7 @@ class HomeController extends Controller
             ->buildOauth($url, $requestMethod)
             ->performRequest());
 
-        if (isset($trends->errors)){
+        if (isset($trends->errors) && !empty($trends->errors)){
             $trends = null;
         }
         $chat_tweet = ChatTweet::get()->last();
