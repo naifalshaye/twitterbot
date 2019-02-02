@@ -36,21 +36,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         if (App::environment('production')) {
-            $conf = Conf::findOrNew(1);
-            if (!$conf->turn_off) {
+            $schedule->command('twitterbot:chat')
+                ->everyMinute();
 
-                $schedule->command('twitterbot:chat')
-                    ->everyMinute();
+            $schedule->command('twitterbot:streaming')
+                ->everyMinute();
 
-                $schedule->command('twitterbot:streaming')
-                    ->everyMinute();
+            $schedule->command('twitterbot:scheduled')
+                ->everyMinute();
 
-                $schedule->command('twitterbot:scheduled')
-                    ->everyMinute();
-
-                $schedule->command('twitterbot:dmfollower')
-                    ->everyMinute();
-            }
+            $schedule->command('twitterbot:dmfollower')
+                ->everyMinute();
         }
     }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "790626a1bbaf80734ecf19daf79070c7",
+    "content-hash": "f16264758cb965501299e0cbac3925e3",
     "packages": [
         {
             "name": "dg/twitter-php",
@@ -424,50 +424,6 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
-        },
-        {
-            "name": "fennb/phirehose",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fennb/phirehose.git",
-                "reference": "63d638473bf8e9e70f0bfc7785a6b557594d17c8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fennb/phirehose/zipball/63d638473bf8e9e70f0bfc7785a6b557594d17c8",
-                "reference": "63d638473bf8e9e70f0bfc7785a6b557594d17c8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "lib"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL"
-            ],
-            "authors": [
-                {
-                    "name": "Fenn Bailey",
-                    "homepage": "http://fennb.com/"
-                }
-            ],
-            "description": "A PHP interface to the Twitter Streaming API.",
-            "homepage": "https://github.com/fennb/phirehose",
-            "keywords": [
-                "api",
-                "phirehose",
-                "php",
-                "streaming",
-                "twitter"
-            ],
-            "time": "2014-09-30T23:30:52+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -997,16 +953,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.49",
+            "version": "1.0.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd"
+                "reference": "dab4e7624efa543a943be978008f439c333f2249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a63cc83d8a931b271be45148fa39ba7156782ffd",
-                "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dab4e7624efa543a943be978008f439c333f2249",
+                "reference": "dab4e7624efa543a943be978008f439c333f2249",
                 "shasum": ""
             },
             "require": {
@@ -1077,7 +1033,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-11-23T23:41:29+00:00"
+            "time": "2019-02-01T08:50:36+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -1891,53 +1847,6 @@
                 "sentry"
             ],
             "time": "2017-04-21T17:44:27+00:00"
-        },
-        {
-            "name": "spatie/twitter-streaming-api",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/twitter-streaming-api.git",
-                "reference": "7c1a0703ca81b21a9f62221be03fe00e83791ea8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/twitter-streaming-api/zipball/7c1a0703ca81b21a9f62221be03fe00e83791ea8",
-                "reference": "7c1a0703ca81b21a9f62221be03fe00e83791ea8",
-                "shasum": ""
-            },
-            "require": {
-                "fennb/phirehose": "^1.0",
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "5.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\TwitterStreamingApi\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Easily work with the Twitter Streaming API",
-            "homepage": "https://github.com/spatie/twitter-streaming-api",
-            "keywords": [
-                "spatie",
-                "twitter-streaming-api"
-            ],
-            "time": "2018-01-20T15:57:42+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2988,16 +2897,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.6.0",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "f3aae2877ecf916ee802b7a5b249d36658171df6"
+                "reference": "2a7dcf7e3e02dc5e701004e51a6f304b713107d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/f3aae2877ecf916ee802b7a5b249d36658171df6",
-                "reference": "f3aae2877ecf916ee802b7a5b249d36658171df6",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/2a7dcf7e3e02dc5e701004e51a6f304b713107d5",
+                "reference": "2a7dcf7e3e02dc5e701004e51a6f304b713107d5",
                 "shasum": ""
             },
             "require": {
@@ -3035,7 +2944,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2019-01-28T20:57:27+00:00"
+            "time": "2019-01-29T11:11:52+00:00"
         }
     ],
     "packages-dev": [

@@ -43,8 +43,12 @@ class DMFollower extends Command
      */
     public function handle()
     {
-        $dm_conf = DMConfig::findOrNew(1);
+        $conf = Conf::findOrNew(1);
+        if ($conf->turn_off) {
+            return;
+        }
 
+        $dm_conf = DMConfig::findOrNew(1);
         if (!$dm_conf->disable && !empty($dm_conf->text)) {
 
             $response = json_decode($this->twitter->buildOauth('https://api.twitter.com/1.1/followers/list.json', 'GET')->performRequest());
