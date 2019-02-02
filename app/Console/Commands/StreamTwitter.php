@@ -53,7 +53,9 @@ class StreamTwitter extends Command
 
             $conf = Conf::findOrNew(1);
             if ($conf->turn_off) {
+
                 $sc->disconnect();
+                dd($conf->turn_off);
             }
 
             $sc->setTrack($keywords);
