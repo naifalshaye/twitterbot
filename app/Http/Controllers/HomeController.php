@@ -40,6 +40,9 @@ class HomeController extends Controller
             ->buildOauth($url, $requestMethod)
             ->performRequest());
 
+        if ($trends->errors){
+            $trends = null;
+        }
         $chat_tweet = ChatTweet::get()->last();
         $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
 

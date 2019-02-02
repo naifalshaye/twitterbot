@@ -4,26 +4,27 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-weight: bold;">Trending</div>
+            @if (isset($trends))
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="font-weight: bold;">Trending</div>
 
-                    <div class="panel-body">
-                        <ol>
-                            @foreach ($trends[0]->trends as $trend)
-                                <li>
-                                    @if (str_contains($trend->name,'#'))
-                                        <a href="https://twitter.com/hashtag/{{str_replace('#','',$trend->name)}}" target="_blank">{{$trend->name}}</a>
-                                    @else
-                                        <a href="https://twitter.com/search?q={{$trend->name}}" target="_blank">{{$trend->name}}</a>
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ol>
+                        <div class="panel-body">
+                            <ol>
+                                @foreach ($trends[0]->trends as $trend)
+                                    <li>
+                                        @if (str_contains($trend->name,'#'))
+                                            <a href="https://twitter.com/hashtag/{{str_replace('#','',$trend->name)}}" target="_blank">{{$trend->name}}</a>
+                                        @else
+                                            <a href="https://twitter.com/search?q={{$trend->name}}" target="_blank">{{$trend->name}}</a>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ol>
+                        </div>
                     </div>
                 </div>
-
-            </div>
+            @endif
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
@@ -45,6 +46,7 @@
                     </div>
                 </div>
             </div>
+                
             <div class="col-lg-2">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Bot Status</div>
@@ -54,6 +56,7 @@
                     </div>
                 </div>
             </div>
+
 
             @if (isset($chat_tweet))
                 <div class="col-lg-8">
@@ -70,7 +73,7 @@
                 </div>
             @endif
             @if (isset($stream_tweet))
-                <div class="col-lg-8">
+                <div class="col-lg-8 @if (!isset($trends)) col-lg-offset-3 @endif">
                     <div class="panel panel-default">
                         <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stream Latest Tweet</div>
                         <div class="panel-body">
