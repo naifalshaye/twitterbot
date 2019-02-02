@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Conf;
 use App\Console\Commands\DMFollower;
 use App\Console\Commands\Scheduled;
+use App\Console\Commands\StopStreaming;
 use App\Console\Commands\StreamTwitter;
 use App\Console\Commands\TwitterStream;
 use App\Console\Commands\ChatCommand;
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
         ChatCommand::class,
         Scheduled::class,
         DMFollower::class,
+        StopStreaming::class,
     ];
 
     /**
