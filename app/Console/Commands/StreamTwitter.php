@@ -44,7 +44,7 @@ class StreamTwitter extends Command
 
         $conf = Conf::findOrNew(1);
 
-        exec("pkill -f twitterbot:streaming", $psOutput);
+        $this->killStream();
         if ($conf->turn_off) {
             return;
         }
