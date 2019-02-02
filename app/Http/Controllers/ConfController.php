@@ -38,7 +38,6 @@ class ConfController extends Controller
 
         if ($request->turn_off == 'on'){
             $request['turn_off'] = true;
-            exec("pkill -f twitterbot:streaming");
         } else {
             $request['turn_off']  = false;
         }
