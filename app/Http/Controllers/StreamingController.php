@@ -42,7 +42,7 @@ class StreamingController extends Controller
             $request['disable']  = false;
         }
         $streaming = Streaming::create($request->all());
-        return redirect()->back()->with('success', 'Streaming keyword has been dded.');
+        return redirect()->back()->with('success', 'Streaming keyword has been added.');
     }
 
     /**

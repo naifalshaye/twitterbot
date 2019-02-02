@@ -42,24 +42,36 @@ class StreamTwitter extends Command
             error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         }
 
+        $conf = Conf::findOrNew(1);
+
+        exec("pkill -f twitterbot:streaming", $psOutput);
+        if ($conf->turn_off) {
+            return;
+        }
+
         $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
+
             define("TWITTER_CONSUMER_KEY", config('ttwitter.STREAM_CONSUMER_KEY'));
             define("TWITTER_CONSUMER_SECRET", config('ttwitter.STREAM_CONSUMER_SECRET'));
             define("OAUTH_TOKEN", config('ttwitter.STREAM_ACCESS_TOKEN'));
             define("OAUTH_SECRET", config('ttwitter.STREAM_ACCESS_TOKEN_SECRET'));
 
             $sc = new FilterTrackConsumer(OAUTH_TOKEN, OAUTH_SECRET, Phirehose::METHOD_FILTER);
-
-            $conf = Conf::findOrNew(1);
-            if ($conf->turn_off) {
-
-                $sc->disconnect();
-                dd($conf->turn_off);
-            }
-
             $sc->setTrack($keywords);
             $sc->consume();
+        }
+
+    }
+
+    public function killStream(){
+        exec("ps aux | grep -v grep | grep twitterbot:streaming", $psOutput);
+        if (count($psOutput) > 0) {
+            foreach ($psOutput as $ps) {
+                $ps = preg_split('/ +/', $ps);
+                $pid = $ps[1];
+                posix_kill($pid, 9);
+            }
         }
     }
 }
