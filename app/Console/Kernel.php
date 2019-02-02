@@ -24,8 +24,7 @@ class Kernel extends ConsoleKernel
         StreamTwitter::class,
         ChatCommand::class,
         Scheduled::class,
-        DMFollower::class,
-        StopStreaming::class,
+        DMFollower::class
     ];
 
     /**
