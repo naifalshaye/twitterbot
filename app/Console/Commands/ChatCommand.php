@@ -38,6 +38,8 @@ class   ChatCommand extends Command
 
     public function handle()
     {
+        $conf = Conf::findOrNew(1);
+
         $chat = Chat::get();
         if (isset($conf)) {
             $twitter = new TwitterBot();
