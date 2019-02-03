@@ -44,7 +44,7 @@ class StreamTwitter extends Command
         }
 //        shell_exec("pkill -f twitterbot:streaming");
 
-        exec(dirname(__FILE__) .'/kill.sh');
+        exec('/var/www/html/app/Console/Commands/kill.sh');
 
         $conf = Conf::findOrNew(1);
 
