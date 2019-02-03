@@ -38,9 +38,9 @@ class StreamTwitter extends Command
 
     public function handle()
     {
-        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-        }
+//        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+//            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+//        }
 
         $conf = Conf::findOrNew(1);
 
@@ -62,16 +62,5 @@ class StreamTwitter extends Command
             $sc->consume();
         }
 
-    }
-
-    public function killStream(){
-        exec("ps aux | grep -v grep | grep twitterbot:streaming", $psOutput);
-        if (count($psOutput) > 0) {
-            foreach ($psOutput as $ps) {
-                $ps = preg_split('/ +/', $ps);
-                $pid = $ps[1];
-                posix_kill($pid, 9);
-            }
-        }
     }
 }
