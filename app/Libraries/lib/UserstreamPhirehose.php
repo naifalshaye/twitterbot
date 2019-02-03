@@ -1,9 +1,6 @@
 <?php
 namespace App\Library\lib;
 
-
-require_once('OauthPhirehose.php');
-
 /**
 * This class just exists to have a different default method
 *   (i.e. more for backwards-compatibility than anything)

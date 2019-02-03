@@ -180,7 +180,7 @@ abstract class Phirehose
   *
   * @todo Shouldn't really hard-code URL strings in this function.
    */
-  public function __construct($username, $password, $method = Phirehose::METHOD_SAMPLE, $format = self::FORMAT_JSON, $lang = FALSE, $include_entities = TRUE)
+  public function __construct($username, $password, $method = Phirehose::METHOD_SAMPLE, $format = self::FORMAT_JSON, $lang = FALSE)
   {
     $this->username = $username;
     $this->password = $password;
@@ -413,9 +413,8 @@ abstract class Phirehose
       
       // (Re)connect
       $this->reconnect();
-      exec("pkill -f twitterbot:streaming", $psOutput);
-
-        // Init state
+    
+      // Init state
       $lastAverage = $lastFilterCheck = $lastFilterUpd = $lastStreamActivity = time();
       $fdw = $fde = NULL; // Placeholder write/error file descriptors for stream_select
       
@@ -543,11 +542,10 @@ abstract class Phirehose
    */
   protected function statusUpdate()
   {
-      /*$this->log('Consume rate: ' . $this->statusRate . ' status/sec (' . $this->statusCount . ' total), avg ' . 
+      $this->log('Consume rate: ' . $this->statusRate . ' status/sec (' . $this->statusCount . ' total), avg ' . 
         'enqueueStatus(): ' . $this->enqueueTimeMS . 'ms, avg checkFilterPredicates(): ' . $this->filterCheckTimeMS . 'ms (' . 
         $this->filterCheckCount . ' total) over ' . $this->avgElapsed . ' seconds, max stream idle period: ' . 
           $this->maxIdlePeriod . ' seconds.');
-		  */
       // Reset
         $this->statusCount = $this->filterCheckCount = $this->enqueueSpent = 0;
         $this->filterCheckSpent = $this->idlePeriod = $this->maxIdlePeriod = 0;
@@ -627,8 +625,8 @@ abstract class Phirehose
       }
   
       // Debugging is useful
-      //$this->log('Connecting to twitter stream: ' . $url . ' with params: ' . str_replace("\n", '',
-      //  var_export($requestParams, TRUE)));
+      $this->log('Connecting to twitter stream: ' . $url . ' with params: ' . str_replace("\n", '',
+        var_export($requestParams, TRUE)));
       
       /**
        * Open socket connection to make POST request. It'd be nice to use stream_context_create with the native
@@ -638,7 +636,7 @@ abstract class Phirehose
       $scheme = ($urlParts['scheme'] == 'https') ? 'ssl://' : 'tcp://';
       $port = ($urlParts['scheme'] == 'https') ? $this->secureHostPort : $this->hostPort;
       
-      //$this->log("Connecting to {$scheme}{$urlParts['host']}, port={$port}, connectTimeout={$this->connectTimeout}");
+      $this->log("Connecting to {$scheme}{$urlParts['host']}, port={$port}, connectTimeout={$this->connectTimeout}");
       
       @$this->conn = fsockopen($scheme . $urlParts['host'], $port, $errNo, $errStr, $this->connectTimeout);
   
@@ -661,7 +659,7 @@ abstract class Phirehose
       }
       
       // TCP connect OK, clear last error (if present)
-      //$this->log('Connection established to ' . $urlParts['host']);
+      $this->log('Connection established to ' . $urlParts['host']);
       $this->lastErrorMsg = NULL;
       $this->lastErrorNo = NULL;
       
@@ -689,7 +687,7 @@ abstract class Phirehose
       $s.= "\r\n";
       
       fwrite($this->conn, $s);
-      //$this->log($s);
+      $this->log($s);
       
       // First line is response
       list($httpVer, $httpCode, $httpMessage) = preg_split('/\s+/', trim(fgets($this->conn, 1024)), 3);
@@ -800,7 +798,7 @@ abstract class Phirehose
    *     'error' is for exceptional conditions that may need human intervention. (For instance, emailing
    *          them to a system administrator may make sense.)
    */
-  protected function log($message,$level='error')
+  protected function log($message,$level='notice')
   {
     @error_log('Phirehose: ' . $message, 0);
   }
@@ -808,7 +806,7 @@ abstract class Phirehose
   /**
    * Performs forcible disconnect from stream (if connected) and cleanup.
    */
-  public function disconnect()
+  protected function disconnect()
   {
     if (is_resource($this->conn)) {
       $this->log('Closing Phirehose connection.');
@@ -844,7 +842,7 @@ abstract class Phirehose
    * @return NULL
    */
   public function heartbeat() {}
-
+  
   /**
    * Set host port
    *
@@ -866,14 +864,8 @@ abstract class Phirehose
   {
     $this->secureHostPort = $port;
   }
-  
-	public function stop(){
-		$this->disconnect();
-		$this->log("Shutting down");
-		exit;	
-	}
-} // End of class
 
+} // End of class
 
 class PhirehoseException extends Exception {}
 class PhirehoseNetworkException extends PhirehoseException {}
