@@ -8,6 +8,8 @@ use App\Library\lib\PublicStream;
 use App\Streaming;
 use App\Tweet;
 use Illuminate\Console\Command;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class StreamTwitter extends Command
 {
@@ -43,8 +45,6 @@ class StreamTwitter extends Command
             error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         }
         shell_exec("pkill -f twitterbot:streaming");
-
-//        exec('/var/www/html/app/Console/Commands/kill.sh');
 
         $conf = Conf::findOrNew(1);
 
