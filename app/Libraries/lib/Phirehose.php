@@ -619,7 +619,7 @@ abstract class Phirehose
             && !empty($this->followIds)) {
         $requestParams['follow'] = implode(',', $this->followIds);
       }
-      if ($this->method == self::METHOD_FILTER && count($this->locationBoxes) > 0) {
+      if ($this->method == self::METHOD_FILTER && !empty($this->locationBoxes) > 0) {
         $requestParams['locations'] = implode(',', $this->locationBoxes);
       }
       if ($this->count <> 0) {
