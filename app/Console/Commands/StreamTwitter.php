@@ -42,7 +42,9 @@ class StreamTwitter extends Command
         if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
             error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         }
-        shell_exec("pkill -f twitterbot:streaming");
+//        shell_exec("pkill -f twitterbot:streaming");
+
+        exec(dirname(__FILE__) .'/kill.sh');
 
         $conf = Conf::findOrNew(1);
 
