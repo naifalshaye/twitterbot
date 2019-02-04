@@ -52,7 +52,7 @@ class StreamTwitter extends Command
 
         $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
-            $getfield = '?q=' . $keywords . '&count=100&since_id=' . $conf->search_since_id;
+            $getfield = '?q=' . implode(',',$keywords) . '&result_type=recent&count=100&since_id=' . $conf->search_since_id;
             $response = json_decode($this->twitter->setGetfield($getfield)
                 ->buildOauth('https://api.twitter.com/1.1/search/tweets.json', 'GET')
                 ->performRequest());
