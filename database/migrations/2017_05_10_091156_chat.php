@@ -15,7 +15,7 @@ class Chat extends Migration
     {
         Schema::create('chat', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->string('user_id');
             $table->string('keyword');
             $table->string('reply');
             $table->boolean('disable')->default(false);

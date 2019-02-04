@@ -11,6 +11,7 @@ class Conf extends Model
     protected $fillable = [
         'since_id',
         'user_id',
+        'search_since_id',
         'stop_register',
         'turn_off',
     ];

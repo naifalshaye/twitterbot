@@ -15,10 +15,11 @@ class Conf extends Migration
     {
         Schema::create('config', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('since_id')->nullable();
-            $table->bigInteger('user_id')->nullable();
-            $table->bigInteger('stop_register')->nullable();
-            $table->bigInteger('turn_off')->nullable();
+            $table->string('since_id')->nullable();
+            $table->string('search_since_id')->nullable();
+            $table->string('user_id')->nullable();
+            $table->boolean('stop_register')->nullable();
+            $table->boolean('turn_off')->nullable();
 
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ class SendDmOnFollow extends Migration
     {
         Schema::create('dm', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('follower_id')->nullable();
+            $table->string('follower_id')->nullable();
             $table->string('screen_name')->nullable();
             $table->string('name')->nullable();
             $table->string('msg')->nullable();

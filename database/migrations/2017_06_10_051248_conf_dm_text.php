@@ -17,7 +17,7 @@ class ConfDmText extends Migration
             $table->increments('id');
             $table->text('text');
             $table->boolean('disable');
-            $table->bigInteger('follower_id');
+            $table->string('follower_id');
             $table->timestamps();
         });
     }
