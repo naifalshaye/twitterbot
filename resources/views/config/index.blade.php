@@ -26,21 +26,98 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/conf') }}">
                             {{ csrf_field() }}
+                            <div>Twitter API Keys</div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="consumer_key" class="col-md-3 control-label">Consumer Key</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="consumer_key" style="width:400px;" value="{{$conf->consumer_key}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="consumer_secret" class="col-md-3 control-label">Consumer Secret</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="consumer_secret" style="width:400px;" value="{{$conf->consumer_secret}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="access_token" class="col-md-3 control-label">Access Token</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="access_token" style="width:400px;" value="{{$conf->access_token}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="access_secret" class="col-md-3 control-label">Access Secret</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="access_secret" style="width:400px;" value="{{$conf->access_secret}}">
+                                </div>
+                            </div>
+                            <hr>
+                            <div>General Settings</div>
+
+                            <div class="form-group">
+                                <label for="bot_power" class="col-md-4 control-label">Bot</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" name="bot_power" data-group-cls="btn-group-sm" @if ($conf->bot_power) checked @endif>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="chat_power" class="col-md-4 control-label">Chat</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" name="chat_power" data-group-cls="btn-group-sm" @if ($conf->chat_power) checked @endif>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="archive_power" class="col-md-4 control-label">Archive</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" name="archive_power" data-group-cls="btn-group-sm" @if ($conf->archive_power) checked @endif>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="schedule_power" class="col-md-4 control-label">Schedule</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" name="schedule_power" data-group-cls="btn-group-sm" @if ($conf->schedule_power) checked @endif>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="onfollow_power" class="col-md-4 control-label">DM On Follow</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" name="onfollow_power" data-group-cls="btn-group-sm" @if ($conf->onfollow_power) checked @endif>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stop_registration" class="col-md-4 control-label">Registration Form</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" name="stop_registration" data-group-cls="btn-group-sm" @if ($conf->stop_registration) checked @endif>
+
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label for="user_id" class="col-md-4 control-label">Stop Registration</label>
                                 <div class="col-md-6">
                                     <input type="checkbox" name="stop_register" data-group-cls="btn-group-sm" @if ($conf->stop_register) checked @endif>
-
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="user_id" class="col-md-4 control-label">Turn Bot Off</label>
+                                <label for="hide_error_log" class="col-md-4 control-label">Hide Error Log</label>
                                 <div class="col-md-6">
-                                    <input type="checkbox" class="green" name="turn_off" id="turn_off" data-group-cls="btn-group-sm" @if ($conf->turn_off) checked @endif>
+                                    <input type="checkbox" name="hide_error_log" data-group-cls="btn-group-sm" @if ($conf->hide_error_log) checked @endif>
                                 </div>
                             </div>
-
 
                             <div class="form-group">
                                 <div align="center">

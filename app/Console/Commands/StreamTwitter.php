@@ -49,13 +49,16 @@ class StreamTwitter extends Command
         if ($conf->turn_off) {
             return;
         }
-
         $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
-            $getfield = '?q=' . $keywords . '&count=100&since_id=' . $conf->search_since_id;
+            if (!$conf->search_since_id){
+                $conf->search_since_id = 1;
+            }
+            $getfield = '?q=' . implode(',',$keywords) . '&count=100&since_id=' . $conf->search_since_id;
             $response = json_decode($this->twitter->setGetfield($getfield)
                 ->buildOauth('https://api.twitter.com/1.1/search/tweets.json', 'GET')
                 ->performRequest());
+
             foreach ($response->statuses as $tweet) {
                 if (isset($tweet->id)) {
                     $city = null;
