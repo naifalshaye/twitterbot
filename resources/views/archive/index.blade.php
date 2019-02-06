@@ -24,7 +24,7 @@
                     </div>
                 @endif
                 <div class="panel-body">
-                    <div align="left" class="desc">Add keywords and replies that you want the bot to listen to. e.g Your company FAQs</div>
+                    <div align="left" class="desc">Add keywords that you want the bot to search and archive.</div>
 
                     <div class="row">
 
@@ -45,18 +45,18 @@
                                         <td>{{ $keyword->str }}</td>
                                         <td>
                                             @if ($keyword->disable == false)
-                                                <a href="{{ url('streaming/status/'.$keyword->id) }}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
+                                                <a href="{{ url('archive/status/'.$keyword->id) }}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>
                                             @else
-                                                <a href="{{ url('streaming/status/'.$keyword->id) }}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
+                                                <a href="{{ url('archive/status/'.$keyword->id) }}"><span class="label label-danger" style="font-size:12px;">Disabled</span></a>
                                             @endif
                                         </td>
                                         <th>
                                             <div class="row">
                                                 <div class="col-lg-5">
-                                                    <a href="{{ url('streaming/'.$keyword->id) }}/edit" class="btn btn-primary btn-xs">Edit</a>
+                                                    <a href="{{ url('archive/'.$keyword->id) }}/edit" class="btn btn-primary btn-xs">Edit</a>
                                                 </div>
                                                 <div class="col-lg-2">
-                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="{{ url('streaming/'.$keyword->id) }}">
+                                                    <form id="form1" class="form-horizontal" method="post" role="form" action="{{ url('archive/'.$keyword->id) }}">
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <input type="submit" value="Delete" class="btn btn-danger btn-xs" onclick="return confirm('Delete Keyword are you sure?');">

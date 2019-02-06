@@ -6,7 +6,7 @@ use App\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-class StreamingTweetsController extends Controller
+class ArchiveTweetsController extends Controller
 {
     public function __construct()
     {

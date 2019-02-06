@@ -19,7 +19,7 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="post" role="form" action="{{ url('streaming/'.$streaming->id) }}">
+                        <form class="form-horizontal" method="post" role="form" action="{{ url('archive/'.$streaming->id) }}">
                             <input type="hidden" name="_method" value="PUT">
                             <fieldset>
                             {!! csrf_field() !!}

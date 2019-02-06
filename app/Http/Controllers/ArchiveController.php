@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Streaming;
+use App\Arachive;
 use Illuminate\Http\Request;
 
-class StreamingController extends Controller
+class ArchiveController extends Controller
 {
     public function __construct()
     {
@@ -14,7 +14,7 @@ class StreamingController extends Controller
 
     public function index()
     {
-        $streaming = Streaming::OrderBy('id','desc')->paginate(15);
+        $streaming = Arachive::OrderBy('id','desc')->paginate(15);
         return view('streaming.index', compact('streaming'));
     }
 
@@ -41,7 +41,7 @@ class StreamingController extends Controller
         } else {
             $request['disable']  = false;
         }
-        $streaming = Streaming::create($request->all());
+        $streaming = Arachive::create($request->all());
         return redirect()->back()->with('success', 'Streaming keyword has been added.');
     }
 
@@ -64,7 +64,7 @@ class StreamingController extends Controller
      */
     public function edit($id)
     {
-        $streaming = Streaming::findOrFail($id);
+        $streaming = Arachive::findOrFail($id);
         return view('streaming.edit', compact('streaming'));
     }
 
@@ -83,7 +83,7 @@ class StreamingController extends Controller
             $request->disable = false;
         }
 
-        $streaming = Streaming::findOrFail($id);
+        $streaming = Arachive::findOrFail($id);
         $streaming->str = $request->str;
         $streaming->disable = $request->disable;
         $streaming->save();
@@ -97,14 +97,14 @@ class StreamingController extends Controller
      */
     public function destroy($id)
     {
-        $streaming = Streaming::findOrFail($id);
+        $streaming = Arachive::findOrFail($id);
         $streaming->delete();
         return redirect()->to('/streaming')->with('success', 'Streaming keyword has been deleted.');
     }
 
     public function status($id)
     {
-        $streaming = Streaming::findOrFail($id);
+        $streaming = Arachive::findOrFail($id);
         if ($streaming->disable){
             $streaming->disable = false;
         }
