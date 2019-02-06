@@ -18,9 +18,6 @@ class Conf extends Migration
             $table->string('since_id')->nullable();
             $table->string('search_since_id')->nullable();
             $table->string('user_id')->nullable();
-            $table->boolean('stop_register')->nullable();
-            $table->boolean('turn_off')->nullable();
-
             $table->timestamps();
         });
     }

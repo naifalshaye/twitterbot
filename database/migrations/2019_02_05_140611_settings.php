@@ -20,12 +20,12 @@ class Settings extends Migration
             $table->text('access_token');
             $table->text('access_secret');
             $table->string('timezone');
-            $table->string('bot_power');
-            $table->string('chat_power');
-            $table->string('archive_power');
-            $table->string('schedule_power');
-            $table->string('onfollow_power');
-            $table->string('stop_registration');
+            $table->string('bot_power')->default(1);
+            $table->string('chat_power')->default(1);
+            $table->string('archive_power')->default(1);
+            $table->string('schedule_power')->default(1);
+            $table->string('onfollow_power')->default(1);
+            $table->string('stop_registration')->default(1);
             $table->string('hide_error_log');
             $table->string('logo');
             $table->timestamps();

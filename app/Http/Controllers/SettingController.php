@@ -15,7 +15,8 @@ class SettingController extends Controller
     public function index()
     {
         $settings = Setting::findOrNew(1);
-        return view('config.index', compact('settings'));
+        $timezones = $this->tz_list();
+        return view('config.index', compact('settings','timezones'));
     }
 
     public function update(Request $request)
@@ -62,6 +63,7 @@ class SettingController extends Controller
         $settings->consumer_secret = $request->consumer_secret;
         $settings->access_token = $request->access_token;
         $settings->access_secret = $request->access_secret;
+        $settings->timezone = $request->timezone;
 
         $settings->bot_power = $request->bot_power;
         $settings->chat_power = $request->chat_power;
@@ -74,4 +76,12 @@ class SettingController extends Controller
         return redirect()->back()->with('success', 'Bot Settings have been updated successfully');
     }
 
+    function tz_list() {
+        $zones_array = array();
+        foreach(timezone_identifiers_list() as $key => $zone) {
+            date_default_timezone_set($zone);
+            $zones_array[$key] = $zone;
+        }
+        return $zones_array;
+    }
 }

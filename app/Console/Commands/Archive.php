@@ -4,10 +4,10 @@ namespace App\Console\Commands;
 
 use App\Conf;
 use App\Library\TwitterBot;
+use App\Setting;
 use App\Streaming;
 use App\Tweet;
 use Illuminate\Console\Command;
-use Settings;
 
 class Archive extends Command
 {
@@ -25,8 +25,6 @@ class Archive extends Command
      */
     protected $description = 'Stream twitter';
 
-    private $twitter;
-
     /**
      * StreamTwitter constructor.
      * @param TwitterStream $twitterStream
@@ -34,21 +32,18 @@ class Archive extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->twitter = new TwitterBot();
     }
 
 
     public function handle()
     {
-        if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-        }
-
-        $settings = Settings::findOrNew(1);
+        $settings = Setting::findOrNew(1);
         if (!$settings->bot_power || !$settings->archive_power) {
             return;
         }
+
         $conf = Conf::findOrNew(1);
+        $twitter = new TwitterBot();
 
         $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
@@ -56,7 +51,7 @@ class Archive extends Command
                 $conf->search_since_id = 1;
             }
             $getfield = '?q=' . implode(',',$keywords) . '&result_type=recent&count=100&since_id=' . $conf->search_since_id;
-            $response = json_decode($this->twitter->setGetfield($getfield)
+            $response = json_decode($twitter->setGetfield($getfield)
                 ->buildOauth('https://api.twitter.com/1.1/search/tweets.json', 'GET')
                 ->performRequest());
 

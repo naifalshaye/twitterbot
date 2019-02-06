@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use App\ChatTweet;
-use App\Conf;
 use App\DM;
 use App\Setting;
 use App\Streaming;
@@ -54,8 +53,6 @@ class HomeController extends Controller
         $numbers->schedules = Schedule::count();
         $numbers->stream = Streaming::count();
         $numbers->chat_tweets = ChatTweet::count();
-
-        $conf = Conf::findOrNew(1);
 
         return view('home',compact('trends','chat_tweet','stream_tweet','top_chat_chart','numbers','settings'));
     }

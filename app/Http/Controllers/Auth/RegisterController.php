@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Conf;
+use App\Setting;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -38,8 +39,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         try {
-            $conf = Conf::findOrNew(1);
-            if ($conf->stop_register) {
+            $settings = Setting::findOrNew(1);
+            if (!$settings->stop_registration) {
                 $this->middleware('auth');
             }
         } catch (\Exception $e) {

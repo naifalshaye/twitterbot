@@ -31,33 +31,45 @@
                             <div class="form-group">
                                 <label for="consumer_key" class="col-md-3 control-label">Consumer Key</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="consumer_key" class="form-control" style="width:400px;" value="{{$settings->consumer_key}}">
+                                    <input type="text" name="consumer_key" class="form-control" style="width:400px;" value="{{$settings->consumer_key}}" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="consumer_secret" class="col-md-3 control-label">Consumer Secret</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="consumer_secret" class="form-control" style="width:400px;" value="{{$settings->consumer_secret}}">
+                                    <input type="text" name="consumer_secret" class="form-control" style="width:400px;" value="{{$settings->consumer_secret}}" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="access_token" class="col-md-3 control-label">Access Token</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="access_token" class="form-control" style="width:400px;" value="{{$settings->access_token}}">
+                                    <input type="text" name="access_token" class="form-control" style="width:400px;" value="{{$settings->access_token}}" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="access_secret" class="col-md-3 control-label">Access Secret</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="access_secret" class="form-control" style="width:400px;" value="{{$settings->access_secret}}">
+                                    <input type="text" name="access_secret" class="form-control" style="width:400px;" value="{{$settings->access_secret}}" required>
                                 </div>
                             </div>
                             <hr>
                             <div>General Settings</div>
-
+                            <hr>
+                            <div class="form-group">
+                                <label for="timezone" class="col-md-3 control-label">TimeZone</label>
+                                <div class="col-md-4">
+                                    <select name="timezone" id="timezone" class="form-control">
+                                        <option value="">Select TimeZone</option>
+                                        @foreach ($timezones as $zone)
+                                            <option value="{{$zone}}" @if ($zone == $settings->timezone) selected @endif>{{$zone}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
                             <div class="form-group">
                                 <label for="bot_power" class="col-md-4 control-label">Bot</label>
                                 <div class="col-md-6">
@@ -97,8 +109,9 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div class="form-group">
-                                <label for="stop_registration" class="col-md-4 control-label">Registration Form</label>
+                                <label for="stop_registration" class="col-md-4 control-label">Register</label>
                                 <div class="col-md-6">
                                     <input type="checkbox" name="stop_registration" data-group-cls="btn-group-sm" @if ($settings->stop_registration) checked @endif>
 
@@ -106,19 +119,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="user_id" class="col-md-4 control-label">Stop Registration</label>
-                                <div class="col-md-6">
-                                    <input type="checkbox" name="stop_register" data-group-cls="btn-group-sm" @if ($settings->stop_register) checked @endif>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="hide_error_log" class="col-md-4 control-label">Hide Error Log</label>
+                                <label for="hide_error_log" class="col-md-4 control-label">Error Log</label>
                                 <div class="col-md-6">
                                     <input type="checkbox" name="hide_error_log" data-group-cls="btn-group-sm" @if ($settings->hide_error_log) checked @endif>
                                 </div>
                             </div>
 
+                            <hr>
                             <div class="form-group">
                                 <div align="center">
                                     <button type="submit" class="btn btn-success">Save</button>

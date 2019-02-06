@@ -2,13 +2,12 @@
 
 namespace App\Console\Commands;
 
-use App\Conf;
 use App\DM;
 use App\DMConfig;
 use App\Library\TwitterBot;
+use App\Setting;
 use Exception;
 use Illuminate\Console\Command;
-use Settings;
 
 class DMFollower extends Command
 {
@@ -26,8 +25,6 @@ class DMFollower extends Command
      */
     protected $description = 'Send DM to new follower';
 
-    private $twitter;
-
     /**
      * Create a new command instance.
      *
@@ -36,7 +33,6 @@ class DMFollower extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->twitter = new TwitterBot();
     }
 
     /**
@@ -44,15 +40,17 @@ class DMFollower extends Command
      */
     public function handle()
     {
-        $settings = Settings::findOrNew(1);
+        $settings = Setting::findOrNew(1);
         if (!$settings->bot_power || !$settings->onfollow_power) {
             return;
         }
 
+        $twitter = new TwitterBot();
+
         $dm_conf = DMConfig::findOrNew(1);
         if (!$dm_conf->disable && !empty($dm_conf->text)) {
 
-            $response = json_decode($this->twitter->buildOauth('https://api.twitter.com/1.1/followers/list.json', 'GET')->performRequest());
+            $response = json_decode($twitter->buildOauth('https://api.twitter.com/1.1/followers/list.json', 'GET')->performRequest());
 
             foreach ($response->users as $user) {
                 $exist = DM::where('follower_id', $user->id_str)->exists();
@@ -74,6 +72,7 @@ class DMFollower extends Command
 
     public function sendDM($user_id, $text)
     {
+        $twitter = new TwitterBot();
         try {
             $postfields = array(
                 'event' =>
@@ -89,8 +88,8 @@ class DMFollower extends Command
             $url = 'https://api.twitter.com/1.1/direct_messages/events/new.json';
             $requestMethod = 'POST';
 
-            $this->twitter->appjson = true;
-            $this->twitter->buildOauth($url, $requestMethod)->performRequest(true,
+            $twitter->appjson = true;
+            $twitter->buildOauth($url, $requestMethod)->performRequest(true,
                 [
                     CURLOPT_POSTFIELDS => json_encode($postfields)
                 ]
