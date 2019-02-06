@@ -5,7 +5,7 @@ namespace App\Console;
 use App\Conf;
 use App\Console\Commands\DMFollower;
 use App\Console\Commands\Scheduled;
-use App\Console\Commands\StreamTwitter;
+use App\Console\Commands\Archive;
 use App\Console\Commands\ChatCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        StreamTwitter::class,
+        Archive::class,
         ChatCommand::class,
         Scheduled::class,
         DMFollower::class

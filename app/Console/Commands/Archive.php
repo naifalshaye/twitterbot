@@ -7,15 +7,16 @@ use App\Library\TwitterBot;
 use App\Streaming;
 use App\Tweet;
 use Illuminate\Console\Command;
+use Settings;
 
-class StreamTwitter extends Command
+class Archive extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'twitterbot:streaming';
+    protected $signature = 'twitterbot:archive';
 
     /**
      * The console command description.
@@ -25,7 +26,6 @@ class StreamTwitter extends Command
     protected $description = 'Stream twitter';
 
     private $twitter;
-
 
     /**
      * StreamTwitter constructor.
@@ -44,11 +44,12 @@ class StreamTwitter extends Command
             error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         }
 
-        $conf = Conf::findOrNew(1);
-
-        if ($conf->turn_off) {
+        $settings = Settings::findOrNew(1);
+        if (!$settings->bot_power || !$settings->archive_power) {
             return;
         }
+        $conf = Conf::findOrNew(1);
+
         $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
             if (!$conf->search_since_id){

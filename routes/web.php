@@ -24,8 +24,8 @@ Route::post('/change_password', 'Auth\ChangePasswordController@update');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/conf', 'ConfController@index');
-Route::post('/conf', 'ConfController@update');
+Route::get('/setting', 'SettingController@index');
+Route::post('/setting', 'SettingController@update');
 
 //Route::get('twitter', function () {
 //    return view('twitterAuth');

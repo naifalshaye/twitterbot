@@ -1,5 +1,9 @@
 <?php
 namespace App\Library;
+
+use App\Setting;
+use Settings;
+
 /**
  * Twitter-API-PHP : Simple PHP wrapper for the v1.1 API
  *
@@ -73,11 +77,13 @@ class TwitterBot
      */
     public function __construct()
     {
+        $settings = Setting::findOrNew(1);
+
         $settings = array(
-            'oauth_access_token' => config('ttwitter.ACCESS_TOKEN'),
-            'oauth_access_token_secret' => config('ttwitter.ACCESS_TOKEN_SECRET'),
-            'consumer_key' => config('ttwitter.CONSUMER_KEY'),
-            'consumer_secret' =>  config('ttwitter.CONSUMER_SECRET')
+            'oauth_access_token' => $settings->access_token,
+            'oauth_access_token_secret' => $settings->access_secret,
+            'consumer_key' => $settings->consumer_key,
+            'consumer_secret' =>  $settings->consumer_secret
         );
 
         if (!function_exists('curl_init'))

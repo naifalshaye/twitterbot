@@ -7,6 +7,7 @@ use App\Conf;
 use App\ChatTweet;
 use App\Library\TwitterBot;
 use Illuminate\Console\Command;
+use Settings;
 use Twitter;
 
 class   ChatCommand extends Command
@@ -25,6 +26,8 @@ class   ChatCommand extends Command
      */
     protected $description = 'Check mentions for chat keywords and reply';
 
+    private $twitter;
+
     /**
      * Create a new command instance.
      *
@@ -33,30 +36,29 @@ class   ChatCommand extends Command
     public function __construct()
     {
         parent::__construct();
-
+        $this->twitter = new TwitterBot();
     }
 
     public function handle()
     {
         $conf = Conf::findOrNew(1);
-        if ($conf->turn_off) {
+        $settings = Settings::findOrNew(1);
+        if (!$settings->bot_power || !$settings->chat_power) {
             return;
         }
 
         $chat = Chat::get();
         if (isset($conf)) {
-            $twitter = new TwitterBot();
-            $twitter_dg = new Twitter(config('ttwitter.CONSUMER_KEY'), config('ttwitter.CONSUMER_SECRET'), config('ttwitter.ACCESS_TOKEN'), config('ttwitter.ACCESS_TOKEN_SECRET'));
             $requestMethod = 'GET';
 
             $url = 'https://api.twitter.com/1.1/statuses/mentions_timeline.json';
             if ($conf->since_id) {
                 $getfield = '?since_id=' . $conf->since_id;
-                $mentions = json_decode($twitter->setGetfield($getfield)
+                $mentions = json_decode($this->twitter->setGetfield($getfield)
                     ->buildOauth($url, $requestMethod)
                     ->performRequest());
             } else{
-                $mentions = json_decode($twitter->buildOauth($url, $requestMethod)->performRequest());
+                $mentions = json_decode($this->twitter->buildOauth($url, $requestMethod)->performRequest());
             }
 
             $collection = collect($mentions);
@@ -70,7 +72,7 @@ class   ChatCommand extends Command
                                 try {
                                     $reply_text = '@' . $mention->user->screen_name . ' ' . $row->reply;
 
-                                    $twitter_dg->send($reply_text,null,['in_reply_to_status_id' => $mention->id]);
+                                    $this->twitter->send($reply_text,null,['in_reply_to_status_id' => $mention->id]);
 
                                     if (isset($collection->first()->id) && $collection->first()->id > 0) {
                                         if ($conf->since_id != $collection->first()->id) {
@@ -89,15 +91,11 @@ class   ChatCommand extends Command
                                     $tweet->reply = $reply_text;
                                     $tweet->save();
 
-                                } catch (\Exception $e) {
-                                    dd($e->getMessage());
-                                }
+                                } catch (\Exception $e) {}
                             }
                         }
                     }
                 }
-            } else {
-                dd('No Tweets Found!');
             }
         }
     }

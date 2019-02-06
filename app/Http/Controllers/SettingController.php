@@ -58,6 +58,11 @@ class SettingController extends Controller
             $request['hide_error_log']  = false;
         }
 
+        $settings->consumer_key = $request->consumer_key;
+        $settings->consumer_secret = $request->consumer_secret;
+        $settings->access_token = $request->access_token;
+        $settings->access_secret = $request->access_secret;
+
         $settings->bot_power = $request->bot_power;
         $settings->chat_power = $request->chat_power;
         $settings->archive_power = $request->archive_power;

@@ -19,7 +19,7 @@ Artisan::command('Chat', function () {
 })->describe('Check mentions for chat keywords and reply');
 
 Artisan::command('StreamTwitter', function () {
-    $this->comment(\App\Console\Commands\StreamTwitter::class);
+    $this->comment(\App\Console\Commands\Archive::class);
 })->describe('Stream & archive');
 
 Artisan::command('Scheduled', function () {

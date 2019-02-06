@@ -8,6 +8,7 @@ use App\DMConfig;
 use App\Library\TwitterBot;
 use Exception;
 use Illuminate\Console\Command;
+use Settings;
 
 class DMFollower extends Command
 {
@@ -43,8 +44,8 @@ class DMFollower extends Command
      */
     public function handle()
     {
-        $conf = Conf::findOrNew(1);
-        if ($conf->turn_off) {
+        $settings = Settings::findOrNew(1);
+        if (!$settings->bot_power || !$settings->onfollow_power) {
             return;
         }
 
@@ -94,8 +95,6 @@ class DMFollower extends Command
                     CURLOPT_POSTFIELDS => json_encode($postfields)
                 ]
             );
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
+        } catch (Exception $e) {}
     }
 }

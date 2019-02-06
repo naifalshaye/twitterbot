@@ -3,10 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Conf;
+use App\Library\TwitterBot;
 use App\Schedule;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
+use Settings;
 use Twitter;
 
 class Scheduled extends Command
@@ -25,12 +27,15 @@ class Scheduled extends Command
      */
     protected $description = 'Post scheduled tweets';
 
+    private $twitter;
+
     /**
      * Scheduled constructor.
      */
     public function __construct()
     {
         parent::__construct();
+        $this->twitter = new TwitterBot();
     }
 
     /**
@@ -38,12 +43,10 @@ class Scheduled extends Command
      */
     public function handle()
     {
-        $conf = Conf::findOrNew(1);
-        if ($conf->turn_off) {
+        $settings = Settings::findOrNew(1);
+        if (!$settings->bot_power || !$settings->schedule_power) {
             return;
         }
-
-        $twitter_dg = new Twitter(config('ttwitter.CONSUMER_KEY'), config('ttwitter.CONSUMER_SECRET'), config('ttwitter.ACCESS_TOKEN'), config('ttwitter.ACCESS_TOKEN_SECRET'));
 
         $date = Carbon::now()->format('Y-m-d');
         $time = Carbon::now();
@@ -56,13 +59,11 @@ class Scheduled extends Command
         foreach ($schedules as $schedule) {
             if (!$schedule->sent && !$schedule->disable && !empty($schedule->text)) {
                 try {
-                    $twitter_dg->send($schedule->text);
+                    $this->twitter->send($schedule->text);
 
                     $schedule->sent = true;
                     $schedule->save();
-                } catch (\Exception $e) {
-                    dd($e->getMessage());
-                }
+                } catch (\Exception $e) {}
             }
         }
     }
