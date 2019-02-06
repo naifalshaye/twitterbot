@@ -6,11 +6,11 @@ use App\Chat;
 use App\ChatTweet;
 use App\Conf;
 use App\DM;
+use App\Setting;
 use App\Streaming;
 use App\Library\TwitterBot;
 use App\Schedule;
 use App\Tweet;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -30,6 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $settings = Setting::findOrNew(1);
+
         $twitter = new TwitterBot();
 
         $requestMethod = 'GET';
@@ -55,6 +57,6 @@ class HomeController extends Controller
 
         $conf = Conf::findOrNew(1);
 
-        return view('home',compact('trends','chat_tweet','stream_tweet','top_chat_chart','numbers','conf'));
+        return view('home',compact('trends','chat_tweet','stream_tweet','top_chat_chart','numbers','settings'));
     }
 }
