@@ -24,6 +24,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Settings</div>
                     <div class="panel-body">
+                        <div align="center" class="alert alert-info">Add Twitter API keys and turn bot On.</div>
+
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/setting') }}">
                             {{ csrf_field() }}
                             <div>Twitter API Keys</div>
@@ -68,6 +70,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div style="padding-right:10px; margin-top:-5px; font-size:14px;">To match your local time when using schedule tweets feature.</div>
                             </div>
                             <hr>
                             <div class="form-group">
@@ -111,10 +114,9 @@
 
                             <hr>
                             <div class="form-group">
-                                <label for="stop_registration" class="col-md-4 control-label">Register</label>
+                                <label for="stop_registration" class="col-md-4 control-label">Registration Form</label>
                                 <div class="col-md-6">
                                     <input type="checkbox" name="stop_registration" data-group-cls="btn-group-sm" @if ($settings->stop_registration) checked @endif>
-
                                 </div>
                             </div>
 

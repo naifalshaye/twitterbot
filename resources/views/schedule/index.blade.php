@@ -24,7 +24,7 @@
                     </div>
                 @endif
                 <div class="panel-body">
-                    <div align="left" class="desc">Schedule tweets to be send at specific date and time.</div>
+                    <div align="center" class="alert alert-info">Schedule tweets to be send at specific date and time.</div>
 
                     <div class="row">
                         <div class="col-lg-12 table-responsive">

@@ -24,7 +24,7 @@
                     </div>
                 @endif
                 <div class="panel-body">
-                    <div align="left" class="desc">Add keywords that you want the bot to search and archive.</div>
+                    <div align="center" class="alert alert-info">Add keywords that you want the bot to search and archive tweets about.</div>
 
                     <div class="row">
 
