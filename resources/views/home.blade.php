@@ -51,7 +51,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Bot Status</div>
                     <div class="panel-body">
-                        <div align="center" style="color:green;">@if ($settings->bot_power) <span class="fa fa-power-off" style="font-size:24px;"></span> Off @endif</div>
+                        <div align="center" style="color:green;">@if ($settings->bot_power) <span class="fa fa-power-off" style="font-size:24px;"></span> On @endif</div>
                         <div align="center" style="color:red;">@if (!$settings->bot_power) <span class="fa fa-power-off" style="font-size:24px;"></span> Off @endif</div>
                     </div>
                 </div>
