@@ -10,6 +10,7 @@ use App\Setting;
 use App\Library\TwitterBot;
 use App\Schedule;
 use App\Tweet;
+use App\UserInfo;
 
 class HomeController extends Controller
 {
@@ -54,6 +55,8 @@ class HomeController extends Controller
         $numbers->archive = Arachive::count();
         $numbers->chat_tweets = ChatTweet::count();
 
-        return view('home',compact('trends','chat_tweet','archive_tweet','top_chat_chart','numbers','settings'));
+        $user_info = UserInfo::findOrNew(1);
+
+        return view('home',compact('trends','chat_tweet','archive_tweet','top_chat_chart','numbers','settings','user_info'));
     }
 }

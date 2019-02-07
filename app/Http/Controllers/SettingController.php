@@ -16,6 +16,7 @@ class SettingController extends Controller
     {
         $settings = Setting::findOrNew(1);
         $timezones = $this->tz_list();
+
         return view('setting.index', compact('settings','timezones'));
     }
 

@@ -50,7 +50,6 @@ class   ChatCommand extends Command
         $chat = Chat::get();
         if (isset($conf)) {
             $requestMethod = 'GET';
-
             $url = 'https://api.twitter.com/1.1/statuses/mentions_timeline.json';
             if ($conf->since_id) {
                 $getfield = '?since_id=' . $conf->since_id;

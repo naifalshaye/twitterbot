@@ -2,11 +2,11 @@
 
 namespace App\Console;
 
-use App\Conf;
 use App\Console\Commands\DMFollower;
 use App\Console\Commands\Scheduled;
 use App\Console\Commands\Archive;
 use App\Console\Commands\ChatCommand;
+use App\Console\Commands\UserInfo;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\App;
@@ -22,7 +22,8 @@ class Kernel extends ConsoleKernel
         Archive::class,
         ChatCommand::class,
         Scheduled::class,
-        DMFollower::class
+        DMFollower::class,
+        UserInfo::class,
     ];
 
     /**
@@ -34,6 +35,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         if (App::environment('production')) {
+            $schedule->command('twitterbot:userinfo')
+                ->everyMinute();
+
             $schedule->command('twitterbot:chat')
                 ->everyMinute();
 
