@@ -36,6 +36,10 @@ class ArchiveController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'str' => 'required'
+        ]);
+
         if ($request->disable == 'on'){
             $request['disable'] = true;
         } else {
@@ -77,6 +81,10 @@ class ArchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'str' => 'required'
+        ]);
+
         if ($request->disable == 'on'){
             $request->disable = true;
         } else {

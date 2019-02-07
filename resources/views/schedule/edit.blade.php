@@ -27,14 +27,14 @@
                                 <div class="form-group">
                                     <label for="date" class="col-md-4 control-label">Date</label>
                                     <div class="col-md-6">
-                                        <input type="date" class="form-control" name="date" value="{{ $schedule->date }}">
+                                        <input type="date" class="form-control" name="date" value="{{ $schedule->date }}" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="time" class="col-md-4 control-label">Time</label>
                                     <div class="col-md-6">
-                                        <input type="time" class="form-control" name="time" value="{{ $schedule->time }}">
+                                        <input type="time" class="form-control" name="time" value="{{ $schedule->time }}" required>
                                     </div>
                                 </div>
 
@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label for="text" class="col-md-4 control-label">Time</label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" name="text">{{ $schedule->text}}</textarea>
+                                        <textarea class="form-control" name="text" required>{{ $schedule->text}}</textarea>
                                     </div>
                                 </div>
 

@@ -20,6 +20,12 @@ class ScheduleController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'date' => 'required',
+            'time' => 'required',
+            'text' => 'required',
+        ]);
+
         Schedule::create($request->all());
         return redirect()->back()->with('success', 'Schedule tweet is set.');
     }
@@ -39,6 +45,12 @@ class ScheduleController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'date' => 'required',
+            'time' => 'required',
+            'text' => 'required',
+        ]);
+
         $schedule = Schedule::findOrFail($id);
         $schedule->date = $request->date;
         $schedule->time = $request->time;

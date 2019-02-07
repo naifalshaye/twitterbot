@@ -16,11 +16,19 @@ class SettingController extends Controller
     {
         $settings = Setting::findOrNew(1);
         $timezones = $this->tz_list();
-        return view('config.index', compact('settings','timezones'));
+        return view('setting.index', compact('settings','timezones'));
     }
 
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'consumer_key' => 'required',
+            'consumer_secret' => 'required',
+            'access_token' => 'required',
+            'access_secret' => 'required',
+            'timezone' => 'required',
+        ]);
+
         $settings = Setting::findOrNew(1);
 
         if ($request->bot_power == 'on'){
@@ -48,15 +56,10 @@ class SettingController extends Controller
         } else {
             $request['onfollow_power']  = false;
         }
-        if ($request->stop_register == 'on'){
+        if ($request->stop_registration == 'on'){
             $request['stop_registration'] = true;
         } else {
             $request['stop_registration']  = false;
-        }
-        if ($request->hide_error_log == 'on'){
-            $request['hide_error_log'] = true;
-        } else {
-            $request['hide_error_log']  = false;
         }
 
         $settings->consumer_key = $request->consumer_key;

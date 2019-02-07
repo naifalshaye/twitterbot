@@ -17,20 +17,17 @@ class DMController extends Controller
 
     public function dmConfig()
     {
-        try {
-            $dm = DMConfig::findOrFail(1);
-        } catch(ModelNotFoundException $e) {
-        }
-        return view('dm.config',compact('dm'));
+        $dm = DMConfig::findOrFail(1);
+        return view('dm.setting',compact('dm'));
     }
 
     public function updateConfig(Request $request)
     {
-        try {
-            $conf = DMConfig::findOrFail(1);
-        } catch(ModelNotFoundException $e) {
-            $conf = new DMConfig();
-        }
+        $this->validate($request, [
+            'text' => 'required',
+        ]);
+
+        $conf = DMConfig::findOrNew(1);
 
         if ($request->disable == 'on'){
             $request['disable'] = true;

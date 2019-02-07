@@ -57,7 +57,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{--{{ config('app.name', 'Laravel') }} {{config('app.version')}}--}}
+                        {{--{{ setting('app.name', 'Laravel') }} {{setting('app.version')}}--}}
                         <div style="margin-top: -15px;">
                             <img src="/images/logo.png" style="width:50px;">
                         </div>

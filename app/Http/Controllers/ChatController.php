@@ -42,6 +42,11 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'keyword' => 'required',
+            'reply' => 'required|max:140',
+        ]);
+
         if ($request->disable == 'on'){
             $request['disable'] = true;
         } else {
@@ -84,6 +89,11 @@ class ChatController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'keyword' => 'required',
+            'reply' => 'required|max:140',
+        ]);
+
         if ($request->disable == 'on'){
             $request->disable = true;
         } else {
@@ -99,10 +109,9 @@ class ChatController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy($id)
     {
@@ -111,7 +120,10 @@ class ChatController extends Controller
         return redirect()->to('/chat')->with('success','Chat keyword has been deleted');
     }
 
-
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function status($id)
     {
         $chat = Chat::findOrFail($id);

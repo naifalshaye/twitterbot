@@ -732,10 +732,10 @@ module.exports = function isCancel(value) {
 var enhanceError = __webpack_require__(18);
 
 /**
- * Create an Error with the specified message, config, error code, and response.
+ * Create an Error with the specified message, setting, error code, and response.
  *
  * @param {string} message The error message.
- * @param {Object} config The config.
+ * @param {Object} config The setting.
  * @param {string} [code] The error code (for example, 'ECONNABORTED').
  @ @param {Object} [response] The response.
  * @returns {Error} The created error.
@@ -11380,7 +11380,7 @@ var defaults = __webpack_require__(2);
 /**
  * Create an instance of Axios
  *
- * @param {Object} defaultConfig The default config for the instance
+ * @param {Object} defaultConfig The default setting for the instance
  * @return {Axios} A new instance of Axios
  */
 function createInstance(defaultConfig) {
@@ -11505,7 +11505,7 @@ var combineURLs = __webpack_require__(23);
 /**
  * Create a new instance of Axios
  *
- * @param {Object} instanceConfig The default config for the instance
+ * @param {Object} instanceConfig The default setting for the instance
  */
 function Axios(instanceConfig) {
   this.defaults = instanceConfig;
@@ -11518,11 +11518,11 @@ function Axios(instanceConfig) {
 /**
  * Dispatch a request
  *
- * @param {Object} config The config specific for this request (merged with this.defaults)
+ * @param {Object} config The setting specific for this request (merged with this.defaults)
  */
 Axios.prototype.request = function request(config) {
   /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
+  // Allow for axios('example/url'[, setting]) a la fetch API
   if (typeof config === 'string') {
     config = utils.merge({
       url: arguments[0]
@@ -11531,7 +11531,7 @@ Axios.prototype.request = function request(config) {
 
   config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
 
-  // Support baseURL config
+  // Support baseURL setting
   if (config.baseURL && !isAbsoluteURL(config.url)) {
     config.url = combineURLs(config.baseURL, config.url);
   }
@@ -11663,7 +11663,7 @@ function throwIfCancellationRequested(config) {
 /**
  * Dispatch a request to the server using the configured adapter.
  *
- * @param {object} config The config that is to be used for the request
+ * @param {object} config The setting that is to be used for the request
  * @returns {Promise} The Promise to be fulfilled
  */
 module.exports = function dispatchRequest(config) {
@@ -11733,10 +11733,10 @@ module.exports = function dispatchRequest(config) {
 
 
 /**
- * Update an Error with the specified config, error code, and response.
+ * Update an Error with the specified setting, error code, and response.
  *
  * @param {Error} error The error to update.
- * @param {Object} config The config.
+ * @param {Object} config The setting.
  * @param {string} [code] The error code (for example, 'ECONNABORTED').
  @ @param {Object} [response] The response.
  * @returns {Error} The error.
@@ -34563,7 +34563,7 @@ var initProxy;
     config.keyCodes = new Proxy(config.keyCodes, {
       set: function set (target, key, value) {
         if (isBuiltInModifier(key)) {
-          warn(("Avoid overwriting built-in modifier in config.keyCodes: ." + key));
+          warn(("Avoid overwriting built-in modifier in setting.keyCodes: ." + key));
           return false
         } else {
           target[key] = value;
@@ -36537,7 +36537,7 @@ function isKeyNotMatch (expect, actual) {
 }
 
 /**
- * Runtime helper for checking keyCodes from config.
+ * Runtime helper for checking keyCodes from setting.
  * exposed as Vue.prototype._k
  * passing in eventKeyName as last argument separately for backwards compat
  */
@@ -37771,13 +37771,13 @@ var builtInComponents = {
 /*  */
 
 function initGlobalAPI (Vue) {
-  // config
+  // setting
   var configDef = {};
   configDef.get = function () { return config; };
   {
     configDef.set = function () {
       warn(
-        'Do not replace the Vue.config object, set individual fields instead.'
+        'Do not replace the Vue.setting object, set individual fields instead.'
       );
     };
   }

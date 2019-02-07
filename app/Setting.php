@@ -20,7 +20,6 @@ class Setting extends Model
         'schedule_power',
         'onfollow_power',
         'stop_registration',
-        'hide_error_log',
         'logo'
     ];
 }

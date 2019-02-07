@@ -38,15 +38,16 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        if (!Setting::findOrNew(1)->exists()){
-            $this->middleware('guest');
+
+        if (User::count() == 0){
+            return $this->middleware('guest');
         }
 
         $settings = Setting::findOrNew(1);
-        if ($settings->stop_registration) {
-            $this->middleware('auth');
+        if (!$settings->stop_registration) {
+            return $this->middleware('auth');
         }
-        $this->middleware('guest');
+        return $this->middleware('guest');
     }
 
     /**

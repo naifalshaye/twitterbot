@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <label for="timezone" class="col-md-3 control-label">TimeZone</label>
                                 <div class="col-md-4">
-                                    <select name="timezone" id="timezone" class="form-control">
+                                    <select name="timezone" id="timezone" class="form-control" required>
                                         <option value="">Select TimeZone</option>
                                         @foreach ($timezones as $zone)
                                             <option value="{{$zone}}" @if ($zone == $settings->timezone) selected @endif>{{$zone}}</option>
@@ -115,13 +115,6 @@
                                 <div class="col-md-6">
                                     <input type="checkbox" name="stop_registration" data-group-cls="btn-group-sm" @if ($settings->stop_registration) checked @endif>
 
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="hide_error_log" class="col-md-4 control-label">Error Log</label>
-                                <div class="col-md-6">
-                                    <input type="checkbox" name="hide_error_log" data-group-cls="btn-group-sm" @if ($settings->hide_error_log) checked @endif>
                                 </div>
                             </div>
 

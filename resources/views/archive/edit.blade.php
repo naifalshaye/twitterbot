@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="str" class="col-md-4 control-label">Keyword</label>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="str" value="{{ $archive->str }}">
+                                        <input type="text" class="form-control" name="str" value="{{ $archive->str }}" required>
                                     </div>
                                 </div>
 
