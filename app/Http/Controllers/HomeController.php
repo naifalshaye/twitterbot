@@ -11,7 +11,6 @@ use App\Library\TwitterBot;
 use App\Schedule;
 use App\Tweet;
 use App\UserInfo;
-use Faker\Provider\Image;
 
 class HomeController extends Controller
 {

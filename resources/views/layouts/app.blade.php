@@ -128,8 +128,8 @@
     </div>
     <div class="container-fluid">
         <footer class="row">
-            <div class="footer" style="text-align: center !important;">
-                <p>Made With <span style="font-size:18px; color:#BD1831;" class="fa fa-heart"></span> By <a href="https://twitter.com/naifalshaye" target="_blank">Naif Alshaye</a></p>
+            <div class="footer" style="text-align: center !important; font-size:14px !important; ">
+                <p>Made With <span style="font-size:14px !important; color:#BD1831;" class="fa fa-heart"></span> By <a href="https://twitter.com/naifalshaye" target="_blank">Naif Alshaye</a> <span style="font-size: 12px;">version 1.0</span></p>
             </div>
         </footer>
     </div>
