@@ -11,19 +11,10 @@ use App\Library\TwitterBot;
 use App\Schedule;
 use App\Tweet;
 use App\UserInfo;
+use Faker\Provider\Image;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-         $this->middleware('auth');
-    }
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
@@ -42,11 +33,11 @@ class HomeController extends Controller
             ->buildOauth($url, $requestMethod)
             ->performRequest());
 
-        if (isset($trends->errors) && !empty($trends->errors)){
+        if (isset($trends->errors) && !empty($trends->errors)) {
             $trends = null;
         }
         $chat_tweet = ChatTweet::get()->last();
-        $archive_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
+        $archive_tweet = Tweet::orderBy('created_at', 'desc')->take(1)->first();
 
         $numbers = new \stdClass();
         $numbers->chat = Chat::count();
@@ -57,6 +48,7 @@ class HomeController extends Controller
 
         $user_info = UserInfo::findOrNew(1);
 
-        return view('home',compact('trends','chat_tweet','archive_tweet','top_chat_chart','numbers','settings','user_info'));
+        return view('home',
+            compact('trends', 'chat_tweet', 'archive_tweet', 'top_chat_chart', 'numbers', 'settings', 'user_info'));
     }
 }

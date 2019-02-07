@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $archive = Arachive::OrderBy('id','desc')->paginate(15);

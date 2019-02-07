@@ -9,6 +9,7 @@
         "dg/twitter-php": "^3.7",
         "doctrine/dbal": "^2.9",
         "laravel/framework": "5.4.*",
+        "intervention/image": "dev-master",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "rap2hpoutre/laravel-log-viewer": "^1.0",
