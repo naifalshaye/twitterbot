@@ -25,9 +25,40 @@
                     </div>
                 </div>
             @endif
+
+            @if ($user_info->name)
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">User Info</div>
+                        <div class="panel-body">
+                            <div>
+                                <div><img src="{{$user_info->profile_image_url}}" class="img-circle" style="height: 65px !important;"></div>
+                                <div style="margin-top:-40px; margin-left:80px; color:black; font-weight: bold; font-size:18px;">{{$user_info->name}}</div>
+                                <div style="margin-left:80px;">
+                                    <a href="https://twitter.com/{{$user_info->screen_name}}" target="_blank" style="color:#657786 !important;">{{'@'.$user_info->screen_name}}</a>
+                                </div>
+                                <div style="margin-top:20px;">
+                                    <table>
+                                        <tr>
+                                            <td style="padding-right:20px; color:#6B7D8B !important;">Tweets</td>
+                                            <td style="padding-right:20px; color:#6B7D8B !important;">Following</td>
+                                            <td style="padding-right:20px; color:#6B7D8B !important;">Followers</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color:#1CA1F2 !important; padding-right:20px; font-weight: bold;">{{$user_info->statuses_count}}</td>
+                                            <td style="color:#1CA1F2 !important; padding-right:20px; font-weight: bold;">{{$user_info->friends_count}}</td>
+                                            <td style="color:#1CA1F2 !important; padding-right:20px; font-weight: bold;">{{$user_info->followers_count}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="col-lg-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">Statistics</div>
                     <div class="panel-body">
                         <div>Chat Keywords: {{$numbers->chat}}</div>
                         <div>Archive Keywords: {{$numbers->archive}}</div>
@@ -46,40 +77,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold;">User Info</div>
-                    <div class="panel-body">
-                        <div>
-                            <div><img src="{{$user_info->profile_image_url}}" class="img-circle" style="height: 65px !important;"></div>
-                            <div style="margin-top:-40px; margin-left:80px; color:black; font-weight: bold; font-size:18px;">{{$user_info->name}}</div>
-                            <div style="margin-left:80px;">
-                                <a href="https://twitter.com/{{$user_info->screen_name}}" target="_blank" style="color:#657786 !important;">{{'@'.$user_info->screen_name}}</a>
-                            </div>
-                            <div style="margin-top:20px;">
-                                <table>
-                                    <tr>
-                                        <td style="padding-right:20px; color:#6B7D8B !important;">Tweets</td>
-                                        <td style="padding-right:20px; color:#6B7D8B !important;">Following</td>
-                                        <td style="padding-right:20px; color:#6B7D8B !important;">Followers</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color:#1CA1F2 !important; padding-right:20px; font-weight: bold;">{{$user_info->statuses_count}}</td>
-                                        <td style="color:#1CA1F2 !important; padding-right:20px; font-weight: bold;">{{$user_info->friends_count}}</td>
-                                        <td style="color:#1CA1F2 !important; padding-right:20px; font-weight: bold;">{{$user_info->followers_count}}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="col-lg-2">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Services Status</div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="height: 180px;">
                         <div align="center" style="text-align: left;"><span class="fa fa-power-off" style="font-size:20px; color:@if ($settings->bot_power) green @else red @endif;"></span> Bot</div>
                         <div align="center" style="text-align: left;"><span class="fa fa-power-off" style="font-size:20px; color:@if ($settings->chat_power) green @else red @endif;"></span> Chat</div>
                         <div align="center" style="text-align: left;"><span class="fa fa-power-off" style="font-size:20px; color:@if ($settings->archive_power) green @else red @endif;"></span> Archive</div>

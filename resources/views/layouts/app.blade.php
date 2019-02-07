@@ -37,16 +37,6 @@
         color:#EB3B39;
         margin-bottom: 20px;
     }
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 4px;
-        width: 100%;
-        height:20px;
-        color:#777777;
-        margin-top:-13px !important;
-        text-align: center;
-    }
     .navbar-default .navbar-nav > li > a:hover {
         color: #1CA1F2;
     }
@@ -136,9 +126,14 @@
         @endif
         @yield('content')
     </div>
-    <div class="footer">
-        <p>Made With <span style="font-size:16px; color:#BD1831;">❤</span> By <a href="https://twitter.com/naifalshaye" target="_blank">Naif Alshaye</a></p>
+    <div class="container-fluid">
+        <footer class="row">
+            <div class="footer" style="text-align: center !important;">
+                <p>Made With <span style="font-size:18px; color:#BD1831;" class="fa fa-heart"></span> By <a href="https://twitter.com/naifalshaye" target="_blank">Naif Alshaye</a></p>
+            </div>
+        </footer>
     </div>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')
