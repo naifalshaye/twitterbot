@@ -6,9 +6,6 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('storage/{filename}', "GuestController@showImage");
-
-
 Route::group(['middleware' => 'auth'], function() {
     Route::post('/change_password', 'Auth\ChangePasswordController@update');
 
@@ -37,3 +34,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 });
+
+Route::get('storage/{filename}', "GuestController@showImage");
