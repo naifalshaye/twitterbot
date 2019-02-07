@@ -5,8 +5,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading bg-light" style="height: 45px; padding-top:0px;">
                     <div class="row">
-                        <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">Keywords</div>
-                        <div class="btn btn-sm pull-right"><a href="{{url('streaming/create') }}" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add Keyword</span></a></div>
+                        <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">Archive Keyword</div>
+                        <div class="btn btn-sm pull-right"><a href="{{url('archive/create') }}" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add Keyword</span></a></div>
                     </div>
                 </div>
                 @if (count($errors) > 0)
@@ -39,7 +39,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($streaming as $keyword)
+                                @foreach($archive as $keyword)
                                     <tr>
                                         <td>{{ $keyword->id }}</td>
                                         <td>{{ $keyword->str }}</td>
@@ -68,7 +68,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div align="center">{{$streaming->render()}}</div>
+                            <div align="center">{{$archive->render()}}</div>
                         </div>
                     </div>
                 </div>

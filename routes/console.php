@@ -18,9 +18,9 @@ Artisan::command('Chat', function () {
     $this->comment(\App\Console\Commands\ChatCommand::class);
 })->describe('Check mentions for chat keywords and reply');
 
-Artisan::command('StreamTwitter', function () {
+Artisan::command('ArchiveTwitter', function () {
     $this->comment(\App\Console\Commands\Archive::class);
-})->describe('Stream & archive');
+})->describe('Archive & archive');
 
 Artisan::command('Scheduled', function () {
     $this->comment(\App\Console\Commands\Scheduled::class);

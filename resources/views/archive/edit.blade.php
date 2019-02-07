@@ -3,7 +3,7 @@
     <div class='row'>
         <div class="col-lg-4 col-lg-offset-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Edit Category</div>
+                <div class="panel-heading">Edit Archive Keyword</div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -19,7 +19,7 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="post" role="form" action="{{ url('archive/'.$streaming->id) }}">
+                        <form class="form-horizontal" method="post" role="form" action="{{ url('archive/'.$archive->id) }}">
                             <input type="hidden" name="_method" value="PUT">
                             <fieldset>
                             {!! csrf_field() !!}
@@ -27,14 +27,14 @@
                                 <div class="form-group">
                                     <label for="str" class="col-md-4 control-label">Keyword</label>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" name="str" value="{{ $streaming->str }}">
+                                        <input type="text" class="form-control" name="str" value="{{ $archive->str }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="disable" class="col-md-4 control-label">Disable</label>
                                     <div class="col-md-6">
-                                        <input type="checkbox" class="form-control" name="disable" @if ($streaming->disable) checked @endif>
+                                        <input type="checkbox" class="form-control" name="disable" @if ($archive->disable) checked @endif>
                                     </div>
                                 </div>
 

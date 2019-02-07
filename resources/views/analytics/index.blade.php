@@ -38,7 +38,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Top 10 Archived Tweets Users</div>
                     <div class="panel-body">
-                        <div id="top_stream_users" style="width: 500px; height: 400px;"></div>
+                        <div id="top_archive_users" style="width: 500px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -166,11 +166,11 @@
 
 
     function drawTopSteamUsersChart() {
-        var top_stream_users = <?php echo json_encode($top_chat_users); ?>;
+        var top_archive_users = <?php echo json_encode($top_chat_users); ?>;
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'User');
         data.addColumn('number', 'Tweets');
-        data.addRows(top_stream_users);
+        data.addRows(top_archive_users);
 
         var options = {
             title: '',
@@ -187,7 +187,7 @@
             colors:['#A54341']
         };
 
-        var chart = new google.visualization.ColumnChart(document.getElementById('top_stream_users'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('top_archive_users'));
         chart.draw(data, options);
     }
 

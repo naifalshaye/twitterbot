@@ -37,16 +37,16 @@ class AnalyticsController extends Controller
             array_push($top_chat_users,[$user->user_screen_name,$user->count]);
         }
 
-        $top_stream_users_data = DB::table('tweets')
+        $top_archive_users_data = DB::table('tweets')
             ->select(DB::raw('user_screen_name'), DB::raw('count(*) as count'))
             ->groupBy('user_screen_name')
             ->orderBy('count', 'desc')
             ->take(10)
             ->get();
 
-        $top_stream_users = [];
-        foreach ($top_stream_users_data as $user){
-            array_push($top_stream_users,[$user->user_screen_name,$user->count]);
+        $top_archive_users = [];
+        foreach ($top_archive_users_data as $user){
+            array_push($top_archive_users,[$user->user_screen_name,$user->count]);
         }
 
         $daily_chat_tweets_data = ChatTweet::select([
@@ -94,6 +94,6 @@ class AnalyticsController extends Controller
             array_push($current_year_schedules,[$dm['month'],$dm['count']]);
         }
 
-        return view('analytics.index',compact('top_chat_keywords','top_chat_users','top_stream_users','daily_chat_tweets','daily_dm','current_year_schedules'));
+        return view('analytics.index',compact('top_chat_keywords','top_chat_users','top_archive_users','daily_chat_tweets','daily_dm','current_year_schedules'));
     }
 }

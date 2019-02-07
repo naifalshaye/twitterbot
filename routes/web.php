@@ -36,17 +36,15 @@ Route::post('/setting', 'SettingController@update');
 
 
 Route::resource('chat', 'ChatController');
-Route::resource('streaming', 'StreamingController');
+Route::resource('archive', 'ArchiveController');
 Route::resource('schedule', 'ScheduleController');
 
 Route::get('/chat/status/{id}',  'ChatController@status');
-Route::get('/streaming/status/{id}',  'StreamingController@status');
+Route::get('/archive/status/{id}',  'ArchiveController@status');
 Route::get('/schedule/status/{id}',  'ScheduleController@status');
 
-Route::get('/tweets',  'StreamingTweetsController@index');
-
 Route::get('/chat_tweets', "ChatTweetController@index");
-Route::get('/tweets', "StreamingTweetsController@index");
+Route::get('/tweets', "ArchiveTweetsController@index");
 
 Route::get('/dm', "DMController@index");
 Route::get('/dm_config', "DMController@dmConfig");

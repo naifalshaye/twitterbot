@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use App\ChatTweet;
+use App\Arachive;
 use App\DM;
 use App\Setting;
-use App\Streaming;
 use App\Library\TwitterBot;
 use App\Schedule;
 use App\Tweet;
@@ -45,15 +45,15 @@ class HomeController extends Controller
             $trends = null;
         }
         $chat_tweet = ChatTweet::get()->last();
-        $stream_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
+        $archive_tweet = Tweet::orderBy('created_at','desc')->take(1)->first();
 
         $numbers = new \stdClass();
         $numbers->chat = Chat::count();
         $numbers->dm = DM::count();
         $numbers->schedules = Schedule::count();
-        $numbers->stream = Streaming::count();
+        $numbers->archive = Arachive::count();
         $numbers->chat_tweets = ChatTweet::count();
 
-        return view('home',compact('trends','chat_tweet','stream_tweet','top_chat_chart','numbers','settings'));
+        return view('home',compact('trends','chat_tweet','archive_tweet','top_chat_chart','numbers','settings'));
     }
 }

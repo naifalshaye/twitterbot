@@ -44,8 +44,7 @@ class ArchiveTweetsController extends Controller
         }
 
         $tweets = $tweets->OrderBy('created_at','desc')->paginate(50);
-
-        return view('streaming.tweets',compact('tweets'));
+        return view('archive.tweets',compact('tweets'));
     }
 
 }

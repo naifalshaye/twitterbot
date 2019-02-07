@@ -14,8 +14,8 @@ class ArchiveController extends Controller
 
     public function index()
     {
-        $streaming = Arachive::OrderBy('id','desc')->paginate(15);
-        return view('streaming.index', compact('streaming'));
+        $archive = Arachive::OrderBy('id','desc')->paginate(15);
+        return view('archive.index', compact('archive'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ArchiveController extends Controller
      */
     public function create()
     {
-        return view('streaming.add');
+        return view('archive.add');
     }
 
     /**
@@ -41,8 +41,8 @@ class ArchiveController extends Controller
         } else {
             $request['disable']  = false;
         }
-        $streaming = Arachive::create($request->all());
-        return redirect()->back()->with('success', 'Streaming keyword has been added.');
+        $archive = Arachive::create($request->all());
+        return redirect()->back()->with('success', 'Archive keyword has been added.');
     }
 
     /**
@@ -64,8 +64,8 @@ class ArchiveController extends Controller
      */
     public function edit($id)
     {
-        $streaming = Arachive::findOrFail($id);
-        return view('streaming.edit', compact('streaming'));
+        $archive = Arachive::findOrFail($id);
+        return view('archive.edit', compact('archive'));
     }
 
     /**
@@ -83,11 +83,11 @@ class ArchiveController extends Controller
             $request->disable = false;
         }
 
-        $streaming = Arachive::findOrFail($id);
-        $streaming->str = $request->str;
-        $streaming->disable = $request->disable;
-        $streaming->save();
-        return redirect()->back()->with('success', 'Streaming keyword has been updated.');
+        $archive = Arachive::findOrFail($id);
+        $archive->str = $request->str;
+        $archive->disable = $request->disable;
+        $archive->save();
+        return redirect()->back()->with('success', 'Archive keyword has been updated.');
     }
 
     /**
@@ -97,22 +97,22 @@ class ArchiveController extends Controller
      */
     public function destroy($id)
     {
-        $streaming = Arachive::findOrFail($id);
-        $streaming->delete();
-        return redirect()->to('/streaming')->with('success', 'Streaming keyword has been deleted.');
+        $archive = Arachive::findOrFail($id);
+        $archive->delete();
+        return redirect()->to('/archive')->with('success', 'Archive keyword has been deleted.');
     }
 
     public function status($id)
     {
-        $streaming = Arachive::findOrFail($id);
-        if ($streaming->disable){
-            $streaming->disable = false;
+        $archive = Arachive::findOrFail($id);
+        if ($archive->disable){
+            $archive->disable = false;
         }
         else {
-            $streaming->disable = true;
+            $archive->disable = true;
         }
-        $streaming->save();
-        return redirect()->to('/streaming');
+        $archive->save();
+        return redirect()->to('/archive');
 
     }
 }

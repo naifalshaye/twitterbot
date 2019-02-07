@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Arachive;
 use App\Conf;
 use App\Library\TwitterBot;
 use App\Setting;
-use App\Streaming;
 use App\Tweet;
 use Illuminate\Console\Command;
 
@@ -23,11 +23,11 @@ class Archive extends Command
      *
      * @var string
      */
-    protected $description = 'Stream twitter';
+    protected $description = 'Archive twitter';
+
 
     /**
-     * StreamTwitter constructor.
-     * @param TwitterStream $twitterStream
+     * Archive constructor.
      */
     public function __construct()
     {
@@ -38,14 +38,14 @@ class Archive extends Command
     public function handle()
     {
         $settings = Setting::findOrNew(1);
-        if (!$settings->bot_power || !$settings->archive_power) {
+        if (!$settings->bot_power || !$settings->archive_power || !$settings->consumer_key || !$settings->consumer_secret || !$settings->access_token || !$settings->access_secret) {
             return;
         }
 
         $conf = Conf::findOrNew(1);
         $twitter = new TwitterBot();
 
-        $keywords = Streaming::where('disable', false)->pluck('str')->toArray();
+        $keywords = Arachive::where('disable', false)->pluck('str')->toArray();
         if (sizeof($keywords) > 0) {
             if (!$conf->search_since_id){
                 $conf->search_since_id = 1;

@@ -30,12 +30,12 @@
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Numbers</div>
                     <div class="panel-body">
                         <div>Chat Keywords: {{$numbers->chat}}</div>
-                        <div>Stream Keywords: {{$numbers->stream}}</div>
+                        <div>Archive Keywords: {{$numbers->archive}}</div>
                         <div>Chat Tweets: {{$numbers->chat_tweets}}</div>
                         <div>
-                            Stream Tweets:
-                            @if ($stream_tweet)
-                                {{$stream_tweet->count()}}
+                            Archive Tweets:
+                            @if ($archive_tweet)
+                                {{$archive_tweet->count()}}
                             @else
                                 0
                             @endif
@@ -72,14 +72,14 @@
                     </div>
                 </div>
             @endif
-            @if (isset($stream_tweet))
+            @if (isset($archive_tweet))
                 <div class="col-lg-8 @if (!isset($trends)) col-lg-offset-3 @endif">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">Stream Latest Tweet</div>
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">Archive Latest Tweet</div>
                         <div class="panel-body">
-                            Time: {{$stream_tweet->created_at}}<br>
-                            Tweet: {{$stream_tweet->tweet_text}}<br>
-                            From: <a href="http://twitter.com/{{ $stream_tweet->user_screen_name }}" target="_blank">{{ $stream_tweet->user_screen_name }}</a><br>
+                            Time: {{$archive_tweet->created_at}}<br>
+                            Tweet: {{$archive_tweet->tweet_text}}<br>
+                            From: <a href="http://twitter.com/{{ $archive_tweet->user_screen_name }}" target="_blank">{{ $archive_tweet->user_screen_name }}</a><br>
                         </div>
                     </div>
                 </div>

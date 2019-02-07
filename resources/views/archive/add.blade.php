@@ -3,7 +3,7 @@
     <div class='row'>
         <div class="col-lg-4 col-lg-offset-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Add Keyword</div>
+                <div class="panel-heading">Archive Keyword</div>
                 <div class="panel-body">
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">

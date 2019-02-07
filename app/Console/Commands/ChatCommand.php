@@ -39,7 +39,7 @@ class   ChatCommand extends Command
     public function handle()
     {
         $settings = Setting::findOrNew(1);
-        if (!$settings->bot_power || !$settings->chat_power) {
+        if (!$settings->bot_power || !$settings->chat_power || !$settings->consumer_key || !$settings->consumer_secret || !$settings->access_token || !$settings->access_secret) {
             return;
         }
 
