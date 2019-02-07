@@ -11,7 +11,7 @@
 
                         <div class="panel-body">
                             <ol>
-                                @foreach ($trends[0]->trends as $trend)
+                                @foreach ($trends as $trend)
                                     <li>
                                         @if (str_contains($trend->name,'#'))
                                             <a href="https://twitter.com/hashtag/{{str_replace('#','',$trend->name)}}" target="_blank">{{$trend->name}}</a>
@@ -30,7 +30,7 @@
                 <div class="col-lg-3">
                     <div class="panel panel-default">
                         <div class="panel-heading" style="font-size:16px; font-weight: bold;">User Info</div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="height: 180px;">
                             <div>
                                 <div><img src="{{$user_info->profile_image_url}}" class="img-circle" style="height: 65px !important;"></div>
                                 <div style="margin-top:-40px; margin-left:80px; color:black; font-weight: bold; font-size:18px;">{{$user_info->name}}</div>
@@ -59,7 +59,7 @@
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-size:16px; font-weight: bold;">Statistics</div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="height: 180px;">
                         <div>Chat Keywords: {{$numbers->chat}}</div>
                         <div>Archive Keywords: {{$numbers->archive}}</div>
                         <div>Chat Tweets: {{$numbers->chat_tweets}}</div>

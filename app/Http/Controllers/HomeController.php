@@ -36,6 +36,10 @@ class HomeController extends Controller
         if (isset($trends->errors) && !empty($trends->errors)) {
             $trends = null;
         }
+        if ($trends) {
+            $trends = array_slice($trends[0]->trends, 0, 28);
+        }
+
         $chat_tweet = ChatTweet::get()->last();
         $archive_tweet = Tweet::orderBy('created_at', 'desc')->take(1)->first();
 
