@@ -17,7 +17,7 @@ class DMController extends Controller
 
     public function dmConfig()
     {
-        $dm = DMConfig::findOrFail(1);
+        $dm = DMConfig::findOrNew(1);
         return view('dm.setting',compact('dm'));
     }
 
