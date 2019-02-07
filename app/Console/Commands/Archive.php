@@ -99,10 +99,8 @@ class Archive extends Command
                     ]);
                 }
             }
-            if ($response->statuses) {
                 $conf->search_since_id = end($response->statuses)->id_str;
                 $conf->save();
-            }
         }
     }
 }
