@@ -1,7 +1,15 @@
-# Twitter Bot
-Version 1.0
+# Twitter Bot 1.0
 
 It’s an open source application for Twitter data automation and archiving.
+
+## Demo
+http://naif.io/twitterbot
+
+Email Address: demo@demo.com
+
+Password: demo
+
+Twitter Bot Demo: https://twitter.com/twitrbot_demo
 
 ## Features and Services:
 
