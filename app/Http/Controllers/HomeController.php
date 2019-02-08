@@ -39,7 +39,7 @@ class HomeController extends Controller
             $trends = array_slice($trends[0]->trends, 0, 28);
         }
 
-        $chat_tweet = ChatTweet::get()->last();
+        $chat_tweet = ChatTweet::orderBy('created_at', 'desc')->take(1)->first();
         $archive_tweet = Tweet::orderBy('created_at', 'desc')->take(1)->first();
 
         $numbers = new \stdClass();
