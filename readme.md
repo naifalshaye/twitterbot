@@ -49,6 +49,16 @@ Add Twitter API keyes here. You can also turn on/off features and services or po
 
 <img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/1.png?token=AWDRC_O05CVVLE79M8wiZ8poCaQF094zks5cXhJnwA%3D%3D" width="500">
 
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/2.png?token=AWDRC2LRGsGV2Gd5wyWkNyFrmNDLbHosks5cXhLuwA%3D%3D" width="500">
+
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/3.png?token=AWDRC0eaYbdLMXKSDe_XBRpo1XGkTObhks5cXhMFwA%3D%3D" width="500">
+
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/5.png?token=AWDRCwAJ7OJ8hPmxswypsHGuYGE4-rA5ks5cXhNAwA%3D%3D" width="500">
+
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/4.png?token=AWDRCzWBuj-HVjIa-NHwOY1sRCoZJONeks5cXhNUwA%3D%3D" width="500">
+
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/6.png?token=AWDRCz6qrznZKmVLF3PVmnVaraSXgsNjks5cXhNwwA%3D%3D" width="500">
+
 
 ## Support | Bugs | Vulnerabilities
 naif@naif.io
