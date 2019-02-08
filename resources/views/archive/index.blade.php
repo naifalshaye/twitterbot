@@ -24,7 +24,7 @@
                     </div>
                 @endif
                 <div class="panel-body">
-                    <div align="center" class="alert alert-info">Add keywords that you want the bot to search and archive tweets about.</div>
+                    <div align="center" class="alert alert-danger">Add keywords that you want to search and archive.<br>Maximum 10 keywords and max length is 500 characters for all keywords together.<br>Queries can be limited due to complexity</div>
 
                     <div class="row">
 

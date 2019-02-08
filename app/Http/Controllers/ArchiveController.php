@@ -31,6 +31,10 @@ class ArchiveController extends Controller
      */
     public function store(Request $request)
     {
+        if (Arachive::count() > 9){
+            return redirect()->back()->withErrors('You have exceeded the maximum number of keywords. Maximum 10 Keywords');
+        }
+
         $this->validate($request, [
             'str' => 'required'
         ]);
@@ -40,6 +44,26 @@ class ArchiveController extends Controller
         } else {
             $request['disable']  = false;
         }
+
+        $keywords = Arachive::where('disable', false)->pluck('str')->toArray();
+
+        $getfields = preg_replace('/^\?/', '', explode('&', 'q=' . implode('+OR+',$keywords)));
+        $params = array();
+        foreach ($getfields as $field)
+        {
+            if ($field !== '')
+            {
+                list($key, $value) = explode('=', $field);
+                $params[$key] = $value;
+            }
+        }
+        $query = '?' . http_build_query($params, '', '&');
+        $query = $query.'%2BOR%2B'.$request->str;
+        $query_lentgh = mb_strlen($query, 'UTF-8');
+        if ($query_lentgh >= 500){
+            return redirect()->back()->withErrors('You have exceeded the maximum characters lentgh for all keywords');
+        }
+
         $archive = Arachive::create($request->all());
         return redirect()->back()->with('success', 'Archive keyword has been added.');
     }
