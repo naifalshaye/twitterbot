@@ -1,6 +1,6 @@
-# Twitter Bot 1.0 [demo]
+# Twitter Bot 1.0 
 
-An open source application for Twitter data automations and data archiving.
+An open source application for Twitter data automations and archiving. [demo]
 
 ## Bot Dashboard Demo
 http://naif.io/twitterbot
@@ -29,6 +29,12 @@ Send direct message when someone follow your account.
 
 ### Analysis:
 Monitor the daily and monthly data.
+- Daily Chat Tweets
+- Daily Direct Messages On Follow
+- Top 10 Chat Keywords
+- Top 10 Chat Users
+- Top 10 Archived Tweets Users
+- Current Year Schedules
 
 ### Settings:
 Add Twitter API keyes here. You can also turn on/off features and services or power off bot completely.
