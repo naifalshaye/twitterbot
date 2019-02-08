@@ -1,15 +1,15 @@
-# Twitter Bot 1.0
+# Twitter Bot 1.0 [demo]
 
-It’s an open source application for Twitter data automation and archiving.
+An open source application for Twitter data automations and data archiving.
 
-## Demo
+## Bot Dashboard Demo
 http://naif.io/twitterbot
 
 Email Address: demo@demo.com
 
 Password: demo
 
-Twitter Bot Demo: https://twitter.com/twitrbot_demo
+TwitterBot demo account: @twitrbot_demo https://twitter.com/twitrbot_demo
 
 ## Features and Services:
 
@@ -18,24 +18,22 @@ Twitter Bot Demo: https://twitter.com/twitrbot_demo
 Using the Twitter User API to fetch account data. Add keywords and phrases and a reply tweet, then the Bot will check your twitter account’s mention and look into the tweet text to see if there is any matching keyword to reply to the tweet itself.
 
 ### Archiving:
-Using Twitter Search API to search for tweets matching your keywords or phrases, it will store tweet and user object data into the database.
+This search API searches against a sampling of recent Tweets published in the past 7 days.
+The bot will search for tweets matching your keywords or phrases, it will store tweet and user objects data into the databas. 
 
 ### Scheduling Tweet:
-Send auto tweets  at a specific date and time.
+Send auto tweets at a specific date and time.
 
 ### Direct Message On Follow:
-Send DM when someone follow your account.
+Send direct message when someone follow your account.
 
 ### Analysis:
 Monitor the daily and monthly data.
 
 ### Settings:
-You can turn on/off features and services or power off bot completely.
+Add Twitter API keyes here. You can also turn on/off features and services or power off bot completely.
 
-### Errors Log:
-Monitor Bot errors and exceptions.
-
-## Support:
+## Support | Bugs | Vulnerabilities
 naif@naif.io
 
 https://twitter.com/naifalshaye
