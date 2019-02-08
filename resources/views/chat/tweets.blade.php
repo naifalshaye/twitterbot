@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light">
                     <div style="font-size:16px; font-weight: bold; color:#565656;">Chat Tweets</div>
