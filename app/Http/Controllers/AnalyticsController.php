@@ -79,6 +79,7 @@ class AnalyticsController extends Controller
         foreach ($daily_dm_data as $dm){
             array_push($daily_dm,[$dm['date'], (int)$dm['count']]);
         }
+
         $current_year_schedule_data = Schedule::select([
             DB::raw('MONTH(created_at) AS month'),
             DB::raw('COUNT(id) AS count'),
@@ -91,7 +92,7 @@ class AnalyticsController extends Controller
 
         $current_year_schedules = [];
         foreach ($current_year_schedule_data as $dm){
-            array_push($current_year_schedules,(int)[$dm['month'], (int)$dm['count']]);
+            array_push($current_year_schedules,[$dm['month'], (int)$dm['count']]);
         }
 
         return view('analytics.index',compact('top_chat_keywords','top_chat_users','top_archive_users','daily_chat_tweets','daily_dm','current_year_schedules'));
