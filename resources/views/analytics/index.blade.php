@@ -196,7 +196,14 @@
         var data = new google.visualization.DataTable();
         data.addColumn('number', 'Month');
         data.addColumn('number', 'Schedules');
-        data.addRows(current_year_schedules);
+
+        for(var i=0; i< current_year_schedules.length; i++) {
+            var arr = [];
+            for(var j=0; j< current_year_schedules[i].length; j++) {
+                arr.push(parseFloat(current_year_schedules[i][j]));
+            }
+            data.addRow(arr);
+        }
 
         var options = {
             title: '',

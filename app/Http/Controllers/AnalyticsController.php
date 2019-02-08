@@ -74,7 +74,6 @@ class AnalyticsController extends Controller
             ->get()
             ->toArray();
 
-
         $daily_dm = [];
         foreach ($daily_dm_data as $dm){
             array_push($daily_dm,[$dm['date'], (int)$dm['count']]);
@@ -89,12 +88,10 @@ class AnalyticsController extends Controller
             ->orderBy('month', 'ASC')
             ->get()
             ->toArray();
-
         $current_year_schedules = [];
         foreach ($current_year_schedule_data as $dm){
-            array_push($current_year_schedules,[$dm['month'], (int)$dm['count']]);
+            array_push($current_year_schedules,[ (string)$dm['month'], (int)$dm['count']]);
         }
-
         return view('analytics.index',compact('top_chat_keywords','top_chat_users','top_archive_users','daily_chat_tweets','daily_dm','current_year_schedules'));
     }
 }
