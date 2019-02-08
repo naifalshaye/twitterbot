@@ -29,7 +29,7 @@
             @if ($user_info->name)
                 <div class="col-lg-3">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">User Info</div>
+                        <div class="panel-heading" style="font-size:16px; font-weight: bold;">Bot User Info</div>
                         <div class="panel-body" style="height: 180px;">
                             <div>
                                 <div><img src="{{$user_info->profile_image_url}}" class="img-circle" style="height: 65px !important;"></div>
