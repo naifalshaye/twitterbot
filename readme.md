@@ -1,8 +1,12 @@
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/logo.png?token=AWDRC11kCjZt_5hB3z2DvoDAblVupl70ks5cXhIUwA%3D%3D" width="220">
+
 # Twitter Bot 1.0 
 
 An open source application for Twitter data automations and archiving. [demo]
 
 ## Bot Dashboard Demo
+[Sorry, only view, no add or edit is allowed.]
+
 http://naif.io/twitterbot
 
 Email Address: demo@demo.com
@@ -38,6 +42,13 @@ Monitor the daily and monthly data.
 
 ### Settings:
 Add Twitter API keyes here. You can also turn on/off features and services or power off bot completely.
+
+### Screenshots
+
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/7.png?token=AWDRCxPonyRiWfbxtcPoZlJEkOuvnD_Wks5cXhKFwA%3D%3D" width="500">
+
+<img src="https://raw.githubusercontent.com/naifalshaye/twitterbot/master/screenshots/1.png?token=AWDRC_O05CVVLE79M8wiZ8poCaQF094zks5cXhJnwA%3D%3D" width="500">
+
 
 ## Support | Bugs | Vulnerabilities
 naif@naif.io
