@@ -70,7 +70,7 @@
         data.addColumn('string', 'Day');
         data.addColumn('number', 'Tweets');
 
-        data.addRows(daily_chat_tweets);
+        data.addRows(Number(daily_chat_tweets));
 
         var options = {
             title: '',
@@ -94,7 +94,7 @@
         data.addColumn('string', 'Day');
         data.addColumn('number', 'Direct Messages');
 
-        data.addRows(daily_dm);
+        data.addRows(Number(daily_dm));
 
         var options = {
             title: '',
@@ -117,7 +117,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Keyword');
         data.addColumn('number', 'Tweets');
-        data.addRows(top_chat_keywords);
+        data.addRows(Number(top_chat_keywords));
 
         var options = {
             title: '',
@@ -143,7 +143,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'User');
         data.addColumn('number', 'Tweets');
-        data.addRows(top_chat_users);
+        data.addRows(Number(top_chat_users));
 
         var options = {
             title: '',
@@ -170,7 +170,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'User');
         data.addColumn('number', 'Tweets');
-        data.addRows(top_archive_users);
+        data.addRows(Number(top_archive_users));
 
         var options = {
             title: '',
@@ -196,7 +196,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('number', 'Month');
         data.addColumn('number', 'Schedules');
-        data.addRows(current_year_schedules);
+        data.addRows(Number(current_year_schedules));
 
         var options = {
             title: '',
