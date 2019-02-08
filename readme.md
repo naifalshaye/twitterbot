@@ -1,8 +1,17 @@
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/logo.png" width="220">
+
 # Twitter Bot 1.0 
 
 An open source application for Twitter data automations and archiving. [demo]
 
 ## Bot Dashboard Demo
+Please Note: 
+- Only view is allowed no add or edit.
+- Cron jobs are set to every 5 minute, due to hosting rules. Of course you can set it to run every minute.
+
+* The bot is designed to not exceed Twitter API limit, you must not run cron jobs less than 1 minute.
+You only have 15 API calls per 15 minutes window.
+
 http://naif.io/twitterbot
 
 Email Address: demo@demo.com
@@ -38,6 +47,23 @@ Monitor the daily and monthly data.
 
 ### Settings:
 Add Twitter API keyes here. You can also turn on/off features and services or power off bot completely.
+
+### Screenshots
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/7.png" width="500">
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/1.png" width="500">
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/2.png" width="500">
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/3.png" width="500">
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/5.png" width="500">
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/4.png" width="500">
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/6.png" width="500">
+
 
 ## Support | Bugs | Vulnerabilities
 naif@naif.io
