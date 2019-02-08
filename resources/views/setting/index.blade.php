@@ -22,9 +22,9 @@
             </div>
             <div class="col-md-7 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Settings</div>
+                    <div class="panel-heading" style="font-size:16px; font-weight: bold; color:#565656;">Bot Settings</div>
                     <div class="panel-body">
-                        <div align="center" class="alert alert-info">Add Twitter API keys and turn bot On.</div>
+                        <div align="center" class="alert alert-info">Add Twitter API keys and turn bot and services On/Off.</div>
 
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/setting') }}">
                             {{ csrf_field() }}

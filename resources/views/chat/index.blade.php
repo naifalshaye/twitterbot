@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" style="height: 45px; padding-top:1px;">
                     <div class="row">
-                        <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">Chat</div>
+                        <div class="btn btn-sm pull-left" style="font-size:16px; font-weight: bold; color:#565656; margin-top:4px;">Chat Settings</div>
                         <div class="btn btn-sm pull-right"><a href="{{url('chat/create')}}" class="btn btn-success btn-sm"><span class="fa fa-plus"> Add Chat keyword</span></a></div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
     <div class='row'>
         <div class="col-lg-6 col-lg-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Edit Category</div>
+                <div class="panel-heading">Edit Scheduled Tweet</div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">

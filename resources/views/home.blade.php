@@ -7,7 +7,7 @@
             @if (isset($trends))
                 <div class="col-lg-4">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="font-weight: bold;">Trending</div>
+                        <div class="panel-heading" style="font-weight: bold;">Worldwide Trends</div>
 
                         <div class="panel-body">
                             <ol>
