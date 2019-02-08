@@ -53,9 +53,9 @@ Add Twitter API keyes here. You can also turn on/off features and services or po
 
 <img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/3.png" width="500">
 
-<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/4.png" width="500">
-
 <img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/5.png" width="500">
+
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/4.png" width="500">
 
 <img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/6.png" width="500">
 
