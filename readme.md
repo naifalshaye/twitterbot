@@ -6,9 +6,7 @@ An open source application for Twitter data automations and archiving. [demo]
 
 ## Bot Dashboard Demo
 Please Note: 
-- Only view is allowed no add or edit.
-- Cron jobs are set to every 5 minute, due to hosting rules. Of course you can set it to run every minute.
-
+- Only view is allowed in this demo no add/edit/delete.
 * The bot is designed to not exceed Twitter API limit, you must not run cron jobs less than 1 minute.
 You only have 15 API calls per 15 minutes window.
 
