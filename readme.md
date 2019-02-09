@@ -2,7 +2,7 @@
 
 # Twitter Bot 1.0 
 
-An open source application for Twitter data automations and archiving. [demo]
+An open source application for Twitter data automation and archiving. [demo]
 
 ## Bot Dashboard Demo
 Please Note: 
