@@ -1,5 +1,5 @@
 {
-    "name": "Twitter Bot",
+    "name": "naif/twitterbot",
     "description": "An open source application for Twitter data automation and tweets archiving.",
     "keywords": ["framework", "laravel", "twitter", "bot", "twitterbot", "twitter_bot", "ai"],
     "license": "MIT",
