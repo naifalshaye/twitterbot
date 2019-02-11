@@ -2,7 +2,7 @@
 
 # Twitter Bot 1.0 
 
-An open source Laravel application for Twitter data automation and archiving. [demo]
+An open source php Laravel application for Twitter data automation and archiving. [demo]
 
 ## Bot Dashboard Demo
 Please Note: 
