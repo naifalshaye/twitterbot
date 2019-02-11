@@ -54,10 +54,7 @@ class DMFollower extends Command
             foreach ($response->users as $user) {
                 $exist = DM::where('follower_id', $user->id_str)->exists();
                 if (!$exist) {
-
-                    if (DM::count() > 0) {
-                        $this->sendDM($user->id_str, $dm_conf->text);
-                    }
+                    $this->sendDM($user->id_str, $dm_conf->text);
 
                     $dm = new DM();
                     $dm->follower_id = $user->id_str;
