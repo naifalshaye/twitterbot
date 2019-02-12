@@ -10,7 +10,7 @@ Please Note:
 * The bot is designed to not exceed Twitter API limit, you must not run cron jobs less than 1 minute.
 You only have 15 API calls per 15 minutes window.
 
-http://naif.io/twitterbot
+https://naif.io/twitterbot
 
 Email Address: demo@demo.com
 
