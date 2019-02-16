@@ -1,4 +1,4 @@
-<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/logo.png" width="220">
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/logo.jpg?raw=true" width="220">
 
 # Twitter Bot 1.0 
 
