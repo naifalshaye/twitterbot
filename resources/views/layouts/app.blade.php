@@ -60,8 +60,8 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
                         {{--{{ setting('app.name', 'Laravel') }} {{setting('app.version')}}--}}
-                        <div style="margin-top: -15px;">
-                            <img src="{{url('storage/logo.png')}}" style="width:50px;">
+                        <div style="margin-top: -12px;">
+                            <img src="{{url('storage/logo-sm.png')}}" style="width:50px;">
                         </div>
                     </a>
                 </div>

@@ -1,8 +1,8 @@
-<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/logo.png" width="220">
+<img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/logo.jpg?raw=true" width="220">
 
 # Twitter Bot 1.0 
 
-An open source Laravel application for Twitter data automation and archiving. [demo]
+An open source Laravel php application for Twitter data automation and archiving.
 
 ## Bot Dashboard Demo
 Please Note: 
@@ -10,7 +10,7 @@ Please Note:
 * The bot is designed to not exceed Twitter API limit, you must not run cron jobs less than 1 minute.
 You only have 15 API calls per 15 minutes window.
 
-http://naif.io/twitterbot
+https://naif.io/twitterbot
 
 Email Address: demo@demo.com
 
