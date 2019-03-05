@@ -57,7 +57,6 @@ class HomeController extends Controller
 
         $user_info = UserInfo::findOrNew(1);
 
-        return view('home',
-            compact('trends', 'chat_tweet', 'archive_tweet', 'top_chat_chart', 'numbers', 'settings', 'user_info'));
+        return view('home', compact('trends', 'chat_tweet', 'archive_tweet', 'numbers', 'settings', 'user_info'));
     }
 }
