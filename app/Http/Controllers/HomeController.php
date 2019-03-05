@@ -18,6 +18,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
+
+    public function login()
+    {
+        return redirect('/login');
+    }
+
     public function index()
     {
         $settings = Setting::findOrNew(1);

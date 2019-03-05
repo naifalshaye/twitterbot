@@ -2,9 +2,7 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+Route::get('/', 'HomeController@login');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::post('/change_password', 'Auth\ChangePasswordController@update');
