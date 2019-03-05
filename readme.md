@@ -1,25 +1,18 @@
 <img src="https://github.com/naifalshaye/twitterbot/blob/master/screenshots/logo.jpg?raw=true" width="220">
 
-# Twitter Bot 1.0 
+# Twitter Bot 1.1
 
-An open source Laravel php application for Twitter data automation and archiving.
+An open source Laravel PHP application for Twitter data automation, crawler and archiving also to interactions with other users.
 
 ## Bot Dashboard Demo
-Please Note: 
-- Only view is allowed in this demo no add/edit/delete.
-* The bot is designed to not exceed Twitter API limit, you must not run cron jobs less than 1 minute.
-You only have 15 API calls per 15 minutes window.
-
 https://naif.io/twitterbot
 
+```bash
 Email Address: demo@demo.com
-
 Password: demo
-
-TwitterBot demo account: @twitrbot_demo https://twitter.com/twitrbot_demo
+```
 
 ## Features and Services:
-
 
 ### Chat Bot: 
 Using the Twitter User API to fetch account data. Add keywords and phrases and a reply tweet, then the Bot will check your twitter account’s mention and look into the tweet text to see if there is any matching keyword to reply to the tweet itself.
@@ -45,6 +38,10 @@ Monitor the daily and monthly data.
 
 ### Settings:
 Add Twitter API keyes here. You can also turn on/off features and services or power off bot completely.
+
+Please Note: 
+* The bot is designed to not exceed Twitter API limit, you must not run cron jobs less than 1 minute.
+You only have 15 API calls per 15 minutes window.
 
 ### Screenshots
 
