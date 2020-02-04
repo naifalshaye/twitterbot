@@ -63,7 +63,7 @@ You only have 15 API calls per 15 minutes window.
 ## Support | Bugs | Vulnerabilities
 naif@naif.io
 
-https://twitter.com/naifalshaye
+https://twitter.com/alshaye_naif
 
 
 ## License
