@@ -4,14 +4,6 @@
 
 An open source Laravel PHP application for Twitter data automation, crawler and archiving also to interactions with other users.
 
-## Bot Dashboard Demo
-https://naif.io/twitterbot
-
-```bash
-Email Address: demo@demo.com
-Password: demo
-```
-
 ## Features and Services:
 
 ### Chat Bot: 
