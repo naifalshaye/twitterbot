@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05dcb2e1f4f8e06eb60770659275de4b",
+    "content-hash": "8fcade855d2a911b7b5e87eaefcf49ba",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1103,16 +1103,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "dev-master",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "1d22091590183fc48b3811ada0800b9b4e365dfd"
+                "reference": "0925f10b259679b5d8ca58f3a2add9255ffcda45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/1d22091590183fc48b3811ada0800b9b4e365dfd",
-                "reference": "1d22091590183fc48b3811ada0800b9b4e365dfd",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/0925f10b259679b5d8ca58f3a2add9255ffcda45",
+                "reference": "0925f10b259679b5d8ca58f3a2add9255ffcda45",
                 "shasum": ""
             },
             "require": {
@@ -1129,7 +1129,6 @@
                 "ext-imagick": "to use Imagick based image processing.",
                 "intervention/imagecache": "Caching extension for the Intervention Image library"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1172,7 +1171,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/image/issues",
-                "source": "https://github.com/Intervention/image/tree/master"
+                "source": "https://github.com/Intervention/image/tree/2.6.1"
             },
             "funding": [
                 {
@@ -1184,7 +1183,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-26T14:16:35+00:00"
+            "time": "2021-07-22T14:31:53+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -7924,13 +7923,11 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "intervention/image": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": ">=7.2"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
