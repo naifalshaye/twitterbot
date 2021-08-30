@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Riyadh',
+    'timezone' => env('APP_TIMEZONE', 'Asia/Riyadh'),
 
     /*
     |--------------------------------------------------------------------------
@@ -180,7 +180,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+//        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
@@ -232,7 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialize' => Laravel\Socialite\SocialiteServiceProvider::class,
-        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
+//        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
         'Image' => Intervention\Image\Facades\Image::class
     ],
 
