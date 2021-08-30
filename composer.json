@@ -13,7 +13,7 @@
         "laravel/socialite": "^5.2",
         "laravel/tinker": "~1.0",
         "rap2hpoutre/laravel-log-viewer": "^1.0",
-        "sentry/sentry-laravel": "^2.8",
+        "sentry/sentry-laravel": "^1.9",
         "symfony/http-foundation": "^4.2"
     },
     "require-dev": {
