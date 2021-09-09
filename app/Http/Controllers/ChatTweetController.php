@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use App\ChatTweet;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request as Input;
 
 class ChatTweetController extends Controller
 {

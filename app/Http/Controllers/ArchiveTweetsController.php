@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tweet;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request as Input;
 
 class ArchiveTweetsController extends Controller
 {
