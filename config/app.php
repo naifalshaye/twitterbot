@@ -233,7 +233,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialize' => Laravel\Socialite\SocialiteServiceProvider::class,
 //        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Input' => Illuminate\Support\Facades\Request::class,
     ],
 
 ];
