@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.3",
-        "dg/twitter-php": "^3.7",
+        "dg/twitter-php": "dev-patch-1",
         "doctrine/dbal": "^2.9",
         "laravel/framework": "6.*",
         "intervention/image": "^2.6",
@@ -55,5 +55,11 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    }
+    },
+    "repositories": [
+        {
+            "url": "git@github.com:peterjaap/twitter-php.git",
+            "type": "vcs"
+        }
+    ]
 }
